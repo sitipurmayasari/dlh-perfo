@@ -64,7 +64,7 @@ method="post" action="{{route('realsubbid.generate')}}" enctype="multipart/form-
                     for="form-field-1"> Pilih Bulan
                     </label>
                     <div class="col-sm-8">
-                        <select id="bulan" name="month" class="col-xs-10 col-sm-10" required>
+                        <select id="bulan" name="month" class="col-xs-10 col-sm-10">
                             @php
                             $bulan = array("", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus",
                                              "September", "Oktober", "November", "Desember");
@@ -89,16 +89,6 @@ method="post" action="{{route('realsubbid.generate')}}" enctype="multipart/form-
                             <option value="">Pilih Target  Seksi / Subbag</option>
                           
                         </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label no-padding-right" 
-                    for="form-field-1"> Nama Dokumen
-                    </label>
-                    <div class="col-sm-8">
-                        <input type="text" 
-                                    class="col-xs-10 col-sm-10 required " 
-                                    name="filename" required />
                     </div>
                 </div>
                 <div class="form-group">

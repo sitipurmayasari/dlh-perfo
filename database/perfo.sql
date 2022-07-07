@@ -216,6 +216,55 @@ INSERT INTO `zo_kinerja` (`id`, `names`, `owned`, `bidang_id`, `subbidang_id`, `
 	(36, 'Meningkatnya luasan Mangrove Kondisi baik', 2, NULL, 11, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
 /*!40000 ALTER TABLE `zo_kinerja` ENABLE KEYS */;
 
+-- Dumping structure for table perfo.zo_kinerja_skpd
+CREATE TABLE IF NOT EXISTS `zo_kinerja_skpd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `names` varchar(200) NOT NULL,
+  `skpd` varchar(50) DEFAULT NULL,
+  `indicator` varchar(250) DEFAULT NULL,
+  `iku` varchar(100) DEFAULT NULL,
+  `bobot` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_kinerja_skpd: ~30 rows (approximately)
+/*!40000 ALTER TABLE `zo_kinerja_skpd` DISABLE KEYS */;
+INSERT INTO `zo_kinerja_skpd` (`id`, `names`, `skpd`, `indicator`, `iku`, `bobot`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Meningkatnya Infrastruktur dasar yang dapat di akses oleh masyarakat', 'PUPR', 'cakupan pelayanan air limbah', 'Indeks Kualitas Air', 10, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(2, 'Meningkatkan kualitas kawasan permukiman kumuh yang luasan wilayah kumuhnya antara 10-15 ha', 'Perkim', 'Persentase berkurangnya luasan kawasan permukiman kumuh', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(3, 'Meningkatnya kapasitas SDM nelayan, pembudidaya ikan, pengolah dan pemasar hasil perikanan untuk memenuhi ketentuan teknis yang dianjurkan', 'Perikanan dan Kelautan', 'Peningkatan SDM pembudidaya ikan yang memahami cara pembudidayaan ikan sesuai ketentuan teknis', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(4, 'Meningkatnya Indeks Kualitas Air', 'DLH Kabupaten', 'Nilai peningkatan IKA Kab/Kota', 'Indeks Kualitas Air', 33, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(5, 'Meningkatnya kepatuhan pelaku usaha pertambangan', 'ESDM', 'Presentase luas lahan terganggu akibat usaha pertambangan yang di reklamasi dan di Revegatasi', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(6, 'Meningkatnya Kelestarian Hutan', 'Kehutanan', 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(7, 'Meningkatnya status kesehatan masyarakat', 'Dinas Kesehatan', 'Cakupan Sanitasi Total Berbasis Masyarakat (STBM)', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(8, 'Peningkatan kapasitas kelembagaan dan SDM penyuluhan', 'Dinas TPH', 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Air', 3, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(9, 'Menurunkan emisi GRK', 'DLH Prov Kalsel', 'Persentase penurunan emisi GRK dari Bussines As Usual ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(10, 'Meningkatnya Ketahanan Energi', 'ESDM (Energi)', 'Persentase Pemanfaatan Sumber Energi Baru Terbarukan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(11, 'Pembangunan dan Rehabilitasi Sarana dan Prasarana Perhubungan', 'Dishub (Energi)', 'Meningkatkan Pelayanan Bidang Transportasi ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(12, 'Meningkatnya kelestarian hutan', 'Dinas Kehutanan (Kehutanan)', 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(13, 'Peningkatan kpasitas kelembagaan dan SDM penyuluhan', 'TPH (Pertanian)', 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(14, 'Pengawasan dan Pengendalian Pupuk dan Pestisida', 'Disbunak (Pertanian,Kehutanan)', 'Jumlah Pupuk, Pestisida, Alsintan dan Sarana Pendukung Perkebunan dan Peternakan yang terawasi', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(15, 'Meningkatnya Infrastruktur Daerah Dasar (Air Minum dan Air Limbah) yang dapat diakses oleh Masyarakat', 'PUPR (Limbah)', 'cakupan pelayanan air limbah', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(16, 'Meningkatkan Kualitas Prasarana, Sarana dan Utilitas Perumahan di permukiman', 'Perkim (Limbah)', 'Persentase meningkatnya kualitas Prasarana, Sarana dan Utilitas Umum ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(17, ' Meningkatnya luasan tutupan lahan', 'DLH Kabupaten', ' Luasan Taman Kehati', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(18, 'Meningkatnya Rehabilitasi Hutan dan Lahan Untuk Perbaikan Lingkungan', 'Dinas Kehutanan', 'Persentase luas penanaman Rehabilitasi Hutan dan Lahan serta Rehabilitasi DAS', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(19, 'Meningkatnya Kepatuhan Pelaku Usaha Pertambangan', 'Dinas ESDM', 'Persentase Luas Lahan Terganggu Akibat Usaha Pertambangan yang direklamasi dan direvegetasi', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(20, 'Meningkatnya kualitas infrastruktur ke PU-an dan Tata Ruang', 'Dinas PUPR', 'Persentase Kesesuaian Tata Ruang', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(21, 'Meningkatnya konservasi kawasan / rehabilitasi ekosistem', 'BRG/TPRG', 'Persentase luasan lahan gambut yang difasilitasi restorasi gambut', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(22, ' Meningkatnya kinerja pengelolaan persampahan', 'DLH Kabupaten', ' Pengelolaan sampah di daerah Pesisir', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(23, 'Meningkatnya pengelolaan sumber daya kelautan dan perikanan yang berkelanjutan (Sustainable Fisheries Management) ', 'Dinas Kelautan dan Perikanan', 'Peningkatan luas kawasan ekosistem pesisir dan laut kritis yang telah direhabilitasi', 'Indeks Kualitas Air Laut', 20, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(24, 'Meningkatkan Pengembangan Fasilitasi Destinasi Wisata di Provinsi Kalimantan Selatan', 'Dinas Pariwisata', 'Persentase Objek Wisata Dengan Fasilitas Pendukung Sesuai Standar Sapta Pesona', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(25, 'Melaksanakan pengelolaan sungai, pantai dan drainase', 'Dinas PUPR', 'Panjang dan jumlah bangunan pengendali banjir dan pengaman pantai yang dibangun dan direhabilitasi', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(26, 'Meningkatnya Keamanan dan Kelancaran Transportasi Perairan', 'Dinas Perhubungan', 'Persentase Pelabuhan sungai dan danau yang beroperasi sesuai standard', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(27, 'Meningkatnya pengawasan terhadap pelabuhan', 'Administrasi Pelabuhan', 'Persentase pengawasan terhadap pelabuhan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(28, 'Peningkatan pembinaan, pengawasan, standarisasi mutu & kualitas benih perkebunan', 'Disbunak', 'Persentase Pengawasan dan Pengendalian Pupuk dan Pestisida', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(29, 'Melaksanakan dan Mengelola Rehabilitasi Hutan dan Lahan di Provinsi Kalsel', 'Dishut', 'Persentase penanaman RHL di luar kawasan hutan', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(30, 'Pengawasan Terhadap Kepatuhan Usaha Industri', 'Dinas Perindustrian', 'Jumlah Pelaku Industri yang Dilaksanakan Pengawasan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
+/*!40000 ALTER TABLE `zo_kinerja_skpd` ENABLE KEYS */;
+
 -- Dumping structure for table perfo.zo_realisasi
 CREATE TABLE IF NOT EXISTS `zo_realisasi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -231,10 +280,12 @@ CREATE TABLE IF NOT EXISTS `zo_realisasi` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_realisasi: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_realisasi: ~1 rows (approximately)
 /*!40000 ALTER TABLE `zo_realisasi` DISABLE KEYS */;
+INSERT INTO `zo_realisasi` (`id`, `dates`, `subbidang_id`, `targetsubbid_id`, `years`, `month`, `filename`, `users_id`, `files`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, '2022-07-07', 5, 1, 2022, 7, 'tralalala', 1, NULL, '2022-07-07 06:32:52', '2022-07-07 06:32:52', NULL);
 /*!40000 ALTER TABLE `zo_realisasi` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_realisasi_detail
@@ -249,6 +300,7 @@ CREATE TABLE IF NOT EXISTS `zo_realisasi_detail` (
   `keterangan` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `target_akhir` float DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -301,10 +353,12 @@ CREATE TABLE IF NOT EXISTS `zo_targetbid` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_targetbid: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_targetbid: ~1 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetbid` DISABLE KEYS */;
+INSERT INTO `zo_targetbid` (`id`, `dates`, `yearfrom`, `yearto`, `types`, `filename`, `sk_number`, `users_id`, `bidang_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, '2022-07-07', 2021, 2025, 'AWAL', 'dfdfd', 'dfd', 1, 2, '2022-07-07 02:08:47', '2022-07-07 02:08:47', NULL);
 /*!40000 ALTER TABLE `zo_targetbid` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_targetbid_detail
@@ -318,10 +372,26 @@ CREATE TABLE IF NOT EXISTS `zo_targetbid_detail` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_targetbid_detail: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_targetbid_detail: ~15 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetbid_detail` DISABLE KEYS */;
+INSERT INTO `zo_targetbid_detail` (`id`, `targetbid_id`, `indicator_id`, `years`, `percentages`, `initiative`, `created_at`, `updated_at`) VALUES
+	(1, 1, 24, '2021', 100, '-', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(2, 1, 29, '2021', 100, '1', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(3, 1, 32, '2021', 100, '-', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(4, 1, 24, '2022', 100, '-', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(5, 1, 29, '2022', 100, '-', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(6, 1, 32, '2022', 100, '-', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(7, 1, 24, '2023', 100, '1', '2022-07-07 02:09:31', '2022-07-07 02:09:31'),
+	(8, 1, 29, '2023', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(9, 1, 32, '2023', 100, NULL, '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(10, 1, 24, '2024', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(11, 1, 29, '2024', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(12, 1, 32, '2024', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(13, 1, 24, '2025', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(14, 1, 29, '2025', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32'),
+	(15, 1, 32, '2025', 100, '1', '2022-07-07 02:09:32', '2022-07-07 02:09:32');
 /*!40000 ALTER TABLE `zo_targetbid_detail` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_targetsubbid
@@ -339,10 +409,12 @@ CREATE TABLE IF NOT EXISTS `zo_targetsubbid` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table perfo.zo_targetsubbid: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_targetsubbid: ~1 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetsubbid` DISABLE KEYS */;
+INSERT INTO `zo_targetsubbid` (`id`, `dates`, `yearfrom`, `yearto`, `types`, `filename`, `sk_number`, `users_id`, `subbidang_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, '2022-07-07', 2021, 2025, 'AWAL', 'assa', 'asasa', 1, 5, '2022-07-07 06:32:18', '2022-07-07 06:32:18', NULL);
 /*!40000 ALTER TABLE `zo_targetsubbid` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_targetsubbid_detail
@@ -356,15 +428,166 @@ CREATE TABLE IF NOT EXISTS `zo_targetsubbid_detail` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table perfo.zo_targetsubbid_detail: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_targetsubbid_detail: ~12 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetsubbid_detail` DISABLE KEYS */;
+INSERT INTO `zo_targetsubbid_detail` (`id`, `targetsubbid_id`, `indicator_id`, `years`, `percentages`, `initiative`, `created_at`, `updated_at`) VALUES
+	(1, 1, 35, '2021', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(2, 1, 36, '2021', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(3, 1, 35, '2022', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(4, 1, 36, '2022', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(5, 1, 35, '2023', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(6, 1, 36, '2023', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(7, 1, 35, '2024', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(8, 1, 36, '2024', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(9, 1, 35, '2025', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(10, 1, 36, '2025', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(11, 1, 35, '2026', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(12, 1, 36, '2026', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32');
 /*!40000 ALTER TABLE `zo_targetsubbid_detail` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_target_skpd
+CREATE TABLE IF NOT EXISTS `zo_target_skpd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kinerja_skpd_id` int(11) DEFAULT NULL,
+  `years` int(11) DEFAULT NULL,
+  `percentages` double DEFAULT NULL,
+  `initiative` varchar(250) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table perfo.zo_target_skpd: ~120 rows (approximately)
+/*!40000 ALTER TABLE `zo_target_skpd` DISABLE KEYS */;
+INSERT INTO `zo_target_skpd` (`id`, `kinerja_skpd_id`, `years`, `percentages`, `initiative`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 1, 2021, 0.42, 'Pengelolaan dan Pengembangan SPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(2, 2, 2021, 0.3, 'Pembangunan/ rehabilitasi infrastruktur permukiman baik skala lingkungan maupun skala kawasan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(3, 3, 2021, 0.3, 'Penyuluhan tentang Kelestarian Sumberdaya Kelautan dan Perikanan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(4, 4, 2021, 1.4, 'Pencegahan pencemaran dan pemulihan IKA', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(5, 5, 2021, 0.21, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(6, 6, 2021, 0.21, 'Pelaksanaan Pengelolaan DAS Lintas Daerah Kabupaten/Kota dan dalam Daerah Kab/Kota dalam 1 (Satu) Daerah Provinsi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(7, 7, 2021, 0.21, 'Penyelenggaraan Promosi Kesehatan dan Perilaku Hidup Bersih dan Sehat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(8, 8, 2021, 0.13, 'Peningkatan kompetensi terhadap penyuluh dan Penyuluhan terhadap kelompok tani', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(9, 9, 2021, 16.5, 'RAD GRK, Inventarisasi GRK, Restorasi Gambut, Pengelolaan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(10, 10, 2021, 14.7, 'Konversi penggunaan energi, Pengurangan penggunaan bahan bakar fosil', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(11, 11, 2021, 14.7, 'Efisiensi pemakaian bahan bakar untuk transportasi pengaturan alur transportasi darat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(12, 12, 2021, 28.1, 'Gerakan Revolusi Hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(13, 13, 2021, 14.9, 'Pengembangan budidaya padi sawah rendah emisi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(14, 14, 2021, 14.9, 'pembinaan dan sosialisasi penggunaan pupuk, pengembangan peternakan rendah metan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(15, 15, 2021, 11.4, 'Pengembangan IPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(16, 16, 2021, 11.4, 'Pengembangan sarpras limbah dan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(17, 17, 2021, 0, 'Pengelolaan Kehati', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(18, 18, 2021, 81932.74, 'Gerakan Revolusi hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(19, 19, 2021, 2365.41, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(20, 20, 2021, 0, 'Pengelolaan RTH', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(21, 21, 2021, 0, 'Legalisasi RPPEG, Pembangunan IPG, Rehabilitasi dan Revegetasi, serta Revitalisasi Masyarakat di lokasi gambut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(22, 22, 2021, 0.68, 'Pembinaan terhadap pengelolaan sampah di pesisir', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(23, 23, 2021, 0.9, 'rehabilitasi ekosistem pesisir yang kritis, misalnya penanaman mangrove', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(24, 24, 2021, 0.68, 'Melengkapi sarpras daerah wisata untuk mendukung saptapesona. Membina Pokdarwis', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(25, 25, 2021, 0.23, 'Pembangunan bangunan pengendali banjir/ pengaman pantai', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(26, 26, 2021, 0.23, 'Pengawasan terhadap operasional pada pelabuhan sungai dan danau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(27, 27, 2021, 0.23, 'Pengawasan terhadap operasional pada pelabuhan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(28, 28, 2021, 0.23, 'Pengawasan Sebaran Pupuk, Pestisida, dan Sarana Pendukung Perkebunan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(29, 29, 2021, 0.68, 'Melaksanakan dan monitoring kegiatan RHL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(30, 30, 2021, 0.23, 'Koordinasi dan Sinkronisasi Pengawasan Perizinan di Bidang Industri dalam Lingkup IUI, IPUI, IUKI, dan IPKI', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(31, 1, 2022, 0.43, 'Pengelolaan dan Pengembangan SPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(32, 2, 2022, 0.3, 'Pembangunan/ rehabilitasi infrastruktur permukiman baik skala lingkungan maupun skala kawasan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(33, 3, 2022, 0.3, 'Penyuluhan tentang Kelestarian Sumberdaya Kelautan dan Perikanan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(34, 4, 2022, 1.42, 'Pencegahan pencemaran dan pemulihan IKA', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(35, 5, 2022, 0.22, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(36, 6, 2022, 0.22, 'Pelaksanaan Pengelolaan DAS Lintas Daerah Kabupaten/Kota dan dalam Daerah Kab/Kota dalam 1 (Satu) Daerah Provinsi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(37, 7, 2022, 0.22, 'Penyelenggaraan Promosi Kesehatan dan Perilaku Hidup Bersih dan Sehat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(38, 8, 2022, 0.13, 'Peningkatan kompetensi terhadap penyuluh dan Penyuluhan terhadap kelompok tani', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(39, 9, 2022, 18, 'RAD GRK, Inventarisasi GRK, Restorasi Gambut, Pengelolaan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(40, 10, 2022, 17.1, 'Konversi penggunaan energi, Pengurangan penggunaan bahan bakar fosil', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(41, 11, 2022, 17.1, 'Efisiensi pemakaian bahan bakar untuk transportasi pengaturan alur transportasi darat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(42, 12, 2022, 32.5, 'Gerakan Revolusi Hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(43, 13, 2022, 16.4, 'Pengembangan budidaya padi sawah rendah emisi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(44, 14, 2022, 16.4, 'pembinaan dan sosialisasi penggunaan pupuk, pengembangan peternakan rendah metan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(45, 15, 2022, 15.8, 'Pengembangan IPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(46, 16, 2022, 15.8, 'Pengembangan sarpras limbah dan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(47, 17, 2022, 10, 'Pengelolaan Kehati', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(48, 18, 2022, 17555.66, 'Gerakan Revolusi hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(49, 19, 2022, 17555.66, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(50, 20, 2022, 10000, 'Pengelolaan RTH', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(51, 21, 2022, 0, 'Legalisasi RPPEG, Pembangunan IPG, Rehabilitasi dan Revegetasi, serta Revitalisasi Masyarakat di lokasi gambut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(52, 22, 2022, 0.57, 'Pembinaan terhadap pengelolaan sampah di pesisir', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(53, 23, 2022, 1.13, 'rehabilitasi ekosistem pesisir yang kritis, misalnya penanaman mangrove', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(54, 24, 2022, 0.85, 'Melengkapi sarpras daerah wisata untuk mendukung saptapesona. Membina Pokdarwis', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(55, 25, 2022, 0.28, 'Pembangunan bangunan pengendali banjir/ pengaman pantai', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(56, 26, 2022, 0.28, 'Pengawasan terhadap operasional pada pelabuhan sungai dan danau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(57, 27, 2022, 0.28, 'Pengawasan terhadap operasional pada pelabuhan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(58, 28, 2022, 0.57, 'Pengawasan Sebaran Pupuk, Pestisida, dan Sarana Pendukung Perkebunan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(59, 29, 2022, 0.85, 'Melaksanakan dan monitoring kegiatan RHL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(60, 30, 2022, 0.28, 'Koordinasi dan Sinkronisasi Pengawasan Perizinan di Bidang Industri dalam Lingkup IUI, IPUI, IUKI, dan IPKI', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(61, 1, 2023, 0.44, 'Pengelolaan dan Pengembangan SPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(62, 2, 2023, 0.31, 'Pembangunan/ rehabilitasi infrastruktur permukiman baik skala lingkungan maupun skala kawasan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(63, 3, 2023, 0.31, 'Penyuluhan tentang Kelestarian Sumberdaya Kelautan dan Perikanan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(64, 4, 2023, 1.44, 'Pencegahan pencemaran dan pemulihan IKA', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(65, 5, 2023, 0.22, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(66, 6, 2023, 0.22, 'Pelaksanaan Pengelolaan DAS Lintas Daerah Kabupaten/Kota dan dalam Daerah Kab/Kota dalam 1 (Satu) Daerah Provinsi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(67, 7, 2023, 0.22, 'Penyelenggaraan Promosi Kesehatan dan Perilaku Hidup Bersih dan Sehat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(68, 8, 2023, 0.13, 'Peningkatan kompetensi terhadap penyuluh dan Penyuluhan terhadap kelompok tani', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(69, 9, 2023, 20.6, 'RAD GRK, Inventarisasi GRK, Restorasi Gambut, Pengelolaan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(70, 10, 2023, 19.4, 'Konversi penggunaan energi, Pengurangan penggunaan bahan bakar fosil', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(71, 11, 2023, 19.4, 'Efisiensi pemakaian bahan bakar untuk transportasi pengaturan alur transportasi darat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(72, 12, 2023, 37.9, 'Gerakan Revolusi Hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(73, 13, 2023, 17.9, 'Pengembangan budidaya padi sawah rendah emisi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(74, 14, 2023, 17.9, 'pembinaan dan sosialisasi penggunaan pupuk, pengembangan peternakan rendah metan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(75, 15, 2023, 20.5, 'Pengembangan IPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(76, 16, 2023, 20.5, 'Pengembangan sarpras limbah dan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(77, 17, 2023, 15, 'Pengelolaan Kehati', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(78, 18, 2023, 86593.34, 'Gerakan Revolusi hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(79, 19, 2023, 155.66, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(80, 20, 2023, 6700, 'Pengelolaan RTH', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(81, 21, 2023, 0, 'Legalisasi RPPEG, Pembangunan IPG, Rehabilitasi dan Revegetasi, serta Revitalisasi Masyarakat di lokasi gambut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(82, 22, 2023, 0.57, 'Pembinaan terhadap pengelolaan sampah di pesisir', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(83, 23, 2023, 1.13, 'rehabilitasi ekosistem pesisir yang kritis, misalnya penanaman mangrove', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(84, 24, 2023, 0.85, 'Melengkapi sarpras daerah wisata untuk mendukung saptapesona. Membina Pokdarwis', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(85, 25, 2023, 0.28, 'Pembangunan bangunan pengendali banjir/ pengaman pantai', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(86, 26, 2023, 0.28, 'Pengawasan terhadap operasional pada pelabuhan sungai dan danau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(87, 27, 2023, 0.28, 'Pengawasan terhadap operasional pada pelabuhan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(88, 28, 2023, 0.57, 'Pengawasan Sebaran Pupuk, Pestisida, dan Sarana Pendukung Perkebunan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(89, 29, 2023, 0.85, 'Melaksanakan dan monitoring kegiatan RHL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(90, 30, 2023, 0.28, 'Koordinasi dan Sinkronisasi Pengawasan Perizinan di Bidang Industri dalam Lingkup IUI, IPUI, IUKI, dan IPKI', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(91, 1, 2024, 0.45, 'Pengelolaan dan Pengembangan SPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(92, 2, 2024, 0.31, 'Pembangunan/ rehabilitasi infrastruktur permukiman baik skala lingkungan maupun skala kawasan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(93, 3, 2024, 0.31, 'Penyuluhan tentang Kelestarian Sumberdaya Kelautan dan Perikanan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(94, 4, 2024, 1.47, 'Pencegahan pencemaran dan pemulihan IKA', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(95, 5, 2024, 0.22, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(96, 6, 2024, 0.22, 'Pelaksanaan Pengelolaan DAS Lintas Daerah Kabupaten/Kota dan dalam Daerah Kab/Kota dalam 1 (Satu) Daerah Provinsi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(97, 7, 2024, 0.22, 'Penyelenggaraan Promosi Kesehatan dan Perilaku Hidup Bersih dan Sehat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(98, 8, 2024, 0.13, 'Peningkatan kompetensi terhadap penyuluh dan Penyuluhan terhadap kelompok tani', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(99, 9, 2024, 22.2, 'RAD GRK, Inventarisasi GRK, Restorasi Gambut, Pengelolaan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(100, 10, 2024, 21.7, 'Konversi penggunaan energi, Pengurangan penggunaan bahan bakar fosil', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(101, 11, 2024, 21.7, 'Efisiensi pemakaian bahan bakar untuk transportasi pengaturan alur transportasi darat', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(102, 12, 2024, 43.9, 'Gerakan Revolusi Hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(103, 13, 2024, 19.3, 'Pengembangan budidaya padi sawah rendah emisi', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(104, 14, 2024, 19.3, 'pembinaan dan sosialisasi penggunaan pupuk, pengembangan peternakan rendah metan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(105, 15, 2024, 25.4, 'Pengembangan IPAL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(106, 16, 2024, 25.4, 'Pengembangan sarpras limbah dan persampahan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(107, 17, 2024, 20, 'Pengelolaan Kehati', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(108, 18, 2024, 87733.67, 'Gerakan Revolusi hijau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(109, 19, 2024, 280.33, 'Pengawasan Teknis kaidah Pertambangan yang baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(110, 20, 2024, 6000, 'Pengelolaan RTH', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(111, 21, 2024, 0, 'Legalisasi RPPEG, Pembangunan IPG, Rehabilitasi dan Revegetasi, serta Revitalisasi Masyarakat di lokasi gambut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(112, 22, 2024, 0.63, 'Pembinaan terhadap pengelolaan sampah di pesisir', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(113, 23, 2024, 1.25, 'rehabilitasi ekosistem pesisir yang kritis, misalnya penanaman mangrove', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(114, 24, 2024, 0.94, 'Melengkapi sarpras daerah wisata untuk mendukung saptapesona. Membina Pokdarwis', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(115, 25, 2024, 0.31, 'Pembangunan bangunan pengendali banjir/ pengaman pantai', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(116, 26, 2024, 0.31, 'Pengawasan terhadap operasional pada pelabuhan sungai dan danau', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(117, 27, 2024, 0.31, 'Pengawasan terhadap operasional pada pelabuhan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(118, 28, 2024, 0.63, 'Pengawasan Sebaran Pupuk, Pestisida, dan Sarana Pendukung Perkebunan', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(119, 29, 2024, 0.94, 'Melaksanakan dan monitoring kegiatan RHL', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(120, 30, 2024, 0.31, 'Koordinasi dan Sinkronisasi Pengawasan Perizinan di Bidang Industri dalam Lingkup IUI, IPUI, IUKI, dan IPKI', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
+/*!40000 ALTER TABLE `zo_target_skpd` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_verisubbid
 CREATE TABLE IF NOT EXISTS `zo_verisubbid` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `realisasi_id` int(11) DEFAULT NULL,
   `kabid_id` int(11) DEFAULT NULL,
   `kabid_dates` date DEFAULT NULL,

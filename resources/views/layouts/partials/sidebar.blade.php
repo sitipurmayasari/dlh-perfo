@@ -65,24 +65,30 @@
             <b class="arrow fa fa-angle-down"></b>
         </a>
         <b class="arrow"></b>
-        <ul class="submenu">
-            {{-- <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
-                <a href="/realbid">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Realisasi Bidang
-                </a>
-                <b class="arrow"></b>
-            </li>     --}}
+        <ul class="submenu">      
             <li class="{{ (request()->segment(2) == 'Verifikasi Sub Bidang' ) ? 'active' : '' }} ">
                 <a href="/verisubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Verifikasi Sub Bidang
                 </a>
                 <b class="arrow"></b>
-            </li>    
+            </li>  
+            <li class="{{ (request()->segment(2) == 'Verifikasi Bidang' ) ? 'active' : '' }} ">
+                <a href="/veribid">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Verifikasi Bidang
+                </a>
+                <b class="arrow"></b>
+            </li>     
         </ul>
     </li>
-   
+    <li class="{{ (request()->segment(1) == 'report' ) ? 'active' : '' }} ">
+        <a href="/report">
+            <i class="menu-icon fa fa-file-text-o"></i>
+            <span class="menu-text"> Laporan </span>
+        </a>
+        <b class="arrow"></b>
+    </li>
     <li class="{{ (request()->segment(1) == 'Setup' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-cog"></i>
@@ -102,6 +108,13 @@
                 <a href="/indicator">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Indikator
+                </a>
+                <b class="arrow"></b>
+            </li>  
+            <li class="{{ (request()->segment(2) == 'kinerja_skpd' ) ? 'active' : '' }} ">
+                <a href="/kinerja_skpd">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Kinerja SKPD
                 </a>
                 <b class="arrow"></b>
             </li>    

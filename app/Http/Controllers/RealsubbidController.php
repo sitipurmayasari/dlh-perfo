@@ -55,7 +55,19 @@ class RealsubbidController extends Controller
             'files' => 'mimes:pdf|max:10048'
         ]);
 
-        $data = Realisasi::create($request->all());
+        $filename = "laporan pengukuran kinerja".$request->month.$request->years;
+
+        $realisasi = [
+            'targetsubbid_id'   =>$request->targetsubbid_id,
+            'years'             => $request->years,
+            'month'             => $request->month,
+            'filename'          => $filename,
+            'users_id'          => $request->users_id,
+            'subbidang_id'      => $request->subbidang_id,
+            'dates'             => $request->dates
+        ];
+        $data = Realisasi::create($realisasi);
+
         if($request->hasFile('files')){ // Kalau file ada
             $request->file('files')
                         ->move('images/realsubbid/'.$data->id,$request
@@ -76,8 +88,10 @@ class RealsubbidController extends Controller
         $indi = Targetsubbid_detail::where('targetsubbid_id',$data->targetsubbid_id)
                                     ->where('years',$data->years)
                                     ->get();
-
-        return view('realsubbid/entrydata',compact('indi','data'));
+        $yearend = Targetsubbid::where('id',$data->targetsubbid_id)
+                                    ->Orderby('id','asc')
+                                    ->first();
+        return view('realsubbid/entrydata',compact('indi','data','yearend'));
     }
 
     public function store(Request $request)

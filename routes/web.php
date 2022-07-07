@@ -47,6 +47,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/indicator/update/{id}','IndicatorController@update')->name('indicator.update');
     Route::get('/indicator/delete/{id}','IndicatorController@delete')->name('indicator.delete');
 
+     //Route untuk Kinerja skpd
+     Route::get('/kinerja_skpd','KinerjaSKPDController@index')->name('kinerja_skpd');
+     Route::get('/kinerja_skpd/create','KinerjaSKPDController@create')->name('kinerja_skpd.create');
+     Route::post('/kinerja_skpd/store','KinerjaSKPDController@store')->name('kinerja_skpd.store');
+     Route::get('/kinerja_skpd/edit/{id}','KinerjaSKPDController@edit')->name('kinerja_skpd.edit');
+     Route::post('/kinerja_skpd/update/{id}','KinerjaSKPDController@update')->name('kinerja_skpd.update');
+     Route::get('/kinerja_skpd/delete/{id}','KinerjaSKPDController@delete')->name('kinerja_skpd.delete');
+ 
+
     //Route untuk targetbidang
     Route::get('/targetbid','TargetbidController@index')->name('targetbid');
     Route::get('/targetbid/create','TargetbidController@create')->name('targetbid.create');

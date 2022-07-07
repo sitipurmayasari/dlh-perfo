@@ -85,7 +85,7 @@
                     <td>{{$row->user->name}}</td>
                     <td>
                         @php
-                            $periv = $injectQuery->getPeriv($data->id);
+                            $periv = $injectQuery->getPeriv($row->id);
                         @endphp
                         @if ($periv != null)
                             @if ($periv->verifikasi_sekdis=='Y')
@@ -98,13 +98,16 @@
                         @endif
                     </td>
                     <td>                       
-                        @if (date('d') > 9 || $periv->verifikasi_sekdis=='Y')
-                            Masa Edit Berakhir
+                        @if ($periv != null || date('d') > 9)
+                            @if ($periv->verifikasi_sekdis=='Y')
+                                Masa Edit Berakhir
+                            @else
+                                Masa Edit Berakhir
+                            @endif
                         @else
                             <a href="/realsubbid/editmeta/{{$row->id}}" class="btn btn-warning">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
-                            
                         @endif
                     </td>
                 </tr>

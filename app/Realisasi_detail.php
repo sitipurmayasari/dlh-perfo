@@ -8,7 +8,7 @@ class Realisasi_detail extends Model
 {
     
     protected $table = "zo_realisasi_detail";
-    protected $fillable = ["realisasi_id","capaian_akhir","target","real","capaian","keterangan","indicator_id"
+    protected $fillable = ["realisasi_id","target","real","capaian","keterangan","indicator_id","target_akhir","capaian_akhir"
                             ];
     public function real()
     {
