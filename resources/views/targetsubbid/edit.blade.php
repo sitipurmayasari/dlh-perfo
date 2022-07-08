@@ -15,7 +15,7 @@
     @foreach ($renstra as $item)
     <div class="widget-box">
         <div class="widget-header">
-            <h4 class="widget-title"> Ubah Target Seksi / Subbag {{$idang->name}}  Tahun {{$item->years}}</h4>
+            <h4 class="widget-title"> Ubah Target Seksi / Subbag {{$bidang->name}}  Tahun {{$item->years}}</h4>
             <div class="widget-toolbar">
                 <a href="#" data-action="collapse">
                     <i class="ace-icon fa fa-chevron-down"></i>
