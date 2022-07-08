@@ -122,4 +122,12 @@ class TargetsubbidController extends Controller
         return redirect('/targetsubbid')->with('sukses','Data Berhasil Diperbaharui');
     }
 
+    public function delete(Request $request, $id)
+    {
+        Targetsubbid_detail::where('targetbid_id',$id)->delete();
+        Targetsubbid::where('id',$id)->delete();
+        return redirect('/targetsubbid')->with('sukses','Data Berhasil dihapus');
+        
+    }
+
 }

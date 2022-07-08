@@ -6,18 +6,16 @@
 @endsection
 @section('content')
 @include('layouts.validasi')
-
 <form class="form-horizontal validate-form" role="form" 
 method="post" action="{{route('targetbid.store')}}" enctype="multipart/form-data"   >
 {{ csrf_field() }}
 <div class="col-sm-12">
     @php
         $tahun = $data->yearfrom;
-        $i = [
-                [1], [2],[3],[4],[5]
-            ];
+       
     @endphp
-    @foreach ($i as $item)
+    
+    @for ($i=0; $i <= $data->yearto - $data->yearfrom;$i++)
     <div class="widget-box">
         <div class="widget-header">
             <h4 class="widget-title"> Tambah Target Bidang {{$bidang->name}} Tahun {{$tahun}}</h4>
@@ -63,7 +61,7 @@ method="post" action="{{route('targetbid.store')}}" enctype="multipart/form-data
     @php
         $tahun++;
     @endphp
-    @endforeach
+    @endfor
     
 </div>
 <div class="panel-footer">

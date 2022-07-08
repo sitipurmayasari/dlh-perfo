@@ -119,4 +119,12 @@ class TargetbidController extends Controller
         return redirect('/targetbid')->with('sukses','Data Berhasil Diperbaharui');
     }
 
+    public function delete(Request $request, $id)
+    {
+        Targetbid_detail::where('targetbid_id',$id)->delete();
+        Targetbid::where('id',$id)->delete();
+        return redirect('/targetbid')->with('sukses','Data Berhasil dihapus');
+        
+    }
+
 }

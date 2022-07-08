@@ -191,31 +191,29 @@
 @section('footer')
    <script>
         function addBarisNew(){
-        var last_baris = $("#countRow").val();
-        var new_baris = parseInt(last_baris);
-        $isi ='<tr id="cell-'+new_baris+'">'+
-                    '<td style="text-align:center;">'+new_baris+'</td>'+
-                    '<td>'+
-                        '<select id="tahun" name="years[]" required  class="form-control">'+
-                           '@php'+     
-                                '$now=date("Y");'+    
-                                '$c = $now+4;'+        
-                                'for ($a=2021;$a<=$c;$a++)'+        
-                                '{  echo "<option value='$a'>$a</option>"; }'+        
-                            '@endphp'+        
+            var last_baris = $("#countRow").val();
+            var new_baris = parseInt(last_baris);
+            $isi ='<tr id="cell-'+new_baris+'">'+
+                        '<td style="text-align:center;">'+new_baris+'</td>'+
+                        '<td>'+
+                            '<select id="tahun" name="years[]" required  class="form-control">'+   
+                                 '<option value="2021">2021</option>'+        
+                                 '<option value="2022">2022</option>'+  
+                            '<option value="2023">2023</option>'+  
+                            '<option value="2024">2024</option>'+
                             '</select>'+
-                    '</td>'+
-                    '<td>'+
-                        '<input type="number" step="0.001" name="percentages[]" placeholder="0" id="1c"  value="0" class="form-control">'+ 
-                    '</td>'+
-                    '<td>'+
-                        '<input type="text" name="initiative[]" class="form-control" required>'+  
-                    '</td>'+
-                    '<td><button type="button" class="btn btn-danger" onclick="deleteRow('+new_baris+')"><i class="glyphicon glyphicon-trash"></i></button></td>'+
-                '</tr>';
-        $("#myTable").find('tbody').append($isi);
-        $("#countRow").val(new_baris);
-        $('.select2').select2();
+                        '</td>'+
+                        '<td>'+
+                            '<input type="number" step="0.001" name="percentages[]" placeholder="0" id="1c"  value="0" class="form-control">'+ 
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" name="initiative[]" class="form-control" required>'+  
+                        '</td>'+
+                        '<td><button type="button" class="btn btn-danger" onclick="deleteRow('+new_baris+')"><i class="glyphicon glyphicon-trash"></i></button></td>'+
+                    '</tr>';
+            $("#myTable").find('tbody').append($isi);
+            $("#countRow").val(new_baris);
+            $('.select2').select2();
        }
 
     

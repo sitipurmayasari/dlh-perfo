@@ -13,12 +13,10 @@ method="post" action="{{route('targetsubbid.store')}}" enctype="multipart/form-d
 <div class="col-sm-12">
     @php
         $tahun = $data->yearfrom;
-        $i = [
-                [1],[2],[3],[4],[5],[6]
-            ];
+      
     @endphp
-    @foreach ($i as $item)
-    <div class="widget-box">
+    @for ($i=0; $i <= $data->yearto - $data->yearfrom;$i++)
+      <div class="widget-box">
         <div class="widget-header">
             <h4 class="widget-title"> Tambah Target Seksi / Subbag {{$bidang->name}} Tahun {{$tahun}}</h4>
             <div class="widget-toolbar">
@@ -63,7 +61,7 @@ method="post" action="{{route('targetsubbid.store')}}" enctype="multipart/form-d
     @php
         $tahun++;
     @endphp
-    @endforeach
+    @endfor
     
 </div>
 <div class="panel-footer">

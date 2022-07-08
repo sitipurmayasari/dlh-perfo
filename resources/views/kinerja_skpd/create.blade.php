@@ -149,13 +149,9 @@
                     '<td style="text-align:center;">'+new_baris+'</td>'+
                     '<td>'+
                         '<select id="tahun" name="years[]" required  class="form-control">'+
-                           '@php'+     
-                                '$now=date("Y");'+    
-                                '$c = $now+4;'+        
-                                'for ($a=2021;$a<=$c;$a++)'+        
-                                '{  echo "<option value='$a'>$a</option>"; }'+        
-                            '@endphp'+        
-                            '</select>'+
+                            
+                            '<option value="2021">2021</option>'+    
+                        '</select>'+
                     '</td>'+
                     '<td>'+
                         '<input type="number" step="0.001" name="percentages[]" placeholder="0" id="1c"  value="0" class="form-control">'+ 
