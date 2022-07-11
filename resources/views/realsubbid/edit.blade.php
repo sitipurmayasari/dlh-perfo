@@ -48,10 +48,11 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                     <tr>
                         <th style="text-align: center" >No</th>
                         <th style="text-align: center" class="col-md-3">Indikator</th>
-                        <th style="text-align: center" >Target Tahun {{$data->years}}</th>
-                        <th style="text-align: center">Realisasi</th>
-                        <th style="text-align: center">Hasil (%) </th>
-                        <th style="text-align: center" >Hasil Tahunan (%)</th>
+                        <th style="text-align: center" class="col-md-1">Target Akhir</th>
+                        <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
+                        <th style="text-align: center"  class="col-md-1">Realisasi</th>
+                        <th style="text-align: center"  class="col-md-1">Hasil</th>
+                        <th style="text-align: center"  class="col-md-1">Hasil Tahunan </th>
                         <th style="text-align: center" class="col-md-4">Keterangan</th>
                     </tr>
                </thead>
@@ -68,12 +69,16 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                                 {{$row->indi->names}}
                             </td>
                             <td>
+                                <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
+                                value="{{$row->target_akhir}}">
+                            </td>
+                            <td>
                                 <input type="number" readonly name="target[]" class="col-sm-10" value="{{$row->target}}"
                                     id="target-{{$no}}">
                             </td>
                             <td><input type="number" name="real[]" value="{{$row->real}}" step="0.01" class="col-sm-10" id="real-{{$no}}" onkeyup="hitung({{$no}})"></td>
-                            <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}" readonly></td>
-                            <td><input type="number" name="capaian_akhir[]" value="{{$row->capaian_akhir}}" step="0.01" class="col-sm-10" id="hasiltahun-{{$no}}" readonly></td>
+                            <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}"></td>
+                            <td><input type="number" name="capaian_akhir[]" value="{{$row->capaian_akhir}}" step="0.01" class="col-sm-10" id="hasiltahun-{{$no}}"></td>
                             <td><input type="text" name="keterangan[]" class="form-control" value="{{$row->keterangan}}"></td>
                         </tr>
                         @php

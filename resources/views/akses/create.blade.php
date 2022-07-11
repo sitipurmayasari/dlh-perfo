@@ -53,9 +53,12 @@
                                 &nbsp;&nbsp;
                                 <input type="radio" name="role" value="2" checked id="bidang">
                                 <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
-                                &nbsp;&nbsp;
+                                 &nbsp;&nbsp;
                                 <input type="radio" name="role" value="3" id="subbid">
                                 <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                             </div>
                         </div>
                         <div class="form-group"  id="tampilbidang">

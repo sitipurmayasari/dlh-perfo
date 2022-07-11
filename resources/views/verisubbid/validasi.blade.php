@@ -16,7 +16,7 @@
 </style>
 <div class="row">
     <form class="form-horizontal validate-form" role="form" 
-        method="post" action="{{route('verisubbid.store')}}" enctype="multipart/form-data"   >
+    method="post" action="/verisubbid/update/{{$valid->id}}">
     {{ csrf_field() }}
     <div class="col-sm-12">
         <div class="widget-box">
@@ -84,7 +84,24 @@
                         <tr>
                             <td>Dokumen Pendukung</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label></td>
+                            <td> &nbsp; 
+                                @if ($data->files != null)
+                                    <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
+                                @else
+                                    {{ '-' }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Catatan Kabid</td>
+                            <td>&nbsp; : &nbsp;</td>
+                            <td> &nbsp; 
+                                @if ($valid->catatan_kabid != null)
+                                    {{$valid->catatan_kabid}}
+                                @else
+                                    {{ '-' }}
+                                @endif
+                            </td>
                         </tr>
                     </table>
                     <hr>
@@ -132,7 +149,7 @@
         </div>
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Verifikasi Capaian</h4>
+                <h4 class="widget-title">Verifikasi Capaian Oleh Kabid</h4>
                 <div class="widget-toolbar">
                     <a href="#" data-action="collapse">
                         <i class="ace-icon fa fa-chevron-down"></i>
@@ -148,12 +165,28 @@
                             for="form-field-1"> Verifikasi
                             </label>
                             <div class="col-sm-9">
-                                <input type="radio" required value="N" checked
-                                    name="verifikasi_kabid"/> &nbsp; Belum di Verifikasi &nbsp;
-                                <input type="radio" required value="Y" 
-                                    name="verifikasi_kabid"/> &nbsp; Terverifikasi &nbsp;
-                                <input type="radio" required value="R"
-                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp;    
+                                @if ($valid->validasi_perencana=='Y')
+                                    <input type="radio" required value="N" 
+                                    name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    <input type="radio" required value="Y" checked
+                                    name="validasi_perencana"/> &nbsp; Terverifikasi &nbsp;
+                                    <input type="radio" required value="R"
+                                    name="validasi_perencana"/> &nbsp; Perlu di perbaiki &nbsp; 
+                                @elseif ($valid->validasi_perencana=='R')
+                                    <input type="radio" required value="N" 
+                                    name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    <input type="radio" required value="Y" 
+                                    name="validasi_perencana"/> &nbsp; Terverifikasi &nbsp;
+                                    <input type="radio" required value="R" checked
+                                    name="validasi_perencana"/> &nbsp; Perlu di perbaiki &nbsp; 
+                                @else
+                                    <input type="radio" required value="N" checked
+                                    name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    <input type="radio" required value="Y" 
+                                    name="validasi_perencana"/> &nbsp; Terverifikasi &nbsp;
+                                    <input type="radio" required value="R"
+                                    name="validasi_perencana"/> &nbsp; Perlu di perbaiki &nbsp;  
+                                @endif  
                             </div>
                     </div>
                     <div class="form-group">
@@ -162,10 +195,10 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="hidden" name="realisasi_id" value="{{$data->id}}">
-                                <input type="hidden" name="kabid_id" value="{{auth()->user()->id}}">
-                                <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="kabid_dates"/>
-                                <input type="text" class="col-xs-10 col-sm-10 required "  
-                                name="catatan_kabid" required/>
+                                <input type="hidden" name="perencana_id" value="{{auth()->user()->id}}">
+                                <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="perencana_dates"/>
+                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$valid->catatan_perencana}}"
+                                name="catatan_perencana" required/>
                             </div>
                     </div>
                     

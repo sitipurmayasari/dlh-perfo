@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Setup</li>
-    <li><a href="/kinerja">Kinerja</a></li>
+    <li><a href="/akses">Hak Akses</a></li>
     <li>Ubah</li>
 @endsection
 @section('content')
@@ -15,7 +15,7 @@
     <div class="col-sm-12">
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Ubah Data Kinerja</h4>
+                <h4 class="widget-title">Ubah hak Akses</h4>
                 <div class="widget-toolbar">
                     <a href="#" data-action="collapse">
                         <i class="ace-icon fa fa-chevron-down"></i>
@@ -59,6 +59,9 @@
                             &nbsp;&nbsp;
                             <input type="radio" name="role" value="3" id="subbid">
                             <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" name="role" value="4" id="kadis">
+                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                                
                            @elseif($data->role=="3")
                            <input type="radio" name="role" value="1"  id="bidang">
@@ -67,10 +70,27 @@
                             <input type="radio" name="role" value="2" id="bidang" >
                             <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
                             &nbsp;&nbsp;
+                            <input type="radio" name="role" value="3" id="subbid" checked>
+                            <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" name="role" value="4" id="kadis">
+                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+
+                            @elseif($data->role=="4")
+                           <input type="radio" name="role" value="1"  id="bidang">
+                            <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                            &nbsp;&nbsp;
+                            <input type="radio" name="role" value="2" id="bidang" >
+                            <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                            &nbsp;&nbsp;
                             <input type="radio" name="role" value="3" id="subbid">
                             <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" name="role" value="4" id="kadis" checked>
+                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+
                            @else
-                            <input type="radio" name="role" value="1" checked id="bidang" checked>
+                            <input type="radio" name="role" value="1" checked id="bidang" >
                             <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
                             &nbsp;&nbsp;
                             <input type="radio" name="role" value="2" id="bidang">
@@ -78,6 +98,9 @@
                             &nbsp;&nbsp;
                             <input type="radio" name="role" value="3" id="subbid">
                             <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                            &nbsp;&nbsp;
+                            <input type="radio" name="role" value="4" id="kadis">
+                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                            @endif
                         </div>
                     </div>

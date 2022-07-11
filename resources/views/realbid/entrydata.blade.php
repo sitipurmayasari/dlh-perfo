@@ -2,14 +2,14 @@
 @inject('injectQuery', 'App\InjectQuery')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realsubbid">Realisasi Capaian  Seksi / Subbag</a></li>
+    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
     <li>Tambah Baru</li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-data"   >
+method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data"   >
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -66,13 +66,13 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
                         <tr>
                             <td style="text-align: center">{{$no}}</td>
                             <td>
-                                <input type="hidden" name="realisasi_id[]" value="{{$data->id}}">
+                                <input type="hidden" name="realisasibid_id[]" value="{{$data->id}}">
                                 <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
                                 {{$row->indi->names}}
                             </td>
                             <td>
                                 @php
-                                    $isi = $injectQuery->getRenstra2($row->id,$yearend->yearto,$row->indicator_id);
+                                    $isi = $injectQuery->getRenstra($row->id,$yearend->yearto,$row->indicator_id);
                                 @endphp
                                 <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
                                     value="{{$row->percentages}}">

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realsubbid">Realisasi Capaian  Seksi / Subbag</a></li>
+    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
     <li>Ubah MetaData</li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="/realsubbid/updatemeta/{{$data->id}}">
+method="post" action="/realbid/updatemeta/{{$data->id}}">
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -30,18 +30,18 @@ method="post" action="/realsubbid/updatemeta/{{$data->id}}">
              </div>
              <div class="form-group">
                  <label class="col-sm-2 control-label no-padding-right" 
-                 for="form-field-1">  Seksi / Subbag
+                 for="form-field-1">  Bidang
                  </label>
                  <div class="col-sm-8">
-                     <select name="subbidang_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
-                         <option value="">Pilih  Seksi / Subbag</option>
-                         @foreach ($sub as $item)
-                             @if ($data->subbidang_id == $item->id)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                             @else
+                     <select name="bidang_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
+                        <option value="">Pilih Bidang</option>
+                        @foreach ($sub as $item)
+                            @if ($item->id == $data->bidang_id)
                                 <option value="{{$item->id}}" selected>{{$item->name}}</option>
-                             @endif
-                         @endforeach
+                            @else
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endif
+                        @endforeach
                      </select>
                  </div>
              </div>
@@ -79,10 +79,10 @@ method="post" action="/realsubbid/updatemeta/{{$data->id}}">
                  for="form-field-1"> Target
                  </label>
                  <div class="col-sm-8">
-                     <select name="targetsubbid_id" class="col-xs-10 col-sm-10 select2" required id="target">
-                         <option value="">Pilih Target  Seksi / Subbag</option>
+                     <select name="targetbid_id" class="col-xs-10 col-sm-10 select2" required id="target">
+                         <option value="">Pilih Target  Bidang</option>
                         @foreach ($target as $item)
-                            @if ($data->targetsubbid_id == $item->id)
+                            @if ($data->targetbid_id == $item->id)
                                 <option value="{{$item->id}}" selected>{{$item->filename}} (tanggal : {{$item->dates}})</option>
                             @else
                                 
@@ -130,7 +130,7 @@ method="post" action="/realsubbid/updatemeta/{{$data->id}}">
                 <i class="ace-icon fa fa-check bigger-110"></i>UPDATE
             </button>
         </form>
-            <a href="/realsubbid/edit/{{$data->id}}" class="btn btn-sm">
+            <a href="/realbid/edit/{{$data->id}}" class="btn btn-sm">
                 <i class="glyphicon glyphicon-arrow-right"> UPDATE CAPAIAN PER BULAN</i>
             </a>
         </div>

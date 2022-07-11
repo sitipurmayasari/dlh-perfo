@@ -94,8 +94,30 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Route untuk Verifikasi Sub Bidang
     Route::get('/verisubbid','VerisubbidController@index')->name('verisubbid');
-    Route::get('verisubbid/verifikasi/{id}','VerisubbidController@edit')->name('verisubbid.verifikasi');
+    Route::get('verisubbid/verifikasi/{id}','VerisubbidController@create')->name('verisubbid.verifikasi');
+    Route::post('verisubbid/store','VerisubbidController@store')->name('verisubbid.store');
+    Route::get('/verisubbid/validasi/{id}','VerisubbidController@edit')->name('verisubbid.validasi');
     Route::post('verisubbid/update/{id}','VerisubbidController@update')->name('verisubbid.update');
+
+
+     //Route untuk Realisasi Bidang
+     Route::get('/realbid','RealbidController@index')->name('realbid');
+     Route::get('/realbid/create','RealbidController@create')->name('realbid.create');
+     Route::post('realbid/generate','RealbidController@generate')->name('realbid.generate');
+     Route::get('/realbid/entrydata/{id}','RealbidController@entrydata')->name('realbid.entrydata');
+     Route::post('realbid/store','RealbidController@store')->name('realbid.store');
+     Route::get('realbid/edit/{id}','RealbidController@edit')->name('realbid.edit');
+     Route::post('realbid/update/{id}','RealbidController@update')->name('realbid.update');
+     Route::get('realbid/editmeta/{id}','RealbidController@editmeta')->name('realbid.editmeta');
+     Route::post('realbid/updatemeta/{id}','RealbidController@updatemeta')->name('realbid.updatemeta');
+     Route::get('realbid/getrenstra','RealbidController@getrenstra')->name('realbid.getrenstra');
+ 
+    //Route untuk Verifikasi Bidang
+    Route::get('/veribid','VeribidController@index')->name('veribid');
+    Route::get('veribid/verifikasi/{id}','VeribidController@create')->name('veribid.verifikasi');
+    Route::post('veribid/store','VeribidController@store')->name('veribid.store');
+    Route::get('/veribid/validasi/{id}','VeribidController@edit')->name('veribid.validasi');
+    Route::post('veribid/update/{id}','VeribidController@update')->name('veribid.update');
 
 
 });

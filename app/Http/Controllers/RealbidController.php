@@ -5,41 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use App\Realisasi;
-use App\Realisasi_detail;
-use App\Subbidang;
+use App\Realisasibid;
+use App\Realisasibid_detail;
+use App\Bidang;
 use App\Indicator;
 use App\Kinerja;
-use App\Targetsubbid;
-use App\Targetsubbid_detail;
+use App\Targetbid;
+use App\Targetbid_detail;
 
-class RealsubbidController extends Controller
+class RealbidController extends Controller
 {
     public function index(Request $request)
     {
-        $data = Realisasi::orderBy('id','desc')
-                        ->Selectraw('zo_realisasi.*')
-                        ->leftjoin('zo_subbidang','zo_subbidang.id','zo_realisasi.subbidang_id')
-                        ->leftjoin('users','users.id','zo_realisasi.users_id')
+        $data = Realisasibid::orderBy('id','desc')
+                        ->Selectraw('zo_realisasibid.*')
+                        ->leftjoin('zo_bidang','zo_bidang.id','zo_realisasibid.bidang_id')
+                        ->leftjoin('users','users.id','zo_realisasibid.users_id')
                         ->when($request->keyword, function ($query) use ($request) {
                             $query->where('filename','LIKE','%'.$request->keyword.'%')
-                                ->orWhere('zo_subbidang.name', 'LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_bidang.name', 'LIKE','%'.$request->keyword.'%')
                                 ->orWhere('users.name', 'LIKE','%'.$request->keyword.'%');
                         })
                         ->paginate('10');
 
-        return view('realsubbid.index',compact('data'));
+        return view('realbid.index',compact('data'));
     }
 
     public function create()
     {
-        $sub = Subbidang::all();
-        return view('realsubbid.create',compact('sub'));
+        $sub = Bidang::all();
+        return view('realbid.create',compact('sub'));
     }
 
     public function getrenstra(Request $request)
     {
-        $data = Targetsubbid::where('subbidang_id',$request->bidang)
+        $data = Targetbid::where('bidang_id',$request->bidang)
                             ->orderBy('id','desc')
                             ->get();
         return response()->json([ 
@@ -51,26 +51,26 @@ class RealsubbidController extends Controller
     public function generate(Request $request)
     {
         $this->validate($request,[
-            'subbidang_id' => 'required',
+            'bidang_id' => 'required',
             'files' => 'mimes:pdf|max:10048'
         ]);
 
         $filename = "laporan pengukuran kinerja".$request->month.$request->years;
 
         $realisasi = [
-            'targetsubbid_id'   =>$request->targetsubbid_id,
+            'targetbid_id'      =>$request->targetbid_id,
             'years'             => $request->years,
             'month'             => $request->month,
             'filename'          => $filename,
             'users_id'          => $request->users_id,
-            'subbidang_id'      => $request->subbidang_id,
+            'bidang_id'         => $request->bidang_id,
             'dates'             => $request->dates
         ];
-        $data = Realisasi::create($realisasi);
+        $data = Realisasibid::create($realisasi);
 
         if($request->hasFile('files')){ // Kalau file ada
             $request->file('files')
-                        ->move('images/realsubbid/'.$data->id,$request
+                        ->move('images/realbid/'.$data->id,$request
                         ->file('files')
                         ->getClientOriginalName()); 
             $data->files = $request->file('files')->getClientOriginalName(); 
@@ -78,20 +78,20 @@ class RealsubbidController extends Controller
         }
         $rens = $data->id;
 
-        return redirect('/realsubbid/entrydata/'.$rens);
+        return redirect('/realbid/entrydata/'.$rens);
     }
 
     public function entrydata($id)
     {
-        $data = Realisasi::where('id',$id)->first();
+        $data = Realisasibid::where('id',$id)->first();
         
-        $indi = Targetsubbid_detail::where('targetsubbid_id',$data->targetsubbid_id)
+        $indi = Targetbid_detail::where('targetbid_id',$data->targetbid_id)
                                     ->where('years',$data->years)
                                     ->get();
-        $yearend = Targetsubbid::where('id',$data->targetsubbid_id)
+        $yearend = Targetbid::where('id',$data->targetbid_id)
                                     ->Orderby('id','asc')
                                     ->first();
-        return view('realsubbid/entrydata',compact('indi','data','yearend'));
+        return view('realbid/entrydata',compact('indi','data','yearend'));
     }
 
     public function store(Request $request)
@@ -101,7 +101,7 @@ class RealsubbidController extends Controller
             for ($i = 0; $i < count($request->input('indicator_id')); $i++){
                 $data = [
                     'indicator_id'  => $request->indicator_id[$i],
-                    'realisasi_id'  => $request->realisasi_id[$i],
+                    'realisasibid_id' => $request->realisasibid_id[$i],
                     'target'        => $request->target[$i],
                     'real'          => $request->real[$i],
                     'capaian'       => $request->capaian[$i],
@@ -109,22 +109,22 @@ class RealsubbidController extends Controller
                     'keterangan'    => $request->keterangan[$i],
                     'target_akhir'  => $request->target_akhir[$i]
                 ];
-                Realisasi_detail::create($data);
+                Realisasibid_detail::create($data);
             }
         DB::commit(); 
-        return redirect('/realsubbid')->with('sukses','Data Tersimpan');
+        return redirect('/realbid')->with('sukses','Data Tersimpan');
     }
    
 
     public function editmeta($id)
     {
-        $data = Realisasi::where('id',$id)->first();
-        $target = Targetsubbid::where('subbidang_id',$data->subbidang_id)
+        $data = Realisasibid::where('id',$id)->first();
+        $target = Targetbid::where('bidang_id',$data->bidang_id)
                                 ->orderBy('id','desc')
                                 ->get();
-        $sub = Subbidang::all();
+        $sub = Bidang::all();
        
-        return view('realsubbid/editmeta',compact('data','sub','target'));
+        return view('realbid/editmeta',compact('data','sub','target'));
     }
 
 
@@ -134,29 +134,29 @@ class RealsubbidController extends Controller
             'files' => 'mimes:pdf|max:10048'
         ]);
 
-        $data = Realisasi::find($id);
+        $data = Realisasibid::find($id);
         $data->update($request->all());
         if($request->hasFile('files2')){ // Kalau file ada
             $request->file('files2')
-                        ->move('images/realsubbid/'.$data->id,$request
+                        ->move('images/realbid/'.$data->id,$request
                         ->file('files2')
                         ->getClientOriginalName());
             $data->files = $request->file('files2')->getClientOriginalName(); 
             $data->save();
         }
-        return redirect('/realsubbid')->with('sukses','Data Diperbaharui');
+        return redirect('/realbid')->with('sukses','Data Diperbaharui');
     }
 
 
     public function edit($id)
     {
-        $data = Realisasi::where('id',$id)->first();
-        $detail = Realisasi_detail::where('realisasi_id',$id)
+        $data = Realisasibid::where('id',$id)->first();
+        $detail = Realisasibid_detail::where('realisasibid_id',$id)
                                     ->get();
-        $indi =  Targetsubbid::where('subbidang_id',$data->subbidang_id)
+        $indi =  Targetbid::where('bidang_id',$data->bidang_id)
                                 ->orderBy('id','desc')
                                 ->get();
-        return view('realsubbid/edit',compact('data','detail'));
+        return view('realbid/edit',compact('data','detail','indi'));
     }
 
    
@@ -173,11 +173,11 @@ class RealsubbidController extends Controller
                 'keterangan'    => $request->keterangan[$i],
                 'target_akhir'  => $request->target_akhir[$i]
             ];
-            Realisasi_detail::where('id', $request->id[$i])
+            Realisasibid_detail::where('id', $request->id[$i])
                             ->update($data);
             
         }
     DB::commit();
-    return redirect('/realsubbid')->with('sukses','Data Berhasil Diperbaharui');
+    return redirect('/realbid')->with('sukses','Data Berhasil Diperbaharui');
     }
 }

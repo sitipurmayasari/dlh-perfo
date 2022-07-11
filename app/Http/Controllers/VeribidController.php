@@ -7,14 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Realisasi;
 use App\Realisasi_detail;
-use App\Subbidang;
+use App\Bidang;
 use App\Indicator;
 use App\Kinerja;
 use App\Targetsubbid;
 use App\Targetsubbid_detail;
 use App\Verisubbid;
 
-class VerisubbidController extends Controller
+class VeribidController extends Controller
 {
     public function index(Request $request)
     {

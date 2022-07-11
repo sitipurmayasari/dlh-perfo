@@ -16,7 +16,7 @@
 </style>
 <div class="row">
     <form class="form-horizontal validate-form" role="form" 
-        method="post" action="{{route('verisubbid.store')}}" enctype="multipart/form-data"   >
+    method="post" action="/verisubbid/update/{{$data->id}}">
     {{ csrf_field() }}
     <div class="col-sm-12">
         <div class="widget-box">
@@ -84,7 +84,13 @@
                         <tr>
                             <td>Dokumen Pendukung</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label></td>
+                            <td> &nbsp; 
+                                @if ($data->files != null)
+                                    <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
+                                @else
+                                    {{ '-' }}
+                                @endif
+                            </td>
                         </tr>
                     </table>
                     <hr>
@@ -132,7 +138,7 @@
         </div>
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Verifikasi Capaian</h4>
+                <h4 class="widget-title">Verifikasi Capaian Oleh Kabid</h4>
                 <div class="widget-toolbar">
                     <a href="#" data-action="collapse">
                         <i class="ace-icon fa fa-chevron-down"></i>
@@ -148,12 +154,28 @@
                             for="form-field-1"> Verifikasi
                             </label>
                             <div class="col-sm-9">
-                                <input type="radio" required value="N" checked
+                                @if ($valid->verifikasi_kabid=='Y')
+                                    <input type="radio" required value="N" 
                                     name="verifikasi_kabid"/> &nbsp; Belum di Verifikasi &nbsp;
-                                <input type="radio" required value="Y" 
+                                    <input type="radio" required value="Y" checked
                                     name="verifikasi_kabid"/> &nbsp; Terverifikasi &nbsp;
-                                <input type="radio" required value="R"
-                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp;    
+                                    <input type="radio" required value="R"
+                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp; 
+                                @elseif ($valid->verifikasi_kabid=='R')
+                                    <input type="radio" required value="N" 
+                                    name="verifikasi_kabid"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    <input type="radio" required value="Y" 
+                                    name="verifikasi_kabid"/> &nbsp; Terverifikasi &nbsp;
+                                    <input type="radio" required value="R" checked
+                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp; 
+                                @else
+                                    <input type="radio" required value="N" checked
+                                    name="verifikasi_kabid"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    <input type="radio" required value="Y" 
+                                    name="verifikasi_kabid"/> &nbsp; Terverifikasi &nbsp;
+                                    <input type="radio" required value="R"
+                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp;  
+                                @endif  
                             </div>
                     </div>
                     <div class="form-group">
@@ -164,7 +186,7 @@
                                 <input type="hidden" name="realisasi_id" value="{{$data->id}}">
                                 <input type="hidden" name="kabid_id" value="{{auth()->user()->id}}">
                                 <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="kabid_dates"/>
-                                <input type="text" class="col-xs-10 col-sm-10 required "  
+                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$valid->catatan_kabid}}"
                                 name="catatan_kabid" required/>
                             </div>
                     </div>

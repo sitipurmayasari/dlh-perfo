@@ -42,17 +42,24 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            {{-- <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
                 <a href="/realbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Bidang
                 </a>
                 <b class="arrow"></b>
-            </li>     --}}
+            </li>    
             <li class="{{ (request()->segment(2) == 'realsubbid' ) ? 'active' : '' }} ">
                 <a href="/realsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Seksi / Subbag
+                </a>
+                <b class="arrow"></b>
+            </li>    
+            <li class="{{ (request()->segment(2) == 'realskpd' ) ? 'active' : '' }} ">
+                <a href="/realskpd">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Realisasi SKPD
                 </a>
                 <b class="arrow"></b>
             </li>    
@@ -69,14 +76,14 @@
             <li class="{{ (request()->segment(2) == 'Verifikasi Sub Bidang' ) ? 'active' : '' }} ">
                 <a href="/verisubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Verifikasi Sub Bidang
+                    Verifikasi Capaian SubBid
                 </a>
                 <b class="arrow"></b>
             </li>  
             <li class="{{ (request()->segment(2) == 'Verifikasi Bidang' ) ? 'active' : '' }} ">
                 <a href="/veribid">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Verifikasi Bidang
+                    Verifikasi Capaian Bidang
                 </a>
                 <b class="arrow"></b>
             </li>     

@@ -1,18 +1,18 @@
 @extends('layouts.app')
-@inject('injectQuery', 'App\InjectQuery')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realsubbid">Realisasi Capaian  Seksi / Subbag</a></li>
-    <li>Tambah Baru</li>
+    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
+    <li>Ubah Data </li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-data"   >
+method="post" action="/realbid/update/{{$data->id}}">
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
+   <div class="panel panel-info">
     @php
         $bln = $data->month;
             if ($bln==1) { 
@@ -41,8 +41,6 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
                  $blnindo = "Desember";
             }
     @endphp
-    
-   <div class="panel panel-info">
        <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi Periode {{$blnindo}} {{$data->years}}</h3></div>
        <div class="panel-body">
            <table  id="simple-table" class="table  table-bordered table-hover">
@@ -52,9 +50,9 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
                         <th style="text-align: center" class="col-md-3">Indikator</th>
                         <th style="text-align: center;" class="col-md-1">Target Akhir</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
-                        <th style="text-align: center" class="col-md-2">Realisasi</th>
+                        <th style="text-align: center" class="col-md-1">Realisasi</th>
                         <th style="text-align: center" class="col-md-1">Hasil</th>
-                        <th style="text-align: center" >Hasil Tahunan </th>
+                        <th style="text-align: center" class="col-md-1">Hasil Tahunan </th>
                         <th style="text-align: center" class="col-md-4">Keterangan</th>
                     </tr>
                </thead>
@@ -62,29 +60,26 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
                    @php
                        $no = 1;
                    @endphp
-                    @foreach ($indi as $key=>$row)
+                    @foreach ($detail as $key=>$row)
                         <tr>
                             <td style="text-align: center">{{$no}}</td>
                             <td>
-                                <input type="hidden" name="realisasi_id[]" value="{{$data->id}}">
+                                <input type="hidden" name="id[]" value="{{$row->id}}">
                                 <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
-                                {{$row->indi->names}}
+                                {{$row->indi->names}} 
                             </td>
                             <td>
-                                @php
-                                    $isi = $injectQuery->getRenstra2($row->id,$yearend->yearto,$row->indicator_id);
-                                @endphp
                                 <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
-                                    value="{{$row->percentages}}">
+                                value="{{$row->target_akhir}}">
                             </td>
                             <td>
-                                <input type="number" readonly name="target[]" value="{{$row->percentages}}"
-                                    id="target-{{$no}}" class="form-control">
+                                <input type="number" readonly name="target[]" class="col-sm-10" value="{{$row->target}}"
+                                    id="target-{{$no}}">
                             </td>
-                            <td><input type="number" name="real[]" value="0" step="0.01" class="form-control" id="real-{{$no}}" ></td>
-                            <td><input type="number" name="capaian[]" value="0" step="0.01" class="form-control" id="hasil-{{$no}}" onkeyup="hitung({{$no}})"></td>
-                            <td><input type="number" name="capaian_akhir[]" value="0" step="0.01" class="form-control" id="hasiltahun-{{$no}}"></td>
-                            <td><input type="text" name="keterangan[]" class="form-control"></td>
+                            <td><input type="number" name="real[]" value="{{$row->real}}" step="0.01" class="col-sm-10" id="real-{{$no}}" onkeyup="hitung({{$no}})"></td>
+                            <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}"></td>
+                            <td><input type="number" name="capaian_akhir[]" value="{{$row->capaian_akhir}}" step="0.01" class="col-sm-10" id="hasiltahun-{{$no}}"></td>
+                            <td><input type="text" name="keterangan[]" class="form-control" value="{{$row->keterangan}}"></td>
                         </tr>
                         @php
                             $no++;
@@ -106,20 +101,20 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
 </form>
 
 @endsection
+
 @section('footer')
-    <script>
-        function hitung(i) {
-            // var a = $("#target-"+i).val();
-            // var b =  $("#real-"+i).val();
-            // var d = (b / a) * 100;
+<script>
+    function hitung(i) {
+        var a = $("#target-"+i).val();
+        var b =  $("#real-"+i).val();
+        var d = (b / a) * 100;
 
-            var hasil = parseFloat(d).toFixed(2);
-            var x = $("#akhir-"+i).val();
-            var y = $("#hasil-"+i).val();
-            var z = (y / x );
+        var hasil = parseFloat(d).toFixed(2);
+        $("#hasil-"+i).val(hasil);
 
-            var hasiltahun = parseFloat(z).toFixed(2);
-            $("#hasiltahun-"+i).val(hasiltahun);
-        }
-    </script>
+        // var e = (b / d) * 100;
+        var hasiltahun = parseFloat(d).toFixed(2);
+        $("#hasiltahun-"+i).val(hasiltahun);
+    }
+</script>
 @endsection
