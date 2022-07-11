@@ -31,6 +31,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/akses/update/{id}','AksesController@update')->name('akses.update');
     Route::get('/akses/delete/{id}','AksesController@delete')->name('akses.delete');
 
+     //Route untuk SKPD
+    Route::get('/skpd','SKPDController@index')->name('skpd');
+    Route::post('/skpd/store','SKPDController@store')->name('skpd.store');
+    Route::get('/skpd/edit/{id}','SKPDController@edit')->name('skpd.edit');
+    Route::post('/skpd/update/{id}','SKPDController@update')->name('skpd.update');
+    Route::get('/skpd/delete/{id}','SKPDController@delete')->name('skpd.delete');
+
     //Route untuk Kinerja
     Route::get('/kinerja','KinerjaController@index')->name('kinerja');
     Route::get('/kinerja/create','KinerjaController@create')->name('kinerja.create');
@@ -118,6 +125,18 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('veribid/store','VeribidController@store')->name('veribid.store');
     Route::get('/veribid/validasi/{id}','VeribidController@edit')->name('veribid.validasi');
     Route::post('veribid/update/{id}','VeribidController@update')->name('veribid.update');
+
+    //Route untuk Realisasi SKPD
+    Route::get('/realskpd','RealSKPDController@index')->name('realskpd');
+    Route::get('/realskpd/create','RealSKPDController@create')->name('realskpd.create');
+    Route::post('realskpd/generate','RealSKPDController@generate')->name('realskpd.generate');
+    Route::get('/realskpd/entrydata/{id}','RealSKPDController@entrydata')->name('realskpd.entrydata');
+    Route::post('realskpd/store','RealSKPDController@store')->name('realskpd.store');
+    Route::get('realskpd/edit/{id}','RealSKPDController@edit')->name('realskpd.edit');
+    Route::post('realskpd/update/{id}','RealSKPDController@update')->name('realskpd.update');
+    Route::get('realskpd/editmeta/{id}','RealSKPDController@editmeta')->name('realskpd.editmeta');
+    Route::post('realskpd/updatemeta/{id}','RealSKPDController@updatemeta')->name('realskpd.updatemeta');
+    Route::get('realskpd/getrenstra','RealSKPDController@getrenstra')->name('realskpd.getrenstra');
 
 
 });

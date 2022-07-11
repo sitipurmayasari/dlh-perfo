@@ -45,7 +45,7 @@
                 @foreach($data as $key=>$row)
                 <tr>
                     <td style="text-align: center">{{$data->firstItem() + $key}}</td>
-                    <td>{{$row->skpd}}</td>
+                    <td>{{$row->skpd->name}}</td>
                     <td>{{$row->names}}</td>
                     <td>{{$row->indicator}}</td>
                     <td>{{$row->iku}}</td>

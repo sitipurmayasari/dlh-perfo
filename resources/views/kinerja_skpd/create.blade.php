@@ -29,8 +29,12 @@
                         for="form-field-1"> Nama SKPD
                         </label>
                         <div class="col-sm-9">
-                            <input type="text"  placeholder="Nama SKPD" 
-                            class="col-xs-10 col-sm-10 required " name="skpd" required/>
+                            <select name="skpd_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
+                                <option value="">Pilih SKPD</option>
+                                @foreach ($skpd as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

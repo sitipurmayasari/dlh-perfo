@@ -32,8 +32,16 @@
                         for="form-field-1"> Nama SKPD
                         </label>
                         <div class="col-sm-9">
-                            <input type="text"  placeholder="Nama SKPD" value="{{$data->skpd}}"
-                            class="col-xs-10 col-sm-10 required " name="skpd" required/>
+                            <select name="skpd_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
+                                <option value="">Pilih SKPD</option>
+                                @foreach ($skpd as $item)
+                                    @if ($item->id == $data->id)
+                                        <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                                    @else
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

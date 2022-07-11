@@ -10,12 +10,15 @@ use App\Subbidang;
 use App\Kinerja;
 use App\Kinerja_SKPD;
 use App\Target_skpd;
+use App\Skpd;
 
 class KinerjaSKPDController extends Controller
 {
     public function index(Request $request)
     {
         $data = Kinerja_SKPD::orderBy('id','desc')
+                        ->SelectRaw('zo_kinerja_skpd.*')
+                        ->leftjoin('zo_skpd','zo_skpd.id','zo_kinerja_skpd.skpd_id')
                         ->when($request->keyword, function ($query) use ($request) {
                             $query->where('names','LIKE','%'.$request->keyword.'%')
                             ->orWhere('skpd', 'LIKE','%'.$request->keyword.'%')
@@ -29,7 +32,8 @@ class KinerjaSKPDController extends Controller
 
     public function create()
     {
-        return view('kinerja_skpd.create');
+        $skpd = Skpd::all();
+        return view('kinerja_skpd.create', compact('skpd'));
     }
 
     public function store(Request $request)
@@ -54,9 +58,10 @@ class KinerjaSKPDController extends Controller
    
     public function edit($id)
     {
+        $skpd = Skpd::all();
         $data = Kinerja_SKPD::where('id',$id)->first();
         $target = Target_skpd::where('kinerja_skpd_id',$id)->get();
-        return view('kinerja_skpd.edit',compact('data','target'));
+        return view('kinerja_skpd.edit',compact('data','target','skpd'));
     }
 
    

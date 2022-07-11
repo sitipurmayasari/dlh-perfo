@@ -124,7 +124,14 @@
                     Kinerja SKPD
                 </a>
                 <b class="arrow"></b>
-            </li>    
+            </li>   
+            <li class="{{ (request()->segment(2) == 'skpd' ) ? 'active' : '' }} ">
+                <a href="/skpd">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Nama SKPD
+                </a>
+                <b class="arrow"></b>
+            </li>     
             <li class="{{ (request()->segment(2) == 'akses' ) ? 'active' : '' }} ">
                 <a href="/akses">
                     <i class="menu-icon fa fa-caret-right"></i>
