@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
+    <li><a href="/realskpd">Realisasi Capaian  SKPD</a></li>
     <li>Ubah MetaData</li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="/realbid/updatemeta/{{$data->id}}">
+method="post" action="/realskpd/updatemeta/{{$data->id}}">
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -30,13 +30,13 @@ method="post" action="/realbid/updatemeta/{{$data->id}}">
              </div>
              <div class="form-group">
                  <label class="col-sm-2 control-label no-padding-right" 
-                 for="form-field-1">  Bidang
+                 for="form-field-1">  SKPD
                  </label>
                  <div class="col-sm-8">
-                     <select name="bidang_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
-                        <option value="">Pilih Bidang</option>
+                     <select name="skpd_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
+                        <option value="">Pilih SKPD</option>
                         @foreach ($sub as $item)
-                            @if ($item->id == $data->bidang_id)
+                            @if ($item->id == $data->skpd_id)
                                 <option value="{{$item->id}}" selected>{{$item->name}}</option>
                             @else
                                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -76,23 +76,6 @@ method="post" action="/realbid/updatemeta/{{$data->id}}">
              </div>
              <div class="form-group">
                  <label class="col-sm-2 control-label no-padding-right" 
-                 for="form-field-1"> Target
-                 </label>
-                 <div class="col-sm-8">
-                     <select name="targetbid_id" class="col-xs-10 col-sm-10 select2" required id="target">
-                         <option value="">Pilih Target  Bidang</option>
-                        @foreach ($target as $item)
-                            @if ($data->targetbid_id == $item->id)
-                                <option value="{{$item->id}}" selected>{{$item->filename}} (tanggal : {{$item->dates}})</option>
-                            @else
-                                
-                            @endif
-                        @endforeach
-                     </select>
-                 </div>
-             </div>
-             <div class="form-group">
-                 <label class="col-sm-2 control-label no-padding-right" 
                  for="form-field-1"> Nama Dokumen
                  </label>
                  <div class="col-sm-8">
@@ -101,24 +84,6 @@ method="post" action="/realbid/updatemeta/{{$data->id}}">
                                  name="filename" required />
                  </div>
              </div>
-             <div class="form-group">
-                 <label class="col-sm-2 control-label no-padding-right" 
-                 for="form-field-1"> Nama Pembuat
-                 </label>
-                 <div class="col-sm-8">
-                     <input type="text"  class="col-xs-10 col-sm-10 required " readonly value="{{$data->user->name}}" />
-                     <input type="hidden" name="users_id" value="{{$data->users_id}}">
-                 </div>
-             </div>
-             <div class="form-group">
-                <label class="col-sm-2 control-label no-padding-right" 
-                for="form-field-1">  Data Pendukung*
-                </label>
-                <div class="col-sm-8">
-                    <input type="file" name="files2" class="btn btn-default btn-sm" id="" value="Upload Ulang File User Manual">
-                    <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
-                </div>
-            </div>        
         </div>
        </div>
    </div>
@@ -130,7 +95,7 @@ method="post" action="/realbid/updatemeta/{{$data->id}}">
                 <i class="ace-icon fa fa-check bigger-110"></i>UPDATE
             </button>
         </form>
-            <a href="/realbid/edit/{{$data->id}}" class="btn btn-sm">
+            <a href="/realskpd/edit/{{$data->id}}" class="btn btn-sm">
                 <i class="glyphicon glyphicon-arrow-right"> UPDATE CAPAIAN PER BULAN</i>
             </a>
         </div>

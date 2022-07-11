@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Realisasibid extends Model
 {
     protected $table = "zo_realisasibid";
-    protected $fillable = ["targetbid_id","years","month","filename","users_id","bidang_id","dates"
+    protected $fillable = ["targetbid_id","years","month","filename","users_id","bidang_id","dates","files"
                             ];
 
     public function target()

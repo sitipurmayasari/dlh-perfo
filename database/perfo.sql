@@ -109,9 +109,9 @@ CREATE TABLE IF NOT EXISTS `zo_indicator` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_indicator: ~48 rows (approximately)
+-- Dumping data for table perfo.zo_indicator: ~55 rows (approximately)
 /*!40000 ALTER TABLE `zo_indicator` DISABLE KEYS */;
 INSERT INTO `zo_indicator` (`id`, `kinerja_id`, `names`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 1, 'Persentase titik pantau sungai dengan status memenuhi parameter Indeks Kualitas Air', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
@@ -161,7 +161,19 @@ INSERT INTO `zo_indicator` (`id`, `kinerja_id`, `names`, `created_at`, `updated_
 	(45, 33, 'Persentase air laut dengan kualitas kategori baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
 	(46, 34, 'Persentase pengurangan timbulan sampah di pantai', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
 	(47, 35, 'Persentase jumlah parameter kualitas air laut yang memenuhi baku mutu', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(48, 36, 'Persentase luasan Mangrove kondisi baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
+	(48, 36, 'Persentase luasan Mangrove kondisi baik', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(49, 37, 'Nilai Akuntabilitas kinerja', '2022-07-08 00:39:13', '2022-07-08 00:39:13', NULL),
+	(50, 37, 'Nilai kepuasan pelayanan administrasi perkantoran dan kepegawaian', '2022-07-08 00:39:24', '2022-07-08 00:39:24', NULL),
+	(51, 37, 'Persentase hasil temuan APIP/BPK yang ditindaklanjuti', '2022-07-08 00:39:34', '2022-07-08 00:39:34', NULL),
+	(52, 38, 'Persentase pencapaian komponen perencanaan yang berkualitas sesuai sistem AKIP', '2022-07-08 00:40:07', '2022-07-08 00:40:07', NULL),
+	(53, 39, 'Persentase pencapaian komponen evaluasi dan pelaporan yang berkualitas sesuai sistem AKIP', '2022-07-08 00:40:22', '2022-07-08 00:40:22', NULL),
+	(54, 40, 'Persentase penyerapan anggaran yang sesuai dengan ketentuan', '2022-07-08 00:41:07', '2022-07-08 00:41:07', NULL),
+	(55, 41, 'Presentase aset yang dikelola sesuai ketentuan', '2022-07-08 00:41:18', '2022-07-08 00:41:18', NULL),
+	(56, 42, 'Persentase ASN yang terlayani dalam administrasi perkantoran', '2022-07-08 00:41:31', '2022-07-08 00:41:31', NULL),
+	(57, 42, 'Persentase ASN yang terlayani dalam administrasi kepegawaian', '2022-07-08 00:41:43', '2022-07-08 00:41:43', NULL),
+	(58, 42, 'Persentase sarana dan prasarana yang berfungsi dengan baik', '2022-07-08 00:41:57', '2022-07-08 00:41:57', NULL),
+	(59, 42, 'Persentase dokumentasi pelayanan surat menyurat', '2022-07-08 00:42:06', '2022-07-08 00:42:06', NULL),
+	(60, 43, 'Persentase PNS dengan IP ASN tinggi', '2022-07-08 00:42:20', '2022-07-08 00:42:20', NULL);
 /*!40000 ALTER TABLE `zo_indicator` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_kinerja
@@ -176,9 +188,9 @@ CREATE TABLE IF NOT EXISTS `zo_kinerja` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_kinerja: ~33 rows (approximately)
+-- Dumping data for table perfo.zo_kinerja: ~38 rows (approximately)
 /*!40000 ALTER TABLE `zo_kinerja` DISABLE KEYS */;
 INSERT INTO `zo_kinerja` (`id`, `names`, `owned`, `bidang_id`, `subbidang_id`, `iku`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 'Meningkatnya status mutu air sungai', 1, 4, NULL, 'Indeks Kualitas Air', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
@@ -213,14 +225,21 @@ INSERT INTO `zo_kinerja` (`id`, `names`, `owned`, `bidang_id`, `subbidang_id`, `
 	(33, 'Meningkatnya kualitas air laut di lokasi pantau dengan kategori baik  ', 1, 4, NULL, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
 	(34, 'Meningkatnya pengurangan dan penanganan sampah', 2, NULL, 7, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
 	(35, 'Meningkatnya jumlah parameter kualitas air laut yang memenuhi baku mutu', 2, NULL, 10, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(36, 'Meningkatnya luasan Mangrove Kondisi baik', 2, NULL, 11, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
+	(36, 'Meningkatnya luasan Mangrove Kondisi baik', 2, NULL, 11, 'Indeks Kualitas Air Laut', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(37, 'Meningkatnya Akuntabilitas dan Pelayanan pada Dinas LH Prov. Kalsel', 1, 1, NULL, NULL, '2022-07-08 00:36:49', '2022-07-08 00:36:49', NULL),
+	(38, 'Meningkatnya kualitas perencanaan program dan kegiatan Dinas LH', 2, NULL, 1, NULL, '2022-07-08 00:37:11', '2022-07-08 00:37:11', NULL),
+	(39, 'Meningkatnya kualitas evaluasi dan pelaporan Dinas LH', 2, NULL, 1, NULL, '2022-07-08 00:37:25', '2022-07-08 00:37:25', NULL),
+	(40, 'Meningkatnya kualitas pelayanan administrasi keuangan', 2, NULL, 3, NULL, '2022-07-08 00:37:46', '2022-07-08 00:37:46', NULL),
+	(41, 'Meningkatnya kualitas pengelolaan aset', 2, NULL, 3, NULL, '2022-07-08 00:38:02', '2022-07-08 00:38:02', NULL),
+	(42, 'Meningkatnya pelayanan administrasi perkantoran', 2, NULL, 2, NULL, '2022-07-08 00:38:17', '2022-07-08 00:38:17', NULL),
+	(43, 'Meningkatnya kapasitas ASN', 2, NULL, 2, NULL, '2022-07-08 00:38:46', '2022-07-08 00:38:46', NULL);
 /*!40000 ALTER TABLE `zo_kinerja` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_kinerja_skpd
 CREATE TABLE IF NOT EXISTS `zo_kinerja_skpd` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `names` varchar(200) NOT NULL,
-  `skpd` varchar(50) DEFAULT NULL,
+  `skpd_id` int(11) DEFAULT NULL,
   `indicator` varchar(250) DEFAULT NULL,
   `iku` varchar(100) DEFAULT NULL,
   `bobot` int(11) DEFAULT NULL,
@@ -232,37 +251,37 @@ CREATE TABLE IF NOT EXISTS `zo_kinerja_skpd` (
 
 -- Dumping data for table perfo.zo_kinerja_skpd: ~30 rows (approximately)
 /*!40000 ALTER TABLE `zo_kinerja_skpd` DISABLE KEYS */;
-INSERT INTO `zo_kinerja_skpd` (`id`, `names`, `skpd`, `indicator`, `iku`, `bobot`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 'Meningkatnya Infrastruktur dasar yang dapat di akses oleh masyarakat', 'PUPR', 'cakupan pelayanan air limbah', 'Indeks Kualitas Air', 10, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(2, 'Meningkatkan kualitas kawasan permukiman kumuh yang luasan wilayah kumuhnya antara 10-15 ha', 'Perkim', 'Persentase berkurangnya luasan kawasan permukiman kumuh', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(3, 'Meningkatnya kapasitas SDM nelayan, pembudidaya ikan, pengolah dan pemasar hasil perikanan untuk memenuhi ketentuan teknis yang dianjurkan', 'Perikanan dan Kelautan', 'Peningkatan SDM pembudidaya ikan yang memahami cara pembudidayaan ikan sesuai ketentuan teknis', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(4, 'Meningkatnya Indeks Kualitas Air', 'DLH Kabupaten', 'Nilai peningkatan IKA Kab/Kota', 'Indeks Kualitas Air', 33, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(5, 'Meningkatnya kepatuhan pelaku usaha pertambangan', 'ESDM', 'Presentase luas lahan terganggu akibat usaha pertambangan yang di reklamasi dan di Revegatasi', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(6, 'Meningkatnya Kelestarian Hutan', 'Kehutanan', 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(7, 'Meningkatnya status kesehatan masyarakat', 'Dinas Kesehatan', 'Cakupan Sanitasi Total Berbasis Masyarakat (STBM)', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(8, 'Peningkatan kapasitas kelembagaan dan SDM penyuluhan', 'Dinas TPH', 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Air', 3, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(9, 'Menurunkan emisi GRK', 'DLH Prov Kalsel', 'Persentase penurunan emisi GRK dari Bussines As Usual ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(10, 'Meningkatnya Ketahanan Energi', 'ESDM (Energi)', 'Persentase Pemanfaatan Sumber Energi Baru Terbarukan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(11, 'Pembangunan dan Rehabilitasi Sarana dan Prasarana Perhubungan', 'Dishub (Energi)', 'Meningkatkan Pelayanan Bidang Transportasi ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(12, 'Meningkatnya kelestarian hutan', 'Dinas Kehutanan (Kehutanan)', 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(13, 'Peningkatan kpasitas kelembagaan dan SDM penyuluhan', 'TPH (Pertanian)', 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(14, 'Pengawasan dan Pengendalian Pupuk dan Pestisida', 'Disbunak (Pertanian,Kehutanan)', 'Jumlah Pupuk, Pestisida, Alsintan dan Sarana Pendukung Perkebunan dan Peternakan yang terawasi', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(15, 'Meningkatnya Infrastruktur Daerah Dasar (Air Minum dan Air Limbah) yang dapat diakses oleh Masyarakat', 'PUPR (Limbah)', 'cakupan pelayanan air limbah', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(16, 'Meningkatkan Kualitas Prasarana, Sarana dan Utilitas Perumahan di permukiman', 'Perkim (Limbah)', 'Persentase meningkatnya kualitas Prasarana, Sarana dan Utilitas Umum ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(17, ' Meningkatnya luasan tutupan lahan', 'DLH Kabupaten', ' Luasan Taman Kehati', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(18, 'Meningkatnya Rehabilitasi Hutan dan Lahan Untuk Perbaikan Lingkungan', 'Dinas Kehutanan', 'Persentase luas penanaman Rehabilitasi Hutan dan Lahan serta Rehabilitasi DAS', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(19, 'Meningkatnya Kepatuhan Pelaku Usaha Pertambangan', 'Dinas ESDM', 'Persentase Luas Lahan Terganggu Akibat Usaha Pertambangan yang direklamasi dan direvegetasi', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(20, 'Meningkatnya kualitas infrastruktur ke PU-an dan Tata Ruang', 'Dinas PUPR', 'Persentase Kesesuaian Tata Ruang', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(21, 'Meningkatnya konservasi kawasan / rehabilitasi ekosistem', 'BRG/TPRG', 'Persentase luasan lahan gambut yang difasilitasi restorasi gambut', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(22, ' Meningkatnya kinerja pengelolaan persampahan', 'DLH Kabupaten', ' Pengelolaan sampah di daerah Pesisir', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(23, 'Meningkatnya pengelolaan sumber daya kelautan dan perikanan yang berkelanjutan (Sustainable Fisheries Management) ', 'Dinas Kelautan dan Perikanan', 'Peningkatan luas kawasan ekosistem pesisir dan laut kritis yang telah direhabilitasi', 'Indeks Kualitas Air Laut', 20, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(24, 'Meningkatkan Pengembangan Fasilitasi Destinasi Wisata di Provinsi Kalimantan Selatan', 'Dinas Pariwisata', 'Persentase Objek Wisata Dengan Fasilitas Pendukung Sesuai Standar Sapta Pesona', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(25, 'Melaksanakan pengelolaan sungai, pantai dan drainase', 'Dinas PUPR', 'Panjang dan jumlah bangunan pengendali banjir dan pengaman pantai yang dibangun dan direhabilitasi', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(26, 'Meningkatnya Keamanan dan Kelancaran Transportasi Perairan', 'Dinas Perhubungan', 'Persentase Pelabuhan sungai dan danau yang beroperasi sesuai standard', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(27, 'Meningkatnya pengawasan terhadap pelabuhan', 'Administrasi Pelabuhan', 'Persentase pengawasan terhadap pelabuhan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(28, 'Peningkatan pembinaan, pengawasan, standarisasi mutu & kualitas benih perkebunan', 'Disbunak', 'Persentase Pengawasan dan Pengendalian Pupuk dan Pestisida', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(29, 'Melaksanakan dan Mengelola Rehabilitasi Hutan dan Lahan di Provinsi Kalsel', 'Dishut', 'Persentase penanaman RHL di luar kawasan hutan', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
-	(30, 'Pengawasan Terhadap Kepatuhan Usaha Industri', 'Dinas Perindustrian', 'Jumlah Pelaku Industri yang Dilaksanakan Pengawasan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
+INSERT INTO `zo_kinerja_skpd` (`id`, `names`, `skpd_id`, `indicator`, `iku`, `bobot`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'Meningkatnya Infrastruktur dasar yang dapat di akses oleh masyarakat', 16, 'cakupan pelayanan air limbah', 'Indeks Kualitas Air', 10, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(2, 'Meningkatkan kualitas kawasan permukiman kumuh yang luasan wilayah kumuhnya antara 10-15 ha', 15, 'Persentase berkurangnya luasan kawasan permukiman kumuh', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(3, 'Meningkatnya kapasitas SDM nelayan, pembudidaya ikan, pengolah dan pemasar hasil perikanan untuk memenuhi ketentuan teknis yang dianjurkan', 11, 'Peningkatan SDM pembudidaya ikan yang memahami cara pembudidayaan ikan sesuai ketentuan teknis', 'Indeks Kualitas Air', 7, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(4, 'Meningkatnya Indeks Kualitas Air', 1, 'Nilai peningkatan IKA Kab/Kota', 'Indeks Kualitas Air', 33, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(5, 'Meningkatnya kepatuhan pelaku usaha pertambangan', 14, 'Presentase luas lahan terganggu akibat usaha pertambangan yang di reklamasi dan di Revegatasi', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(6, 'Meningkatnya Kelestarian Hutan', 10, 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(7, 'Meningkatnya status kesehatan masyarakat', 7, 'Cakupan Sanitasi Total Berbasis Masyarakat (STBM)', 'Indeks Kualitas Air', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(8, 'Peningkatan kapasitas kelembagaan dan SDM penyuluhan', 6, 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Air', 3, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(9, 'Menurunkan emisi GRK', 17, 'Persentase penurunan emisi GRK dari Bussines As Usual ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(10, 'Meningkatnya Ketahanan Energi', 14, 'Persentase Pemanfaatan Sumber Energi Baru Terbarukan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(11, 'Pembangunan dan Rehabilitasi Sarana dan Prasarana Perhubungan', 8, 'Meningkatkan Pelayanan Bidang Transportasi ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(12, 'Meningkatnya kelestarian hutan', 10, 'Tutupan Hutan dan Lahan', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(13, 'Peningkatan kpasitas kelembagaan dan SDM penyuluhan', 6, 'Persentase peningkatan kelas BPP dan kelas Kelompok Tani', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(14, 'Pengawasan dan Pengendalian Pupuk dan Pestisida', 10, 'Jumlah Pupuk, Pestisida, Alsintan dan Sarana Pendukung Perkebunan dan Peternakan yang terawasi', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(15, 'Meningkatnya Infrastruktur Daerah Dasar (Air Minum dan Air Limbah) yang dapat diakses oleh Masyarakat', 16, 'cakupan pelayanan air limbah', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(16, 'Meningkatkan Kualitas Prasarana, Sarana dan Utilitas Perumahan di permukiman', 15, 'Persentase meningkatnya kualitas Prasarana, Sarana dan Utilitas Umum ', 'Indeks Kualitas Udara', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(17, ' Meningkatnya luasan tutupan lahan', 1, ' Luasan Taman Kehati', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(18, 'Meningkatnya Rehabilitasi Hutan dan Lahan Untuk Perbaikan Lingkungan', 10, 'Persentase luas penanaman Rehabilitasi Hutan dan Lahan serta Rehabilitasi DAS', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(19, 'Meningkatnya Kepatuhan Pelaku Usaha Pertambangan', 14, 'Persentase Luas Lahan Terganggu Akibat Usaha Pertambangan yang direklamasi dan direvegetasi', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(20, 'Meningkatnya kualitas infrastruktur ke PU-an dan Tata Ruang', 16, 'Persentase Kesesuaian Tata Ruang', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(21, 'Meningkatnya konservasi kawasan / rehabilitasi ekosistem', 3, 'Persentase luasan lahan gambut yang difasilitasi restorasi gambut', 'Indeks Kualitas Lahan', 0, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(22, ' Meningkatnya kinerja pengelolaan persampahan', 1, ' Pengelolaan sampah di daerah Pesisir', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(23, 'Meningkatnya pengelolaan sumber daya kelautan dan perikanan yang berkelanjutan (Sustainable Fisheries Management) ', 11, 'Peningkatan luas kawasan ekosistem pesisir dan laut kritis yang telah direhabilitasi', 'Indeks Kualitas Air Laut', 20, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(24, 'Meningkatkan Pengembangan Fasilitasi Destinasi Wisata di Provinsi Kalimantan Selatan', 12, 'Persentase Objek Wisata Dengan Fasilitas Pendukung Sesuai Standar Sapta Pesona', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(25, 'Melaksanakan pengelolaan sungai, pantai dan drainase', 16, 'Panjang dan jumlah bangunan pengendali banjir dan pengaman pantai yang dibangun dan direhabilitasi', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(26, 'Meningkatnya Keamanan dan Kelancaran Transportasi Perairan', 8, 'Persentase Pelabuhan sungai dan danau yang beroperasi sesuai standard', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(27, 'Meningkatnya pengawasan terhadap pelabuhan', 6, 'Persentase pengawasan terhadap pelabuhan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(28, 'Peningkatan pembinaan, pengawasan, standarisasi mutu & kualitas benih perkebunan', 13, 'Persentase Pengawasan dan Pengendalian Pupuk dan Pestisida', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(29, 'Melaksanakan dan Mengelola Rehabilitasi Hutan dan Lahan di Provinsi Kalsel', 10, 'Persentase penanaman RHL di luar kawasan hutan', 'Indeks Kualitas Air Laut', 15, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL),
+	(30, 'Pengawasan Terhadap Kepatuhan Usaha Industri', 4, 'Jumlah Pelaku Industri yang Dilaksanakan Pengawasan', 'Indeks Kualitas Air Laut', 5, '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
 /*!40000 ALTER TABLE `zo_kinerja_skpd` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_realisasi
@@ -280,13 +299,100 @@ CREATE TABLE IF NOT EXISTS `zo_realisasi` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_realisasi: ~1 rows (approximately)
+-- Dumping data for table perfo.zo_realisasi: ~2 rows (approximately)
 /*!40000 ALTER TABLE `zo_realisasi` DISABLE KEYS */;
 INSERT INTO `zo_realisasi` (`id`, `dates`, `subbidang_id`, `targetsubbid_id`, `years`, `month`, `filename`, `users_id`, `files`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, '2022-07-07', 5, 1, 2022, 7, 'tralalala', 1, NULL, '2022-07-07 06:32:52', '2022-07-07 06:32:52', NULL);
+	(1, '2022-07-07', 5, 1, 2022, 7, 'tralalala', 1, NULL, '2022-07-07 06:32:52', '2022-07-08 03:01:47', NULL),
+	(2, '2022-07-07', 5, 1, 2024, 1, 'laporan pengukuran kinerja12024', 1, NULL, '2022-07-07 07:55:34', '2022-07-07 07:55:34', NULL),
+	(3, '2022-07-08', 4, 3, 2022, 7, 'laporan pengukuran kinerja72022', 1, NULL, '2022-07-08 00:58:00', '2022-07-08 00:58:00', NULL);
 /*!40000 ALTER TABLE `zo_realisasi` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_realisasibid
+CREATE TABLE IF NOT EXISTS `zo_realisasibid` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dates` date NOT NULL,
+  `bidang_id` int(11) NOT NULL,
+  `targetbid_id` int(11) NOT NULL,
+  `years` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `filename` varchar(200) NOT NULL,
+  `users_id` int(11) DEFAULT NULL,
+  `files` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_realisasibid: ~0 rows (approximately)
+/*!40000 ALTER TABLE `zo_realisasibid` DISABLE KEYS */;
+INSERT INTO `zo_realisasibid` (`id`, `dates`, `bidang_id`, `targetbid_id`, `years`, `month`, `filename`, `users_id`, `files`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, '2022-07-08', 2, 1, 2022, 7, 'laporan pengukuran kinerja72022', 1, 'Informasi Beasiswa SCP 2022-2023.pdf', '2022-07-08 05:26:03', '2022-07-08 05:26:03', NULL);
+/*!40000 ALTER TABLE `zo_realisasibid` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_realisasibid_detail
+CREATE TABLE IF NOT EXISTS `zo_realisasibid_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `realisasibid_id` int(11) DEFAULT NULL,
+  `kinerja_skpd_id` int(11) DEFAULT NULL,
+  `capaian_akhir` float DEFAULT '0',
+  `target_akhir` float DEFAULT NULL,
+  `target` float DEFAULT '0',
+  `real` float DEFAULT '0',
+  `capaian` float DEFAULT '0',
+  `keterangan` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_realisasibid_detail: ~3 rows (approximately)
+/*!40000 ALTER TABLE `zo_realisasibid_detail` DISABLE KEYS */;
+INSERT INTO `zo_realisasibid_detail` (`id`, `realisasibid_id`, `kinerja_skpd_id`, `capaian_akhir`, `target_akhir`, `target`, `real`, `capaian`, `keterangan`, `created_at`, `updated_at`) VALUES
+	(4, 1, 24, 100, 100, 100, 100, 100, '-', '2022-07-08 05:44:02', '2022-07-08 06:00:19'),
+	(5, 1, 29, 100, 100, 100, 100, 100, '-', '2022-07-08 05:44:02', '2022-07-08 06:00:19'),
+	(6, 1, 32, 100, 100, 100, 100, 100, '---', '2022-07-08 05:44:02', '2022-07-08 06:00:19');
+/*!40000 ALTER TABLE `zo_realisasibid_detail` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_realisasiskpd
+CREATE TABLE IF NOT EXISTS `zo_realisasiskpd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dates` date NOT NULL,
+  `skpd_id` int(11) NOT NULL,
+  `years` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `filename` varchar(200) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_realisasiskpd: ~0 rows (approximately)
+/*!40000 ALTER TABLE `zo_realisasiskpd` DISABLE KEYS */;
+/*!40000 ALTER TABLE `zo_realisasiskpd` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_realisasiskpd_detail
+CREATE TABLE IF NOT EXISTS `zo_realisasiskpd_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `realisasiskpd_id` int(11) DEFAULT NULL,
+  `targetskpd_id` int(11) DEFAULT NULL,
+  `capaian_akhir` float DEFAULT '0',
+  `target` float DEFAULT '0',
+  `real` float DEFAULT '0',
+  `capaian` float DEFAULT '0',
+  `keterangan` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `target_akhir` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_realisasiskpd_detail: ~0 rows (approximately)
+/*!40000 ALTER TABLE `zo_realisasiskpd_detail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `zo_realisasiskpd_detail` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_realisasi_detail
 CREATE TABLE IF NOT EXISTS `zo_realisasi_detail` (
@@ -302,11 +408,48 @@ CREATE TABLE IF NOT EXISTS `zo_realisasi_detail` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `target_akhir` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_realisasi_detail: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_realisasi_detail: ~4 rows (approximately)
 /*!40000 ALTER TABLE `zo_realisasi_detail` DISABLE KEYS */;
+INSERT INTO `zo_realisasi_detail` (`id`, `realisasi_id`, `indicator_id`, `capaian_akhir`, `target`, `real`, `capaian`, `keterangan`, `created_at`, `updated_at`, `target_akhir`) VALUES
+	(1, 1, 35, 10, 100, 10, 10, 'testing', '2022-07-07 07:25:52', '2022-07-07 07:25:52', 100),
+	(2, 1, 36, 10, 100, 10, 10, 'lalal', '2022-07-07 07:25:52', '2022-07-07 07:25:52', 100),
+	(3, 2, 35, 90, 100, 90, 90, '-', '2022-07-07 07:55:51', '2022-07-07 07:55:51', 100),
+	(4, 2, 36, 80, 100, 80, 80, '-', '2022-07-07 07:55:51', '2022-07-07 07:55:51', 100),
+	(5, 3, 37, 100, 100, 100, 100, '-', '2022-07-08 01:37:35', '2022-07-08 01:37:35', 100);
 /*!40000 ALTER TABLE `zo_realisasi_detail` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_skpd
+CREATE TABLE IF NOT EXISTS `zo_skpd` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table perfo.zo_skpd: ~16 rows (approximately)
+/*!40000 ALTER TABLE `zo_skpd` DISABLE KEYS */;
+INSERT INTO `zo_skpd` (`id`, `name`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 'DLH Kabupaten', '2022-07-11 18:56:07', '2022-07-11 18:56:08', NULL),
+	(2, 'BPBD', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(3, 'BRG/TPRG', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(4, 'Dinas Perindustrian', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(5, 'DINAS PMD', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(6, 'DINAS TPH', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(7, 'DINKES', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(8, 'DISHUB', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(10, 'DISHUT', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(11, 'DISLUTKAN', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(12, 'DISPAR', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(13, 'DSIBUNAK', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(14, 'ESDM', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(15, 'PERKIM', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(16, 'PUPR', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL),
+	(17, 'DLH PROVINSI', '2022-07-11 15:52:59', '2022-07-11 15:52:59', NULL);
+/*!40000 ALTER TABLE `zo_skpd` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_subbidang
 CREATE TABLE IF NOT EXISTS `zo_subbidang` (
@@ -353,12 +496,20 @@ CREATE TABLE IF NOT EXISTS `zo_targetbid` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_targetbid: ~1 rows (approximately)
+-- Dumping data for table perfo.zo_targetbid: ~9 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetbid` DISABLE KEYS */;
 INSERT INTO `zo_targetbid` (`id`, `dates`, `yearfrom`, `yearto`, `types`, `filename`, `sk_number`, `users_id`, `bidang_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, '2022-07-07', 2021, 2025, 'AWAL', 'dfdfd', 'dfd', 1, 2, '2022-07-07 02:08:47', '2022-07-07 02:08:47', NULL);
+	(1, '2022-07-07', 2021, 2025, 'AWAL', 'dfdfd', 'dfd', 1, 2, '2022-07-07 02:08:47', '2022-07-07 02:08:47', NULL),
+	(2, '2022-07-07', 2021, 2026, 'AWAL', 'revisis xxxxx', 'sdsds', 1, 5, '2022-07-07 22:04:00', '2022-07-08 00:32:58', '2022-07-08 00:32:58'),
+	(3, '2022-07-07', 2021, 2030, 'AWAL', '22', '22', 1, 5, '2022-07-07 22:09:43', '2022-07-07 22:31:55', '2022-07-07 22:31:55'),
+	(4, '2022-07-07', 2021, 2030, 'AWAL', '22', '22', 1, 5, '2022-07-07 22:10:34', '2022-07-07 22:31:49', '2022-07-07 22:31:49'),
+	(5, '2022-07-07', 2021, 2030, 'AWAL', '22', '22', 1, 5, '2022-07-07 22:12:18', '2022-07-07 22:31:45', '2022-07-07 22:31:45'),
+	(6, '2022-07-07', 2021, 2030, 'AWAL', 'ok', '10200', 1, 5, '2022-07-07 22:13:21', '2022-07-07 22:31:41', '2022-07-07 22:31:41'),
+	(7, '2022-07-07', 2021, 2030, 'AWAL', 'ok', '10200', 1, 5, '2022-07-07 22:14:19', '2022-07-07 22:31:36', '2022-07-07 22:31:36'),
+	(8, '2022-07-07', 2021, 2030, 'AWAL', 'ok', '10200', 1, 5, '2022-07-07 22:14:35', '2022-07-07 22:31:32', '2022-07-07 22:31:32'),
+	(9, '2022-07-07', 2021, 2023, 'AWAL', 'awal', '883100383', 1, 3, '2022-07-07 22:33:47', '2022-07-08 00:33:03', '2022-07-08 00:33:03');
 /*!40000 ALTER TABLE `zo_targetbid` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_targetbid_detail
@@ -409,12 +560,14 @@ CREATE TABLE IF NOT EXISTS `zo_targetsubbid` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table perfo.zo_targetsubbid: ~1 rows (approximately)
+-- Dumping data for table perfo.zo_targetsubbid: ~0 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetsubbid` DISABLE KEYS */;
 INSERT INTO `zo_targetsubbid` (`id`, `dates`, `yearfrom`, `yearto`, `types`, `filename`, `sk_number`, `users_id`, `subbidang_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, '2022-07-07', 2021, 2025, 'AWAL', 'assa', 'asasa', 1, 5, '2022-07-07 06:32:18', '2022-07-07 06:32:18', NULL);
+	(1, '2022-07-07', 2021, 2025, 'AWAL', 'assa', 'asasa', 1, 5, '2022-07-07 06:32:18', '2022-07-07 06:32:18', NULL),
+	(2, '2022-07-07', 2021, 2027, 'AWAL', 'ok', 'eee', 1, 4, '2022-07-07 22:09:17', '2022-07-08 00:56:39', '2022-07-08 00:56:39'),
+	(3, '2022-07-08', 2021, 2026, 'AWAL', 'awal', '-', 1, 4, '2022-07-08 00:57:05', '2022-07-08 00:57:05', NULL);
 /*!40000 ALTER TABLE `zo_targetsubbid` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_targetsubbid_detail
@@ -428,9 +581,9 @@ CREATE TABLE IF NOT EXISTS `zo_targetsubbid_detail` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table perfo.zo_targetsubbid_detail: ~12 rows (approximately)
+-- Dumping data for table perfo.zo_targetsubbid_detail: ~18 rows (approximately)
 /*!40000 ALTER TABLE `zo_targetsubbid_detail` DISABLE KEYS */;
 INSERT INTO `zo_targetsubbid_detail` (`id`, `targetsubbid_id`, `indicator_id`, `years`, `percentages`, `initiative`, `created_at`, `updated_at`) VALUES
 	(1, 1, 35, '2021', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
@@ -444,7 +597,13 @@ INSERT INTO `zo_targetsubbid_detail` (`id`, `targetsubbid_id`, `indicator_id`, `
 	(9, 1, 35, '2025', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
 	(10, 1, 36, '2025', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
 	(11, 1, 35, '2026', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
-	(12, 1, 36, '2026', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32');
+	(12, 1, 36, '2026', 100, NULL, '2022-07-07 06:32:32', '2022-07-07 06:32:32'),
+	(13, 3, 37, '2021', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18'),
+	(14, 3, 37, '2022', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18'),
+	(15, 3, 37, '2023', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18'),
+	(16, 3, 37, '2024', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18'),
+	(17, 3, 37, '2025', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18'),
+	(18, 3, 37, '2026', 100, NULL, '2022-07-08 00:57:18', '2022-07-08 00:57:18');
 /*!40000 ALTER TABLE `zo_targetsubbid_detail` ENABLE KEYS */;
 
 -- Dumping structure for table perfo.zo_target_skpd
@@ -585,9 +744,9 @@ INSERT INTO `zo_target_skpd` (`id`, `kinerja_skpd_id`, `years`, `percentages`, `
 	(120, 30, 2024, 0.31, 'Koordinasi dan Sinkronisasi Pengawasan Perizinan di Bidang Industri dalam Lingkup IUI, IPUI, IUKI, dan IPKI', '2022-07-05 11:38:32', '2022-07-05 11:38:32', NULL);
 /*!40000 ALTER TABLE `zo_target_skpd` ENABLE KEYS */;
 
--- Dumping structure for table perfo.zo_verisubbid
-CREATE TABLE IF NOT EXISTS `zo_verisubbid` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+-- Dumping structure for table perfo.zo_veribid
+CREATE TABLE IF NOT EXISTS `zo_veribid` (
+  `id` int(11) unsigned NOT NULL,
   `realisasi_id` int(11) DEFAULT NULL,
   `kabid_id` int(11) DEFAULT NULL,
   `kabid_dates` date DEFAULT NULL,
@@ -599,7 +758,35 @@ CREATE TABLE IF NOT EXISTS `zo_verisubbid` (
   `catatan_perencana` text,
   `sekdis_id` int(11) DEFAULT NULL,
   `sekdis_dates` date DEFAULT NULL,
-  `verifikasi_sekdis` enum('Y','N','R') DEFAULT 'N',
+  `validasi_sekdis` enum('Y','N','R') DEFAULT 'N',
+  `catatan_sekdis` text,
+  `kadis_id` int(11) DEFAULT NULL,
+  `validasi_kadis` enum('Y','N','R') DEFAULT 'N',
+  `kadis_dates` date DEFAULT NULL,
+  `catatan_kadis` text,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- Dumping data for table perfo.zo_veribid: ~0 rows (approximately)
+/*!40000 ALTER TABLE `zo_veribid` DISABLE KEYS */;
+/*!40000 ALTER TABLE `zo_veribid` ENABLE KEYS */;
+
+-- Dumping structure for table perfo.zo_verisubbid
+CREATE TABLE IF NOT EXISTS `zo_verisubbid` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `realisasi_id` int(11) DEFAULT NULL,
+  `kabid_id` int(11) DEFAULT NULL,
+  `kabid_dates` date DEFAULT NULL,
+  `verifikasi_kabid` enum('Y','N','R') DEFAULT 'N',
+  `catatan_kabid` text,
+  `perencana_id` int(11) DEFAULT NULL,
+  `perencana_dates` date DEFAULT NULL,
+  `validasi_perencana` enum('Y','N','R') DEFAULT 'N',
+  `catatan_perencana` text,
+  `sekdis_id` int(11) DEFAULT NULL,
+  `sekdis_dates` date DEFAULT NULL,
+  `validasi_sekdis` enum('Y','N','R') DEFAULT 'N',
   `catatan_sekdis` text,
   `kadis_id` int(11) DEFAULT NULL,
   `validasi_kadis` enum('Y','N','R') DEFAULT 'N',
@@ -608,10 +795,13 @@ CREATE TABLE IF NOT EXISTS `zo_verisubbid` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table perfo.zo_verisubbid: ~0 rows (approximately)
+-- Dumping data for table perfo.zo_verisubbid: ~2 rows (approximately)
 /*!40000 ALTER TABLE `zo_verisubbid` DISABLE KEYS */;
+INSERT INTO `zo_verisubbid` (`id`, `realisasi_id`, `kabid_id`, `kabid_dates`, `verifikasi_kabid`, `catatan_kabid`, `perencana_id`, `perencana_dates`, `validasi_perencana`, `catatan_perencana`, `sekdis_id`, `sekdis_dates`, `validasi_sekdis`, `catatan_sekdis`, `kadis_id`, `validasi_kadis`, `kadis_dates`, `catatan_kadis`, `created_at`, `updated_at`) VALUES
+	(1, 3, 2, '2022-07-08', 'Y', '-', 1, '2022-07-08', 'R', 'sddsds', NULL, NULL, 'N', NULL, NULL, 'N', NULL, NULL, '2022-07-08 03:06:23', '2022-07-08 04:55:55'),
+	(2, 2, 1, '2022-07-08', 'R', 'ada kesalahan pada xxxx', 2, NULL, 'N', NULL, NULL, NULL, 'N', NULL, NULL, 'N', NULL, NULL, '2022-07-08 03:13:31', '2022-07-08 03:13:31');
 /*!40000 ALTER TABLE `zo_verisubbid` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

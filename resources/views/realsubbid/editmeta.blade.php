@@ -112,10 +112,10 @@ method="post" action="/realsubbid/updatemeta/{{$data->id}}">
              </div>
              <div class="form-group">
                 <label class="col-sm-2 control-label no-padding-right" 
-                for="form-field-1"> User Manual
+                for="form-field-1">  Data Pendukung*
                 </label>
                 <div class="col-sm-8">
-                    <input type="file" name="files2" class="btn btn-default btn-sm" id="" value="Upload Ulang File User Manual">
+                    <input type="file" name="files2" class="btn btn-default btn-sm" id="" value="Upload Ulang File  Data Pendukung*s">
                     <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
                 </div>
             </div>        

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Targetbid;
 use App\Verisubbid;
-
+use App\Realisasibid;
 
 class InjectQuery
 {
@@ -29,6 +29,18 @@ class InjectQuery
     public function getPeriv($id){
         $data = Verisubbid::where('realisasi_id',$id)
                         ->first();
+        return $data;
+    }
+
+    public function chartRealisasibid($month,$bidang_id)
+    {
+       $data = Realisasibid::leftJoin('zo_realisasibid_detail as det', function($join) {
+                        $join->on('det.realisasibid_id', '=', 'zo_realisasibid.id');
+                    })
+                    ->whereYear('dates',date('Y'))
+                    ->where('dates',$month)
+                    ->where('bidang_id',$bidang_id)   
+                    ->avg('det.capaian');
         return $data;
     }
 

@@ -7,11 +7,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Realisasi;
-
+use App\InjetQuery;
+use App\Realisasibid;
 
 
 class PortalController extends Controller
 {
+   
     public function index()
     {
         $sub =auth()->user()->subbidang_id;
@@ -27,6 +29,21 @@ class PortalController extends Controller
         }
     
         return view('portal',compact('realsub','sub'));
+
+    }
+
+    public function getLineChart(Request $request)
+    {
+        $label = [];
+        
+
+        for ($i=1; $i <= 12; $i++) { 
+           $label[] = $i;
+
+        }
+
+        $user = [];
+        
 
     }
 }
