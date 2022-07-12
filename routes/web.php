@@ -18,6 +18,7 @@ Route::get('/logout','LoginController@logout')->name('logout');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/portal','PortalController@index')->name('portal');
     Route::get('/profile','ProfileController@index')->name('profile');
+    Route::get('/portal/getChartRealisasiTargetMonth','PortalController@getChartRealisasiTargetMonth')->name('dashboard.getChartRealisasiTargetMonth');
 
     //Route untuk Profile
     Route::post('/profile/update/{id}','ProfileController@update')->name('profile.update');

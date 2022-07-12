@@ -118,14 +118,17 @@
     <div class="col-md-7">
       <div class="card card-chart">
         <div class="card-header card-header-success">
-          <div class="ct-chart" id="dailySalesChart"></div>
+          <h4 class="card-title">Performance</h4>
+
         </div>
         <div class="card-body">
-          <h4 class="card-title">Performance</h4>
+          <div class="card-content" >
+            <canvas id="target-realisasi-chart"  style="position: relative; height:55vh; "></canvas>
+           </div>
         </div>
         <div class="card-footer">
           <div class="stats">
-            <i class="material-icons">access_time</i> Periode {{$blnindo}} {{$thn}}
+            <i class="material-icons">access_time</i> Periode Tahun{{$thn}}
           </div>
         </div>
       </div>
@@ -176,73 +179,89 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="http://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script>
-       /* ----------==========     Daily Sales Chart initialization    ==========---------- */
+    $(document).ready(function() {
+        $.ajax({
+            url: "{{ route('dashboard.getChartRealisasiTargetMonth') }}",
+            type: "GET",
+            dataType: 'json',
+            success: function(rtnData) {
+                $.each(rtnData, function(dataType, data) {
+                    // alert(data.datasets);
+                    console.log(data.labels);
 
-    dataDailySalesChart = {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-        series: [
-          [12, 17, 7, 17, 23, 18, 38]
-        ]
-      };
+                    var ctx = document.getElementById("target-realisasi-chart").getContext("2d");
+                    var config = {
+                        type: 'line',
+                        defaultFontFamily: 'Montserrat',
+                        data: {
+                            datasets: data.datasets,
+                            labels: data.labels,
+                            hidden: true,
+                        },
+                        options:  {
+                            responsive: true,
+                            tooltips: {
+                                mode: 'index',
+                                titleFontSize: 12,
+                                titleFontColor: '#000',
+                                bodyFontColor: '#000',
+                                backgroundColor: '#fff',
+                                titleFontFamily: 'Montserrat',
+                                bodyFontFamily: 'Montserrat',
+                                cornerRadius: 3,
+                                intersect: false,
+                            },
+                            legend: {
+                                labels: {
+                                    usePointStyle: true,
+                                    fontFamily: 'Montserrat',
+                                },
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    gridLines: {
+                                        display: false,
+                                        drawBorder: false
+                                    },
+                                    scaleLabel: {
+                                        display: false,
+                                        labelString: 'Month'
+                                    }
+                                    }],
+                                yAxes: [{
+                                    display: true,
+                                    gridLines: {
+                                        display: false,
+                                        drawBorder: false
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Value'
+                                    },
+                                    }]
+                            },
+                            title: {
+                                display: false,
+                                text: 'Normal Legend'
+                            }
+                        }
+                    };
+                    var chartInstance = new Chart(ctx, config);
+                    // chartInstance.data.datasets.forEach(function(ds) {
+                    //     ds.hidden = !ds.hidden;
+                    // });
+                    chartInstance.update();
 
-      optionsDailySalesChart = {
-        lineSmooth: Chartist.Interpolation.cardinal({
-          tension: 0
-        }),
-        low: 0,
-        high: 
-        160,
-         // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-        chartPadding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        },
-      }
 
-      var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-
-      md.startAnimationForLineChart(dailySalesChart);
-    
-
-       /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
-
-       var dataWebsiteViewsChart = {
-        labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-        series: [
-          [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-
-        ]
-      };
-      var optionsWebsiteViewsChart = {
-        axisX: {
-          showGrid: false
-        },
-        low: 0,
-        high: 1000,
-        chartPadding: {
-          top: 0,
-          right: 5,
-          bottom: 0,
-          left: 0
-        }
-      };
-      var responsiveOptions = [
-        ['screen and (max-width: 640px)', {
-          seriesBarDistance: 5,
-          axisX: {
-            labelInterpolationFnc: function(value) {
-              return value[0];
+                });
+            },
+            error: function(rtnData) {
+                alert('error' + rtnData);
             }
-          }
-        }]
-      ];
-      var websiteViewsChart = Chartist.Bar('#websiteViewsChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+        });
 
-      //start animation for the Emails Subscription Chart
-      md.startAnimationForBarChart(websiteViewsChart);
-    
+    });
 
 </script>
 @endsection

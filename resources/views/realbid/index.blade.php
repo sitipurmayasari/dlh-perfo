@@ -99,8 +99,10 @@
                     </td>
                     <td>                       
                         @if ($periv != null || date('d') > 9)
-                            @if ($periv->validasi_sekdis=='Y')
-                                Masa Edit Berakhir
+                            @if ($periv != null)
+                                @if ($periv->validasi_sekdis=='Y')
+                                    Masa Edit Berakhir
+                                @endif
                             @else
                                 Masa Edit Berakhir
                             @endif
