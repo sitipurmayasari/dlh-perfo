@@ -75,7 +75,7 @@
 
     $thn = date('Y');
   @endphp
-    <div class="col-md-5">
+    {{-- <div class="col-md-5">
       <div class="card card-stats">
        @if ($realsub != null)
         @if ($realsub->verifikasi == 'E' )
@@ -114,7 +114,7 @@
          <label for="">Periode {{$blnindo}} {{$thn}}</label>
         </div>
       </div>
-    </div>
+    </div> --}}
     <div class="col-md-7">
       <div class="card card-chart">
         <div class="card-header card-header-success">

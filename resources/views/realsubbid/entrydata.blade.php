@@ -50,11 +50,11 @@ method="post" action="{{route('realsubbid.store')}}" enctype="multipart/form-dat
                     <tr>
                         <th style="text-align: center" >No</th>
                         <th style="text-align: center" class="col-md-3">Indikator</th>
-                        <th style="text-align: center;" class="col-md-1">Target Akhir</th>
+                        <th style="text-align: center;" class="col-md-1">Target Akhir Renstra</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
                         <th style="text-align: center" class="col-md-2">Realisasi</th>
-                        <th style="text-align: center" class="col-md-1">Hasil</th>
-                        <th style="text-align: center" >Hasil Tahunan </th>
+                        <th style="text-align: center" class="col-md-1">Capaian </th>
+                        <th style="text-align: center" >Capaian Tahun {{$data->years}} </th>
                         <th style="text-align: center" class="col-md-4">Keterangan</th>
                     </tr>
                </thead>

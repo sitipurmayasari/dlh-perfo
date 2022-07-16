@@ -139,6 +139,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('realskpd/updatemeta/{id}','RealSKPDController@updatemeta')->name('realskpd.updatemeta');
     Route::get('realskpd/getrenstra','RealSKPDController@getrenstra')->name('realskpd.getrenstra');
 
+    //Route untuk Laporan
+    Route::get('/report','ReportController@index')->name('report');
+    Route::post('/report/cetak','ReportController@cetak')->name('report.cetak');
+
 
 });
 

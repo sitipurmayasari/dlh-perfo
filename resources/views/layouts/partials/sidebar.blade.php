@@ -96,6 +96,7 @@
         </a>
         <b class="arrow"></b>
     </li>
+    {{-- @if (auth()->user()->role == 1) --}}
     <li class="{{ (request()->segment(1) == 'Setup' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-cog"></i>
@@ -141,4 +142,5 @@
             </li>    
         </ul>
     </li>
+    {{-- @endif --}}
 </ul>

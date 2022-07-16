@@ -78,7 +78,7 @@
                         {{$blnindo}} {{$row->years}}
     
                     </td>
-                    <td>{{$row->sub->name}}</td>
+                    <td>{{$row->bidang->name}}</td>
                     <td>{{$row->user->name}}</td>
                     <td>
                         @php
