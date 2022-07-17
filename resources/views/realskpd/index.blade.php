@@ -42,7 +42,7 @@
                 <th  class="col-md-2">Ubah</th>
             </thead>
             <tbody>   	
-                {{-- @foreach($data as $key=>$row)
+                @foreach($data as $key=>$row)
                 <tr>
                     <td>{{$data->firstItem() + $key}}</td>
                     <td>{{$row->filename}}</td>
@@ -79,40 +79,17 @@
                         {{$blnindo}} {{$row->years}}
     
                     </td>
-                    <td>{{$row->bidang->name}}</td>
-                    <td>{{$row->user->name}}</td>
-                    <td>
-                        @php
-                            $periv = $injectQuery->getPeriv($row->id);
-                        @endphp
-                        @if ($periv != null)
-                            @if ($periv->validasi_sekdis=='Y')
-                                <p style="color: green">Terverifikasi</p>
-                            @else
-                                <p style="color: blue">Sedang Diverifikasi</p>
-                            @endif
-                        @else
-                            <p style="color: grey">Belum Diverifikasi</p>
-                        @endif
-                    </td>
+                    <td>{{$row->skpd->name}}</td>
                     <td>                       
-                        @if ($periv != null || date('d') > 9)
-                            @if ($periv->validasi_sekdis=='Y')
-                                Masa Edit Berakhir
-                            @else
-                                Masa Edit Berakhir
-                            @endif
-                        @else
-                            <a href="/realskpd/editmeta/{{$row->id}}" class="btn btn-warning">
+                        <a href="/realskpd/editmeta/{{$row->id}}" class="btn btn-warning">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
-                        @endif
                     </td>
                 </tr>
               
-                @endforeach --}}
+                @endforeach
             </tbody>
         </table>
     </div>
-{{-- {{$data->appends(Request::all())->links()}} --}}
+{{$data->appends(Request::all())->links()}}
 @endsection

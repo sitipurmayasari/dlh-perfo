@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
+    <li><a href="/realskpd">Realisasi Capaian  SKPD</a></li>
     <li>Ubah Data </li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="/realbid/update/{{$data->id}}">
+method="post" action="/realskpd/update/{{$data->id}}">
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -48,11 +48,9 @@ method="post" action="/realbid/update/{{$data->id}}">
                     <tr>
                         <th style="text-align: center" >No</th>
                         <th style="text-align: center" class="col-md-3">Indikator</th>
-                        <th style="text-align: center;" class="col-md-1">Target Akhir</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
-                        <th style="text-align: center" class="col-md-1">Realisasi</th>
-                        <th style="text-align: center" class="col-md-1">Hasil</th>
-                        <th style="text-align: center" class="col-md-1">Hasil Tahunan </th>
+                        <th style="text-align: center" class="col-md-2">Realisasi</th>
+                        <th style="text-align: center" class="col-md-1">Capaian</th>
                         <th style="text-align: center" class="col-md-4">Keterangan</th>
                     </tr>
                </thead>
@@ -65,12 +63,8 @@ method="post" action="/realbid/update/{{$data->id}}">
                             <td style="text-align: center">{{$no}}</td>
                             <td>
                                 <input type="hidden" name="id[]" value="{{$row->id}}">
-                                <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
-                                {{$row->indi->names}} 
-                            </td>
-                            <td>
-                                <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
-                                value="{{$row->target_akhir}}">
+                                <input type="hidden" name="kinerja_skpd_id[]" value="{{$row->kinerja_skpd_id}}">
+                                {{$row->indi->indicator}} 
                             </td>
                             <td>
                                 <input type="number" readonly name="target[]" class="col-sm-10" value="{{$row->target}}"
@@ -78,8 +72,7 @@ method="post" action="/realbid/update/{{$data->id}}">
                             </td>
                             <td><input type="number" name="real[]" value="{{$row->real}}" step="0.01" class="col-sm-10" id="real-{{$no}}" onkeyup="hitung({{$no}})"></td>
                             <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}"></td>
-                            <td><input type="number" name="capaian_akhir[]" value="{{$row->capaian_akhir}}" step="0.01" class="col-sm-10" id="hasiltahun-{{$no}}"></td>
-                            <td><input type="text" name="keterangan[]" class="form-control" value="{{$row->keterangan}}"></td>
+                           <td><input type="text" name="keterangan[]" class="form-control" value="{{$row->keterangan}}"></td>
                         </tr>
                         @php
                             $no++;

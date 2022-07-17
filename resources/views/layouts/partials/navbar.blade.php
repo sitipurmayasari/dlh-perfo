@@ -14,7 +14,7 @@
             <a href="/portal" class="navbar-brand">
                 <small>
                 <img src="{{asset('images/Lapak_putih.png')}}" alt="" srcset="" style="height:35px">
-                    LapakLH
+                LaPakLH
                 </small>
             </a>
         </div>

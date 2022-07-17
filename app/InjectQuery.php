@@ -26,6 +26,15 @@ class InjectQuery
         return $isi;
     }
 
+    public function getTargetSkpd($id, $year){
+        $isi = Target_skpd::where('kinerja_skpd_id',$id)
+                            ->where('years',$year)
+                                ->orderby('years','desc')
+                                ->first();
+        return $isi;
+    }
+
+
     public function getPeriv($id){
         $data = Verisubbid::where('realisasi_id',$id)
                         ->first();

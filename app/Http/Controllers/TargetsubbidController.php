@@ -18,6 +18,12 @@ class TargetsubbidController extends Controller
     public function index(Request $request)
     {
         $data = Targetsubbid::orderBy('id','desc')
+                        ->SelectRaw('zo_targetsubbid.*')
+                        ->leftjoin('zo_subbidang','zo_subbidang.id','zo_targetsubbid.subbidang_id')
+                        ->when($request->keyword, function ($query) use ($request) {
+                            $query->where('zo_subbidang.name','LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_targetsubbid.filename', 'LIKE','%'.$request->keyword.'%');
+                        })
                         ->paginate('10');
 
         return view('targetsubbid.index',compact('data'));
@@ -34,8 +40,7 @@ class TargetsubbidController extends Controller
     {
         $this->validate($request,[
             'yearfrom' => 'required',
-            'subbidang_id' => 'required',
-            'sk_number' => 'required',
+            'subsubbid_id' => 'required',
             'filename' => 'required'
         ]);
 
@@ -48,10 +53,10 @@ class TargetsubbidController extends Controller
     public function entrybid($id)
     {
         $data   = Targetsubbid::where('id',$id)->first();
-        $bidang = Subbidang::where('id',$data->subbidang_id)->first();
+        $bidang = Subbidang::where('id',$data->subsubbid_id)->first();
         $indi   = Indicator::selectraw('zo_indicator.*')
                         ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                        ->where('subbidang_id',$bidang->id)->get();
+                        ->where('subsubbid_id',$bidang->id)->get();
 
         return view('targetsubbid.entrybid',compact('indi','data','bidang'));
     }
@@ -97,10 +102,10 @@ class TargetsubbidController extends Controller
         $data       = Targetsubbid::where('id',$id)->first();
         $renstra    = Targetsubbid_detail::SelectRaw('DISTINCT years')
                                         ->where('targetsubbid_id',$id)->get();
-        $bidang     = SubBidang::where('id',$data->subbidang_id)->first();
+        $bidang     = SubBidang::where('id',$data->subsubbid_id)->first();
         $indi       = Indicator::selectraw('zo_indicator.*')
                                 ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                                ->where('subbidang_id',$bidang->id)->get();
+                                ->where('subsubbid_id',$bidang->id)->get();
 
         return view('targetsubbid/edit',compact('indi','data','renstra','bidang'));
     }

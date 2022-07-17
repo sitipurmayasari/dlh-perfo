@@ -54,19 +54,19 @@ class ReportController extends Controller
             $bid = Subbidang::where('id', $request->sub)->first();
             return view('report.lapsub',compact('data','request','bid','detail'));   
         }elseif($request->jenis=="3"){
-            $data = Realisasi::where('subbidang_id',$request->sub)
-                        ->where('years',$request->years)
-                        ->when($request->bulan, function ($query) use ($request) {
-                            $query->where('month',$request->bulan);
-                        })
-                        ->first();
-            $detail = Realisasi_detail::orderby('indicator_id','asc')
-                        ->where('realisasi_id',$data->id)
-                        ->get();
-            $bid = Subbidang::where('id', $request->sub)->first();
-            return view('report.lapskpd',compact('data','request','bid','detail'));   
+            dd($request->all());
+            // $data = Realisasi::where('subbidang_id',$request->sub)
+            //             ->where('years',$request->years)
+            //             ->when($request->bulan, function ($query) use ($request) {
+            //                 $query->where('month',$request->bulan);
+            //             })
+            //             ->first();
+            // $detail = Realisasi_detail::orderby('indicator_id','asc')
+            //             ->where('realisasi_id',$data->id)
+            //             ->get();
+            // $bid = Subbidang::where('id', $request->sub)->first();
+            // return view('report.lapskpd',compact('data','request','bid','detail'));   
         }elseif($request->jenis=="4"){
-            // dd($request->all());
             $bidang = Realisasibid::where('years',$request->years)
                                     ->where('month',$request->bulan)
                                     ->get();

@@ -16,6 +16,12 @@ class TargetbidController extends Controller
     public function index(Request $request)
     {
         $data = Targetbid::orderBy('id','desc')
+                        ->SelectRaw('zo_targetbid.*')
+                        ->leftjoin('zo_bidang','zo_bidang.id','zo_targetbid.bidang_id')
+                        ->when($request->keyword, function ($query) use ($request) {
+                            $query->where('zo_bidang.name','LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_targetbid.filename', 'LIKE','%'.$request->keyword.'%');
+                        })
                         ->paginate('10');
 
         return view('targetbid.index',compact('data'));
@@ -33,11 +39,10 @@ class TargetbidController extends Controller
         $this->validate($request,[
             'yearfrom' => 'required',
             'bidang_id' => 'required',
-            'sk_number' => 'required',
             'filename' => 'required'
         ]);
 
-        $data = Targetbid::create($request->all());
+        $data = Targetbid::create($requeat->all());
         $rens = $data->id;
 
         return redirect('/targetbid/entrybid/'.$rens);

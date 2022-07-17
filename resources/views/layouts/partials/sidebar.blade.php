@@ -18,17 +18,17 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            <li class="{{ (request()->segment(2) == 'targetbid' ) ? 'active' : '' }} ">
-                <a href="/targetbid">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Target Bidang
-                </a>
-                <b class="arrow"></b>
-            </li>    
             <li class="{{ (request()->segment(2) == 'targetsubbid' ) ? 'active' : '' }} ">
                 <a href="/targetsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Target Seksi / Subbag
+                </a>
+                <b class="arrow"></b>
+            </li>    
+            <li class="{{ (request()->segment(2) == 'targetbid' ) ? 'active' : '' }} ">
+                <a href="/targetbid">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Target Bidang
                 </a>
                 <b class="arrow"></b>
             </li>    
@@ -42,20 +42,20 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
-                <a href="/realbid">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Realisasi Bidang
-                </a>
-                <b class="arrow"></b>
-            </li>    
             <li class="{{ (request()->segment(2) == 'realsubbid' ) ? 'active' : '' }} ">
                 <a href="/realsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Seksi / Subbag
                 </a>
                 <b class="arrow"></b>
-            </li>    
+            </li>   
+            <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
+                <a href="/realbid">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Realisasi Bidang
+                </a>
+                <b class="arrow"></b>
+            </li>     
             <li class="{{ (request()->segment(2) == 'realskpd' ) ? 'active' : '' }} ">
                 <a href="/realskpd">
                     <i class="menu-icon fa fa-caret-right"></i>
@@ -76,7 +76,7 @@
             <li class="{{ (request()->segment(2) == 'Verifikasi Sub Bidang' ) ? 'active' : '' }} ">
                 <a href="/verisubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Verifikasi Capaian SubBid
+                    Verifikasi Capaian Seksi / Subbag
                 </a>
                 <b class="arrow"></b>
             </li>  
@@ -119,17 +119,17 @@
                 </a>
                 <b class="arrow"></b>
             </li>  
-            <li class="{{ (request()->segment(2) == 'kinerja_skpd' ) ? 'active' : '' }} ">
-                <a href="/kinerja_skpd">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Kinerja SKPD
-                </a>
-                <b class="arrow"></b>
-            </li>   
             <li class="{{ (request()->segment(2) == 'skpd' ) ? 'active' : '' }} ">
                 <a href="/skpd">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Nama SKPD
+                </a>
+                <b class="arrow"></b>
+            </li>   
+            <li class="{{ (request()->segment(2) == 'kinerja_skpd' ) ? 'active' : '' }} ">
+                <a href="/kinerja_skpd">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Kinerja SKPD
                 </a>
                 <b class="arrow"></b>
             </li>     

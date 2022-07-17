@@ -37,7 +37,6 @@
                 <th width="40px">No</th>
                 <th>Judul</th>
                 <th class="col-md-2">Tahun</th>
-                <th>No. SK</th>
                 <th  class="col-md-2">Aksi</th>
             </thead>
             <tbody>   	
@@ -46,12 +45,6 @@
                     <td>{{$data->firstItem() + $key}}</td>
                     <td>{{$row->filename}} - Seksi / Subbag {{$row->sub->name}}</td>
                     <td>{{$row->yearfrom}} s/d {{$row->yearto}}</td>
-                    <td>@if ($row->sknumber != null)
-                            {{$row->sknumber}}
-                        @else
-                            {{' - '}}
-                        @endif
-                    </td>
                     <td>
                         <a href="/targetsubbid/editmeta/{{$row->id}}" class="btn btn-warning">
                             <i class="glyphicon glyphicon-edit"></i>

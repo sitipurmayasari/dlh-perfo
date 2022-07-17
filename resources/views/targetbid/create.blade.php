@@ -80,14 +80,14 @@ method="post" action="{{route('targetbid.generate')}}" enctype="multipart/form-d
                        <input type="text" name="filename" class="col-xs-10 col-sm-10"  required placeholder="REVISI-01"/>
                    </div>
                </div>
-               <div class="form-group">
+               {{-- <div class="form-group">
                     <label class="col-sm-2 control-label no-padding-right" 
                     for="form-field-1"> Nomor SK
                     </label>
                     <div class="col-sm-8">
                         <input type="text" name="sk_number" class="col-xs-10 col-sm-10" required/>
                     </div>
-                </div>
+                </div> --}}
            </div>
        </div>
    </div>

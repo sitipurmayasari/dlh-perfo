@@ -46,7 +46,7 @@ method="post" action="{{route('realskpd.generate')}}" enctype="multipart/form-da
                     for="form-field-1"> Periode Tahun
                     </label>
                     <div class="col-sm-8">
-                        <select name="years" class="col-xs-10 col-sm-10 select2" id="tahun" onchange="getrenstra()">
+                        <select name="years" class="col-xs-10 col-sm-10 select2" id="tahun" >
                             <option value="">Pilih Tahun</option>
                             <?php
                                 $a=date('Y');

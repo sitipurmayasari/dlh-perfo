@@ -2,14 +2,14 @@
 @inject('injectQuery', 'App\InjectQuery')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realbid">Realisasi Capaian  Bidang</a></li>
+    <li><a href="/realskpd">Realisasi Capaian  SKPD</a></li>
     <li>Tambah Baru</li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data"   >
+method="post" action="{{route('realskpd.store')}}" enctype="multipart/form-data"   >
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -50,11 +50,9 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                     <tr>
                         <th style="text-align: center" >No</th>
                         <th style="text-align: center" class="col-md-3">Indikator</th>
-                        <th style="text-align: center;" class="col-md-1">Target Akhir</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
                         <th style="text-align: center" class="col-md-2">Realisasi</th>
-                        <th style="text-align: center" class="col-md-1">Hasil</th>
-                        <th style="text-align: center" >Hasil Tahunan </th>
+                        <th style="text-align: center" class="col-md-1">Capaian</th>
                         <th style="text-align: center" class="col-md-4">Keterangan</th>
                     </tr>
                </thead>
@@ -66,25 +64,21 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                         <tr>
                             <td style="text-align: center">{{$no}}</td>
                             <td>
-                                <input type="hidden" name="realisasibid_id[]" value="{{$data->id}}">
-                                <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
-                                {{$row->indi->names}}
+                                <input type="hidden" name="realisasiskpd_id[]" value="{{$data->id}}">
+                                <input type="hidden" name="kinerja_skpd_id[]" value="{{$row->id}}">
+                                {{$row->indicator}}
                             </td>
                             <td>
                                 @php
-                                    $isi = $injectQuery->getRenstra($row->id,$yearend->yearto,$row->indicator_id);
+                                    $akhir = $injectQuery->getTargetSkpd($row->id, $data->years);
                                 @endphp
-                                <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
-                                    value="{{$row->percentages}}">
+                                <input type="number" readonly name="target[]" value="{{$akhir->percentages}}"
+                                id="target-{{$no}}" class="form-control">
                             </td>
-                            <td>
-                                <input type="number" readonly name="target[]" value="{{$row->percentages}}"
-                                    id="target-{{$no}}" class="form-control">
-                            </td>
+
                             <td><input type="number" name="real[]" value="0" step="0.01" class="form-control" id="real-{{$no}}" ></td>
                             <td><input type="number" name="capaian[]" value="0" step="0.01" class="form-control" id="hasil-{{$no}}" onkeyup="hitung({{$no}})"></td>
-                            <td><input type="number" name="capaian_akhir[]" value="0" step="0.01" class="form-control" id="hasiltahun-{{$no}}"></td>
-                            <td><input type="text" name="keterangan[]" class="form-control"></td>
+                          <td><input type="text" name="keterangan[]" class="form-control"></td>
                         </tr>
                         @php
                             $no++;
