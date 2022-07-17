@@ -10,7 +10,7 @@
         </a>
         <b class="arrow"></b>
     </li>
-    <li class="{{ (request()->segment(1) == 'Renstra' ) ? 'Open' : '' }} ">
+    <li class="{{ (request()->segment(1) == 'targetsubbid' || request()->segment(1) == 'targetbid' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-500px"></i>
             <span class="menu-text"> Renstra </span>
@@ -18,14 +18,14 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            <li class="{{ (request()->segment(2) == 'targetsubbid' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'targetsubbid' ) ? 'active' : '' }} ">
                 <a href="/targetsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Target Seksi / Subbag
                 </a>
                 <b class="arrow"></b>
             </li>    
-            <li class="{{ (request()->segment(2) == 'targetbid' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'targetbid' ) ? 'active' : '' }} ">
                 <a href="/targetbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Target Bidang
@@ -34,7 +34,7 @@
             </li>    
         </ul>
     </li>
-    <li class="{{ (request()->segment(1) == 'Realisasi' ) ? 'Open' : '' }} ">
+    <li class="{{ (request()->segment(1) == 'realsubbid' || request()->segment(1) == 'realbid' || request()->segment(1) == 'realskpd' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-line-chart"></i>
             <span class="menu-text"> Realisasi </span>
@@ -42,21 +42,21 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            <li class="{{ (request()->segment(2) == 'realsubbid' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'realsubbid' ) ? 'active' : '' }} ">
                 <a href="/realsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Seksi / Subbag
                 </a>
                 <b class="arrow"></b>
             </li>   
-            <li class="{{ (request()->segment(2) == 'realbid' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'realbid' ) ? 'active' : '' }} ">
                 <a href="/realbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Bidang
                 </a>
                 <b class="arrow"></b>
             </li>     
-            <li class="{{ (request()->segment(2) == 'realskpd' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'realskpd' ) ? 'active' : '' }} ">
                 <a href="/realskpd">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi SKPD
@@ -65,7 +65,7 @@
             </li>    
         </ul>
     </li>
-    <li class="{{ (request()->segment(1) == 'Verifikasi' ) ? 'Open' : '' }} ">
+    <li class="{{ (request()->segment(1) == 'verisubbid' || request()->segment(1) == 'veribid' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-check"></i>
             <span class="menu-text"> Verifikasi </span>
@@ -73,14 +73,14 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">      
-            <li class="{{ (request()->segment(2) == 'Verifikasi Sub Bidang' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'verisubbid' ) ? 'active' : '' }} ">
                 <a href="/verisubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Verifikasi Capaian Seksi / Subbag
                 </a>
                 <b class="arrow"></b>
             </li>  
-            <li class="{{ (request()->segment(2) == 'Verifikasi Bidang' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'veribid' ) ? 'active' : '' }} ">
                 <a href="/veribid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Verifikasi Capaian Bidang
@@ -97,7 +97,9 @@
         <b class="arrow"></b>
     </li>
     {{-- @if (auth()->user()->role == 1) --}}
-    <li class="{{ (request()->segment(1) == 'Setup' ) ? 'open' : '' }} ">
+    <li class="{{ (request()->segment(1) == 'kinerja' || request()->segment(1) == 'indicator' ||
+    request()->segment(1) == 'skpd'  || request()->segment(1) == 'kinerja_skpd' ||
+     request()->segment(1) == 'akses' ) ? 'open' : '' }} ">
         <a href="" class="dropdown-toggle">
             <i class="menu-icon fa fa-cog"></i>
             <span class="menu-text"> Setup </span>
@@ -105,35 +107,35 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
-            <li class="{{ (request()->segment(2) == 'kinerja' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'kinerja' ) ? 'active' : '' }} ">
                 <a href="/kinerja">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Kinerja
                 </a>
                 <b class="arrow"></b>
             </li>    
-            <li class="{{ (request()->segment(2) == 'indicator' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'indicator' ) ? 'active' : '' }} ">
                 <a href="/indicator">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Indikator
                 </a>
                 <b class="arrow"></b>
             </li>  
-            <li class="{{ (request()->segment(2) == 'skpd' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'skpd' ) ? 'active' : '' }} ">
                 <a href="/skpd">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Nama SKPD
                 </a>
                 <b class="arrow"></b>
             </li>   
-            <li class="{{ (request()->segment(2) == 'kinerja_skpd' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'kinerja_skpd' ) ? 'active' : '' }} ">
                 <a href="/kinerja_skpd">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Kinerja SKPD
                 </a>
                 <b class="arrow"></b>
             </li>     
-            <li class="{{ (request()->segment(2) == 'akses' ) ? 'active' : '' }} ">
+            <li class="{{ (request()->segment(1) == 'akses' ) ? 'active' : '' }} ">
                 <a href="/akses">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Hak Akses
