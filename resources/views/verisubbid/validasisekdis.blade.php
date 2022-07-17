@@ -124,8 +124,8 @@
                                  <th style="text-align: center">Indikator</th>
                                  <th style="text-align: center" >Target Tahun {{$data->years}}</th>
                                  <th style="text-align: center">Realisasi</th>
-                                 <th style="text-align: center">Hasil (%) </th>
-                                 <th style="text-align: center" >Hasil Tahunan (%)</th>
+                                 <th style="text-align: center">Capaian (%) </th>
+                                 <th style="text-align: center" >Capaian Tahun {{$data->years}}</th>
                                  <th style="text-align: center">Keterangan</th>
                              </tr>
                         </thead>

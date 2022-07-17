@@ -118,7 +118,8 @@
     <div class="col-md-7">
       <div class="card card-chart">
         <div class="card-header card-header-success">
-          <h4 class="card-title">Performance</h4>
+          
+          <h4 class="card-title">Sistem Infomasi Capaian Kinerja Lingkungan Hidup</h4>
 
         </div>
         <div class="card-body">

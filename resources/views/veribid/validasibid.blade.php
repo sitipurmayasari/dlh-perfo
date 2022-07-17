@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Verifikasi</li>
-    <li><a href="/verisubbid">Verifikasi Capaian  Seksi / Subbag</a></li>
+    <li><a href="/veribid">Verifikasi Capaian  Bidang</a></li>
     <li>Verifikasi</li>
 @endsection
 @section('content')
@@ -16,7 +16,7 @@
 </style>
 <div class="row">
     <form class="form-horizontal validate-form" role="form" 
-    method="post" action="/verisubbid/update/{{$data->id}}">
+    method="post" action="/veribid/update/{{$data->id}}">
     {{ csrf_field() }}
     <div class="col-sm-12">
         <div class="widget-box">

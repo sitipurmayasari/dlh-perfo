@@ -26,20 +26,20 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-                                    <img src="" alt="" style="width:300px;"><br>
+                                    <img src="{{asset('images/Lapak_ori.png')}}" alt="" style="width:150px;"><br>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy;</h4>
+								<h4 class="green" id="id-company-text">Laporan caPaian Kinerja Lingkungan Hidup</h4>
 							</div>
 
 							<div class="space-6"></div>
 
 							<div class="position-relative">
 								<div id="login-box" class="login-box visible widget-box no-border">
-									<div class="widget-body">
+									<div class="widget-body" >
 										<div class="widget-main">
-											<h4 class="header blue lighter bigger">
+											<h4 class="header green lighter bigger">
 												<i class="ace-icon fa fa-lock green"></i>
-												e-Performance Sign-In
+												Sign-In
 											</h4>
 
 											<div class="space-6"></div>
@@ -47,9 +47,9 @@
                                             @include('login.partials.form-login')
 										</div>
 
-										<div class="toolbar clearfix">
-											<div>
-												<a href="#" data-target="#forgot-box" class="forgot-password-link">
+										<div class="toolbar clearfix" style="background-color: #87B87F;">
+											<div >
+												<a href="#" data-target="#forgot-box" class="forgot-password-link" style="color: white">
 													<i class="ace-icon fa fa-arrow-left"></i>
 													Lupa Password
 												</a>

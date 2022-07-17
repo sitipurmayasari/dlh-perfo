@@ -156,7 +156,10 @@ class RealsubbidController extends Controller
         $indi =  Targetsubbid::where('subbidang_id',$data->subbidang_id)
                                 ->orderBy('id','desc')
                                 ->get();
-        return view('realsubbid/edit',compact('data','detail'));
+        $yearend = Targetsubbid::where('id',$data->targetsubbid_id)
+                                ->Orderby('id','asc')
+                                ->first();
+        return view('realsubbid/edit',compact('data','detail','yearend'));
     }
 
    

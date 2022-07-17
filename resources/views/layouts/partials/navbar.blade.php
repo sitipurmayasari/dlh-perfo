@@ -13,8 +13,8 @@
         <div class="navbar-header pull-left">
             <a href="/portal" class="navbar-brand">
                 <small>
-                {{-- <img src="{{asset('images/bbpom.jpg')}}" alt="" srcset="" style="height:35px"> --}}
-                    e-Performance
+                <img src="{{asset('images/Lapak_putih.png')}}" alt="" srcset="" style="height:35px">
+                    LapakLH
                 </small>
             </a>
         </div>

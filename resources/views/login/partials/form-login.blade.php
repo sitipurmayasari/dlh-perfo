@@ -45,7 +45,7 @@
 
             <input type="submit"
                     value="Log in"
-                    class="width-35 pull-right btn btn-sm btn-primary"/>
+                    class="width-35 pull-right btn btn-sm btn-success"/>
         </div>
 
         <div class="space-4"></div>

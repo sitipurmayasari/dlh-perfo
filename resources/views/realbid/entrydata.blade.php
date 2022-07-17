@@ -50,7 +50,7 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                     <tr>
                         <th style="text-align: center" >No</th>
                         <th style="text-align: center" class="col-md-3">Indikator</th>
-                        <th style="text-align: center;" class="col-md-1">Target Akhir Renstra</th>
+                        <th style="text-align: center;" class="col-md-1">Target Akhir Renstra ({{$yearend->yearto}})</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
                         <th style="text-align: center" class="col-md-2">Realisasi</th>
                         <th style="text-align: center" class="col-md-1">Capaian </th>

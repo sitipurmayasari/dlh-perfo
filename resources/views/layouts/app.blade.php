@@ -80,7 +80,7 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="green bolder">e-Performance</span>
+							<span class="green bolder">LapakLH</span>
 							&copy; {{date('Y')}}
 						</span>
 					</div>
