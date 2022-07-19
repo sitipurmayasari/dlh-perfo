@@ -42,7 +42,7 @@ class TargetbidController extends Controller
             'filename' => 'required'
         ]);
 
-        $data = Targetbid::create($requeat->all());
+        $data = Targetbid::create($request->all());
         $rens = $data->id;
 
         return redirect('/targetbid/entrybid/'.$rens);

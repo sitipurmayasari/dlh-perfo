@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li><i class="fa fa fa-500px">Renstra</i></li>
-    <li><a href="/targesubtbid">Target Seksi / Subbag</a></li>
+    <li><a href="/targetsubbid">Target Seksi / Subbag</a></li>
     <li>Ubah Meta Data</li>
 @endsection
 @section('content')

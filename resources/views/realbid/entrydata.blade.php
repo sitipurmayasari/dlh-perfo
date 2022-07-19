@@ -53,9 +53,9 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                         <th style="text-align: center;" class="col-md-1">Target Akhir Renstra ({{$yearend->yearto}})</th>
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
                         <th style="text-align: center" class="col-md-2">Realisasi</th>
-                        <th style="text-align: center" class="col-md-1">Capaian </th>
-                        <th style="text-align: center" >Capaian Tahun {{$data->years}} </th>
-                        <th style="text-align: center" class="col-md-4">Keterangan</th>
+                        <th style="text-align: center" class="col-md-1">Capaian Tahun{{$data->years}}</th>
+                        <th style="text-align: center" > capaian tahun {{$data->years}} terhadap target akhir renstra</th>
+                        <th style="text-align: center" class="col-md-4">Analisis Capaian Kinerja</th>
                     </tr>
                </thead>
                <tbody>
@@ -84,7 +84,7 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                             <td><input type="number" name="real[]" value="0" step="0.01" class="form-control" id="real-{{$no}}" ></td>
                             <td><input type="number" name="capaian[]" value="0" step="0.01" class="form-control" id="hasil-{{$no}}" onkeyup="hitung({{$no}})"></td>
                             <td><input type="number" name="capaian_akhir[]" value="0" step="0.01" class="form-control" id="hasiltahun-{{$no}}"></td>
-                            <td><input type="text" name="keterangan[]" class="form-control"></td>
+                            <td><textarea name="keterangan[]" id="" rows="5" class="form-control" required></textarea></td>
                         </tr>
                         @php
                             $no++;

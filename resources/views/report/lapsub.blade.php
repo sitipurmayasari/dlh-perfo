@@ -170,36 +170,72 @@
             </tr>
             <tr class="atas">
                 <td class="atas"></td>
-                <td class="atas">NAma</td>
+                <td class="atas">
+                    @if ($kadis != null)
+                        {{$kadis->name}}
+                    @else
+                        Nama
+                    @endif
+                </td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
-                <td class="atas">Nama</td>
+                <td class="atas">
+                    @if ($kasie != null)
+                        {{$kasie->name}}
+                    @else
+                        Nama
+                    @endif
+                </td>
             </tr>
             <tr class="atas">
                 <td class="atas"></td>
-                <td class="atas">Pembina Utama Muda</td>
+                <td class="atas">
+                    @if ($kadis != null)
+                        {{$kadis->pangkat}}
+                    @else
+                        Pangkat
+                    @endif
+                </td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
-                <td class="atas">Penata</td>
+                <td class="atas">
+                    @if ($kasie != null)
+                        {{$kasie->pangkat}}
+                    @else
+                        Pangkat
+                    @endif
+                </td>
             </tr>
             <tr class="atas">
                 <td class="atas"></td>
-                <td class="atas">NIP.</td>
+                <td class="atas">NIP.
+                    @if ($kadis != null)
+                        {{$kadis->nip}}
+                    @else
+                        -
+                    @endif
+                </td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
-                <td class="atas">NIP.</td>
+                <td class="atas">NIP.
+                    @if ($kasie != null)
+                        {{$kasie->nip}}
+                    @else
+                        -
+                    @endif
+                </td>
             </tr>
         </table>
     </div>

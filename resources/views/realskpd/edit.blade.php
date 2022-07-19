@@ -51,7 +51,7 @@ method="post" action="/realskpd/update/{{$data->id}}">
                         <th style="text-align: center" class="col-md-1">Target Tahun {{$data->years}}</th>
                         <th style="text-align: center" class="col-md-2">Realisasi</th>
                         <th style="text-align: center" class="col-md-1">Capaian</th>
-                        <th style="text-align: center" class="col-md-4">Keterangan</th>
+                        <th style="text-align: center" class="col-md-4">Analisis Capaian Kinerja</th>
                     </tr>
                </thead>
                <tbody>
@@ -72,7 +72,7 @@ method="post" action="/realskpd/update/{{$data->id}}">
                             </td>
                             <td><input type="number" name="real[]" value="{{$row->real}}" step="0.01" class="col-sm-10" id="real-{{$no}}" onkeyup="hitung({{$no}})"></td>
                             <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}"></td>
-                           <td><input type="text" name="keterangan[]" class="form-control" value="{{$row->keterangan}}"></td>
+                            <td><textarea name="keterangan[]" id="" rows="5" class="form-control" required>{{$row->keterangan}}</textarea></td>
                         </tr>
                         @php
                             $no++;

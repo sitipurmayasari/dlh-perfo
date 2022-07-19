@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title class="noPrint"> @yield('title') e-Performance</title>
+		<title class="noPrint"> @yield('title') LaPakLH</title>
 		<link rel="shortcut icon" href="{{asset('favicon.ico')}}">
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -80,7 +80,7 @@
 				<div class="footer-inner">
 					<div class="footer-content">
 						<span class="bigger-120">
-							<span class="green bolder">LapakLH</span>
+							<span class="green bolder">LaPaKLH</span>
 							&copy; {{date('Y')}}
 						</span>
 					</div>

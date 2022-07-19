@@ -13,7 +13,7 @@
         <div class="navbar-header pull-left">
             <a href="/portal" class="navbar-brand">
                 <small>
-                <img src="{{asset('images/Lapak_putih.png')}}" alt="" srcset="" style="height:35px">
+                <img src="{{asset('images/3.png')}}" alt="" srcset="" style="height:35px">
                 LaPakLH
                 </small>
             </a>

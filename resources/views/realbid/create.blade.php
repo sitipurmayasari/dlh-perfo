@@ -33,7 +33,7 @@ method="post" action="{{route('realbid.generate')}}" enctype="multipart/form-dat
                     for="form-field-1"> Bidang
                     </label>
                     <div class="col-sm-8">
-                        <select name="bidang_id" class="col-xs-10 col-sm-10 select2" required id="bidang">
+                        <select name="bidang_id" class="col-xs-10 col-sm-10 select2" required id="bidang" onchange="getrenstra()">
                             <option value="">Pilih Bidang</option>
                             @foreach ($sub as $item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>
@@ -46,17 +46,7 @@ method="post" action="{{route('realbid.generate')}}" enctype="multipart/form-dat
                     for="form-field-1"> Periode Tahun
                     </label>
                     <div class="col-sm-8">
-                        <select name="years" class="col-xs-10 col-sm-10 select2" id="tahun" onchange="getrenstra()">
-                            <option value="">Pilih Tahun</option>
-                            <?php
-                                $a=date('Y');
-                                $pus = $a+4;
-                                for ($a=date('Y');$a<=$pus;$a++)
-                                {
-                                    echo "<option value='$a'>$a</option>";
-                                }
-                                ?>
-                        </select>
+                        <input type="text" value="{{date('Y')}}"  class="col-xs-10 col-sm-10" name="years" readonly>
                     </div>
                 </div>
                 <div  class="form-group" id="pilihbulan">

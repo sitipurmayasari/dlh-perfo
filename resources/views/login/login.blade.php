@@ -26,7 +26,7 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-                                    <img src="{{asset('images/Lapak_ori.png')}}" alt="" style="width:150px;"><br>
+                                    <img src="{{asset('images/2.png')}}" alt="" style="width:150px;"><br>
 								</h1>
 								<h4 class="green" id="id-company-text">Laporan caPaian Kinerja Lingkungan Hidup</h4>
 							</div>

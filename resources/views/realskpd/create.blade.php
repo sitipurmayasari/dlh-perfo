@@ -46,17 +46,7 @@ method="post" action="{{route('realskpd.generate')}}" enctype="multipart/form-da
                     for="form-field-1"> Periode Tahun
                     </label>
                     <div class="col-sm-8">
-                        <select name="years" class="col-xs-10 col-sm-10 select2" id="tahun" >
-                            <option value="">Pilih Tahun</option>
-                            <?php
-                                $a=date('Y');
-                                $pus = $a+4;
-                                for ($a=date('Y');$a<=$pus;$a++)
-                                {
-                                    echo "<option value='$a'>$a</option>";
-                                }
-                                ?>
-                        </select>
+                        <input type="text" value="{{date('Y')}}"  class="col-xs-10 col-sm-10" name="years" readonly>
                     </div>
                 </div>
                 <div  class="form-group" id="pilihbulan">

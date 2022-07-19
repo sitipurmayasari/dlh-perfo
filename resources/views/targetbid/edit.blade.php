@@ -52,7 +52,7 @@
                                 @endphp
                                 <input type="hidden" name="id[]" value="{{$isi->id}}">
                                 <input type="number" name="percentages[]" value="{{$isi->percentages}}" step="0.01">
-                                <td><input type="text" name="initiative[]" class="form-control" value="{{$isi->initiative}}"></td>
+                                <td><input type="text" name="initiative[]" class="form-control" value="{{$isi->initiative}}" required></td>
                             </td>
                         </tr>
                         @endforeach

@@ -50,7 +50,7 @@ method="post" action="{{route('targetbid.store')}}" enctype="multipart/form-data
                                 {{$row->names}}
                             </td>
                             <td><input type="number" name="percentages[]" value="0" step="0.01" class="form-control"></td>
-                            <td><input type="text" name="initiative[]" class="form-control"></td>
+                            <td><input type="text" name="initiative[]" class="form-control" required></td>
                         </tr>
                         @endforeach
                     </tbody>

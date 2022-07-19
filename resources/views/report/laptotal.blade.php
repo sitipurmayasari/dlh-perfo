@@ -101,19 +101,43 @@
                     $no++;
                 @endphp
             @endforeach
-            @foreach ($skpd as $lain)
-                <tr>
-                    <td style="text-align: center">{{$no}}</td>
-                    <td>SKPD {{$lain->skpd->name}}</td>
-                    <td>{{$lain->dates}}</td>
-                </tr>
-                @php
-                    $no++;
-                @endphp
-            @endforeach
            </tbody>
         </table>
-            
+        <br>
+        <hr>
+        <br>
+        <h3 style="text-align: center">Daftar Bidang / Seksi / Subbag Yang belum mengumpulkan Data Capaian</h3>
+         <table style="width: 100%">
+           <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>Nama Bidang / Seksi / Subbag</th>
+                </tr>
+           </thead>
+           <tbody>
+                @php
+                    $no=1;                    
+                @endphp
+                @foreach ($nobid as $item)
+                    <tr>
+                         <td style="text-align: center">{{$no}}</td>
+                         <td>Bidang {{$item->name}}</td>   
+                    </tr>
+                    @php
+                        $no++;
+                    @endphp
+                @endforeach
+                @foreach ($nosub as $item)
+                    <tr>
+                         <td style="text-align: center">{{$no}}</td>
+                         <td>Seksi / Subbag {{$item->name}}</td>   
+                    </tr>
+                    @php
+                        $no++;
+                    @endphp
+                @endforeach
+           </tbody>
+        </table>   
         
 </body>
 </html>

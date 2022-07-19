@@ -45,7 +45,7 @@ class AksesController extends Controller
         ]);
         
         $request->merge([
-            'password' =>  bcrypt("12345678"),
+            'password' =>  bcrypt("lingkungan"),
             'remember_token' => Str::random(60)
         ]);
 

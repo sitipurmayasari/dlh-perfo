@@ -102,10 +102,10 @@ class TargetsubbidController extends Controller
         $data       = Targetsubbid::where('id',$id)->first();
         $renstra    = Targetsubbid_detail::SelectRaw('DISTINCT years')
                                         ->where('targetsubbid_id',$id)->get();
-        $bidang     = SubBidang::where('id',$data->subsubbid_id)->first();
+        $bidang     = Subbidang::where('id',$data->subsubbid_id)->first();
         $indi       = Indicator::selectraw('zo_indicator.*')
-                                ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                                ->where('subsubbid_id',$bidang->id)->get();
+                                ->leftjoin('zo_kinserja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                ->where('zo_kinerja.subbidang_id',$bidang->id)->get();
 
         return view('targetsubbid/edit',compact('indi','data','renstra','bidang'));
     }

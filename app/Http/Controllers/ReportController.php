@@ -39,7 +39,11 @@ class ReportController extends Controller
                                 ->where('realisasibid_id',$data->id)
                                 ->get();
             $bid = Bidang::where('id', $request->bidang)->first();
-            return view('report.lapbidang',compact('data','request','bid','detail'));
+            $kadis = User::where('role','4')
+                        ->OrderBy('id','desc')->first();
+            $kabid = User::where('role','2')->where('bidang_id',$request->bidang)
+                        ->OrderBy('id','desc')->first();
+            return view('report.lapbidang',compact('data','request','bid','detail','kadis','kabid'));
 
         }elseif($request->jenis=="2"){
             $data = Realisasi::where('subbidang_id',$request->sub)
@@ -52,7 +56,11 @@ class ReportController extends Controller
                         ->where('realisasi_id',$data->id)
                         ->get();
             $bid = Subbidang::where('id', $request->sub)->first();
-            return view('report.lapsub',compact('data','request','bid','detail'));   
+            $kadis = User::where('role','4')
+                        ->OrderBy('id','desc')->first();
+            $kasie = User::where('role','2')->where('bidang_id',$request->sub)
+                        ->OrderBy('id','desc')->first();
+            return view('report.lapsub',compact('data','request','bid','detail','kadis','kasie'));   
         }elseif($request->jenis=="3"){
             dd($request->all());
             // $data = Realisasi::where('subbidang_id',$request->sub)
@@ -73,11 +81,15 @@ class ReportController extends Controller
             $subbidang = Realisasi::where('years',$request->years)
                                     ->where('month',$request->bulan)
                                     ->get();
-            $skpd = Realisasiskpd::where('years',$request->years)
-                                    ->where('month',$request->bulan)
-                                    ->get();
 
-            $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','skpd'));  
+            $nobid = Bidang::whereraw("id NOT IN 
+                            (SELECT bidang_id FROM zo_realisasibid where years ='$request->years'AND month = '$request->bulan')")
+                            ->get();
+            $nosub = Subbidang::whereraw("id NOT IN 
+                            (SELECT subbidang_id FROM zo_realisasi where years= '$request->years' AND month= '$request->bulan')")
+                            ->get();
+
+            $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             return $pdf->stream();   
         } else {
             dd($request->all());

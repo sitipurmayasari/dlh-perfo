@@ -140,6 +140,16 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label no-padding-right" 
+                        for="form-field-1"> Pangkat
+                        </label>
+                        <div class="col-sm-9">
+                            <input type="text"  placeholder="penata" value="{{$data->pangkat}}"
+                                    class="col-xs-10 col-sm-10 required " 
+                                    name="pangkat" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label no-padding-right" 
                         for="form-field-1"> Email
                         </label>
                         <div class="col-sm-9">
