@@ -100,7 +100,7 @@
                         @endif
                     </td>
                     <td>                       
-                        @if ($periv != null || date('d') > 9)
+                        {{-- @if ($periv != null || date('d') > 9)
                             @if ($periv != null)
                                 @if ($periv->validasi_sekdis=='Y')
                                     Masa Edit Berakhir
@@ -108,11 +108,11 @@
                             @else
                                 Masa Edit Berakhir
                             @endif
-                        @else
-                            <a href="/realbid/editmeta/{{$row->id}}" class="btn btn-warning">
+                        @else --}}
+                            <a href="/realbid/edit/{{$row->id}}" class="btn btn-warning">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
-                        @endif
+                        {{-- @endif --}}
                     </td>
                 </tr>
               

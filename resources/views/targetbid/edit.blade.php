@@ -12,10 +12,15 @@
     method="post" action="/targetbid/update/{{$data->id}}">
 {{ csrf_field() }}
 <div class="col-sm-12">
+    <div class="widget-box">
+        <div class="widget-header">
+            <h4 class="widget-title">Target Bidang {{$bidang->name}} Periode {{$data->yearfrom}} - {{$data->yearto}}</h4>
+        </div>
+    </div>
     @foreach ($renstra as $item)
     <div class="widget-box">
         <div class="widget-header">
-            <h4 class="widget-title"> Ubah Target Bidang {{$bidang->name}}  Tahun {{$item->years}}</h4>
+            <h4 class="widget-title"> Ubah Target Bidang  Tahun {{$item->years}}</h4>
             <div class="widget-toolbar">
                 <a href="#" data-action="collapse">
                     <i class="ace-icon fa fa-chevron-down"></i>

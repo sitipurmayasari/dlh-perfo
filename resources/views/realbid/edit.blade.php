@@ -41,7 +41,7 @@ method="post" action="/realbid/update/{{$data->id}}">
                  $blnindo = "Desember";
             }
     @endphp
-       <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi Periode {{$blnindo}} {{$data->years}}</h3></div>
+       <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi {{$data->bidang->name}} Periode {{$blnindo}} {{$data->years}} </h3></div>
        <div class="panel-body">
            <table  id="simple-table" class="table  table-bordered table-hover">
                <thead>

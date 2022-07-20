@@ -12,11 +12,11 @@
             <div class="row">
                 <div class="form-group col-sm-12">
                     <div class="row">
-                        @if (date('d') < 6)
+                        {{-- @if (date('d') < 6) --}}
                             <div class="form-group col-xs-12 col-sm-3" style="float: left">
                                 <a href="{{Route('realsubbid.create')}}"  class="btn btn-primary">Tambah Data</a>   
                             </div>
-                        @endif
+                        {{-- @endif --}}
                         <div class="form-group col-xs-12 col-sm-5" style="float: right">
                             <div class="input-group">
                                 <input type="text" class="form-control gp-search" name="keyword" placeholder="Cari " value="{{request('keyword')}}" autocomplete="off">
@@ -100,7 +100,7 @@
                         @endif
                     </td>
                     <td>                       
-                        @if ($periv != null || date('d') > 9)
+                        {{-- @if ($periv != null || date('d') > 9)
                             @if ($periv != null)
                                 @if ($periv->validasi_sekdis=='Y')
                                     Masa Edit Berakhir
@@ -108,11 +108,11 @@
                             @else
                                 Masa Edit Berakhir
                             @endif
-                        @else
-                            <a href="/realsubbid/editmeta/{{$row->id}}" class="btn btn-warning">
+                        @else --}}
+                            <a href="/realsubbid/edit/{{$row->id}}" class="btn btn-warning">
                                 <i class="glyphicon glyphicon-edit"></i>
                             </a>
-                        @endif
+                        {{-- @endif --}}
                     </td>
                 </tr>
               

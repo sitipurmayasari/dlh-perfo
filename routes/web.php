@@ -88,6 +88,18 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('targetsubbid/updatemeta/{id}','TargetsubbidController@updatemeta')->name('targetsubbid.updatemeta');
     Route::get('targetsubbid/delete/{id}','TargetsubbidController@delete')->name('targetsubbid.delete');
 
+    //Route untuk target kadis
+    Route::get('/targetkadis','TargetkadisController@index')->name('targetkadis');
+    Route::get('/targetkadis/create','TargetkadisController@create')->name('targetkadis.create');
+    Route::post('targetkadis/generate','TargetkadisController@generate')->name('targetkadis.generate');
+    Route::get('/targetkadis/entrybid/{id}','TargetkadisController@entrybid')->name('targetkadis.entrybid');
+    Route::post('targetkadis/store','TargetkadisController@store')->name('targetkadis.store');
+    Route::get('targetkadis/edit/{id}','TargetkadisController@edit')->name('targetkadis.edit');
+    Route::post('targetkadis/update/{id}','TargetkadisController@update')->name('targetkadis.update');
+    Route::get('targetkadis/editmeta/{id}','TargetkadisController@editmeta')->name('targetkadis.editmeta');
+    Route::post('targetkadis/updatemeta/{id}','TargetkadisController@updatemeta')->name('targetkadis.updatemeta');
+    Route::get('targetkadis/delete/{id}','TargetkadisController@delete')->name('targetkadis.delete');
+
    //Route untuk Realisasi Sub Bidang
     Route::get('/realsubbid','RealsubbidController@index')->name('realsubbid');
     Route::get('/realsubbid/create','RealsubbidController@create')->name('realsubbid.create');

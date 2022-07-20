@@ -47,12 +47,27 @@
                                 &nbsp;&nbsp;
                                 <input type="radio" name="owned" value="2" id="subbid">
                                 <label class="control-label no-padding-right" for="form-field-1"> Seksi / Subbag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="owned" value="3" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                            @elseif ($data->owned==3)
+                                <input type="radio" name="owned" value="1" id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Bidang</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="owned" value="2" id="subbid">
+                                <label class="control-label no-padding-right" for="form-field-1"> Seksi / Subbag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="owned" value="3" checked id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>    
                             @else
                                 <input type="radio" name="owned" value="1" id="bidang">
                                 <label class="control-label no-padding-right" for="form-field-1"> Bidang</label> 
                                 &nbsp;&nbsp;
                                 <input type="radio" name="owned" value="2" checked id="subbid">
                                 <label class="control-label no-padding-right" for="form-field-1"> Seksi / Subbag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="owned" value="3" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                             @endif
                         </div>
                     </div>

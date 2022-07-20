@@ -16,16 +16,35 @@ class IndicatorController extends Controller
                         ->SelectRaw('zo_indicator.*')
                         ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
                         ->leftjoin('zo_bidang','zo_bidang.id','zo_kinerja.bidang_id')
-                        ->leftjoin('zo_subbidang','zo_subbidang.id','zo_kinerja.subbidang_id')
+                        ->where('zo_kinerja.owned','1')
                         ->when($request->keyword, function ($query) use ($request) {
                             $query->where('zo_indicator.names','LIKE','%'.$request->keyword.'%')
                                 ->orWhere('zo_kinerja.names', 'LIKE','%'.$request->keyword.'%')
-                                ->orWhere('zo_bidang.name', 'LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_bidang.name', 'LIKE','%'.$request->keyword.'%');
+                        })
+                        ->paginate('10');
+        $datasub = Indicator::orderBy('id','desc')
+                        ->SelectRaw('zo_indicator.*')
+                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                        ->leftjoin('zo_subbidang','zo_subbidang.id','zo_kinerja.subbidang_id')
+                        ->where('zo_kinerja.owned','2')
+                        ->when($request->keyword, function ($query) use ($request) {
+                            $query->where('zo_indicator.names','LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_kinerja.names', 'LIKE','%'.$request->keyword.'%')
                                 ->orWhere('zo_subbidang.name', 'LIKE','%'.$request->keyword.'%');
                         })
                         ->paginate('10');
+        $datakadis = Indicator::orderBy('id','desc')
+                        ->SelectRaw('zo_indicator.*')
+                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                        ->where('zo_kinerja.owned','3')
+                        ->when($request->keyword, function ($query) use ($request) {
+                            $query->where('zo_indicator.names','LIKE','%'.$request->keyword.'%')
+                                ->orWhere('zo_kinerja.names', 'LIKE','%'.$request->keyword.'%');
+                        })
+                        ->paginate('10');
 
-        return view('indicator.index',compact('data'));
+        return view('indicator.index',compact('data','datasub','datakadis'));
     }
 
     public function create()

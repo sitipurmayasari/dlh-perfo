@@ -5,7 +5,6 @@
 @endsection
 @section('content')
 
-<form method="get" action="{{ url()->current() }}">
     <div class="row">
         <div class="col-xs-12">
             <div class="row">
@@ -29,46 +28,20 @@
             </div>
         </div>
     </div>
-</form>
 
-    <div class="table-responsive">
-        <table id="simple-table" class="table  table-bordered table-hover">
-            <thead>
-                <th width="40px">No</th>
-                <th>Bidang/Sub Bidang</th>
-                <th>Kinerja</th>
-                <th>Indikator</th>
-                <th class="col-md-2">Aksi</th>
-            </thead>
-            <tbody>   	
-                @foreach($data as $key=>$row)
-                <tr>
-                    <td style="text-align: center">{{$data->firstItem() + $key}}</td>
-                    <td>
-                        @if ($row->kinerja->owned == 1)
-                           Bidang {{$row->kinerja->bidang->name}}
-                        @else
-                        Seksi / Subbag {{$row->kinerja->subbid->name}}
-                        @endif
-                    </td>
-                    <td>{{$row->kinerja->names}}</td>
-                    <td>{{$row->names}}</td>
-                    <td>
-                        <a href="/indicator/edit/{{$row->id}}" class="btn btn-warning">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                        <a href="#" class="btn btn-danger delete"
-                            r-name="{{$row->names}}" 
-                            r-id="{{$row->id}}">
-                            <i class="glyphicon glyphicon-trash"></i></a>
-                    </td>
-                </tr>
-              
-                @endforeach
-            </tbody>
-        </table>
+    <div class="clearfix"></div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-sub" data-toggle="tab">Esselon IV</a></li>
+        <li><a href="#tab-bidang" data-toggle="tab">Esselon III</a></li>
+        <li><a href="#tab-kadis" data-toggle="tab">Esselon II</a></li>
+
+    </ul>
+    <div class="tab-content">
+        @include('indicator.partials.bidang')
+        @include('indicator.partials.subbidang')
+        @include('indicator.partials.kadis')
+
     </div>
-{{$data->appends(Request::all())->links()}}
 @endsection
 
 @section('footer')

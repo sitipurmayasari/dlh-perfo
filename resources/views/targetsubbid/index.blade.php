@@ -46,7 +46,7 @@
                     <td>{{$row->filename}} - Seksi / Subbag {{$row->sub->name}}</td>
                     <td>{{$row->yearfrom}} s/d {{$row->yearto}}</td>
                     <td>
-                        <a href="/targetsubbid/editmeta/{{$row->id}}" class="btn btn-warning">
+                        <a href="/targetsubbid/edit/{{$row->id}}" class="btn btn-warning">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                         <a href="#" class="btn btn-danger delete"

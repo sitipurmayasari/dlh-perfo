@@ -16,15 +16,29 @@ class KinerjaController extends Controller
         $data = Kinerja::orderBy('id','desc')
                         ->selectraw('zo_kinerja.*')
                         ->leftjoin('zo_bidang','zo_bidang.id','zo_kinerja.bidang_id')
-                        ->leftjoin('zo_subbidang','zo_subbidang.id','zo_kinerja.subbidang_id')
+                        ->where('owned','1')
                         ->when($request->keyword, function ($query) use ($request) {
                             $query->where('names','LIKE','%'.$request->keyword.'%')
-                            ->orWhere('bidang.name', 'LIKE','%'.$request->keyword.'%')
-                            ->orWhere('subbidang.name', 'LIKE','%'.$request->keyword.'%');
+                            ->orWhere('bidang.name', 'LIKE','%'.$request->keyword.'%');
                         })
                         ->paginate('10');
+        $datasub = Kinerja::orderBy('id','desc')
+                            ->selectraw('zo_kinerja.*')
+                            ->leftjoin('zo_subbidang','zo_subbidang.id','zo_kinerja.subbidang_id')
+                            ->where('owned','2')
+                            ->when($request->keyword, function ($query) use ($request) {
+                                $query->where('names','LIKE','%'.$request->keyword.'%')
+                                ->orWhere('subbidang.name', 'LIKE','%'.$request->keyword.'%');
+                            })
+                            ->paginate('10');
+        $datakadis = Kinerja::orderBy('id','desc')
+                            ->where('owned','3')
+                            ->when($request->keyword, function ($query) use ($request) {
+                                $query->where('names','LIKE','%'.$request->keyword.'%');
+                            })
+                            ->paginate('10');
 
-        return view('kinerja.index',compact('data'));
+        return view('kinerja.index',compact('data','datasub','datakadis'));
     }
 
     public function create()

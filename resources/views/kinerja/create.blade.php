@@ -45,6 +45,9 @@
                                 &nbsp;&nbsp;
                                 <input type="radio" name="owned" value="2" id="subbid">
                                 <label class="control-label no-padding-right" for="form-field-1">Seksi / Subbag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="owned" value="3" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                             </div>
                         </div>
                         <div class="form-group"  id="tampilbidang">
@@ -116,6 +119,10 @@
         $("#subbid").click(function(){
             $("#tampilbidang").hide();
             $("#tampilsubbid").show();
+        });
+        $("#kadis").click(function(){
+            $("#tampilbidang").hide();
+            $("#tampilsubbid").hide();
         });
     });
 </script>
