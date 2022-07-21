@@ -32,6 +32,13 @@
                 </a>
                 <b class="arrow"></b>
             </li>    
+            <li class="{{ (request()->segment(2) == 'targetkadis' ) ? 'active' : '' }} ">
+                <a href="/targetkadis">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Target Kadis
+                </a>
+                <b class="arrow"></b>
+            </li>    
            
         </ul>
     </li>
@@ -54,6 +61,13 @@
                 <a href="/realsubbid">
                     <i class="menu-icon fa fa-caret-right"></i>
                     Realisasi Seksi / Subbag
+                </a>
+                <b class="arrow"></b>
+            </li>   
+            <li class="{{ (request()->segment(2) == 'realkadis' ) ? 'active' : '' }} ">
+                <a href="/realkadis">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Realisasi kadis
                 </a>
                 <b class="arrow"></b>
             </li>   
