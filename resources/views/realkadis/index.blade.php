@@ -1,8 +1,8 @@
 @inject('injectQuery', 'App\InjectQuery')
 @extends('layouts.app')
 @section('breadcrumb')
-    <li>Verifikasi</li>
-    <li>Verifikasi Capaian  Seksi / Subbag</li>
+    <li>Realisasi</li>
+    <li>Realisasi Capaian Kadis</li>
 @endsection
 @section('content')
 
@@ -12,6 +12,9 @@
             <div class="row">
                 <div class="form-group col-sm-12">
                     <div class="row">
+                            <div class="form-group col-xs-12 col-sm-3" style="float: left">
+                                <a href="{{Route('realkadis.create')}}"  class="btn btn-primary">Tambah Data</a>   
+                            </div>
                         <div class="form-group col-xs-12 col-sm-5" style="float: right">
                             <div class="input-group">
                                 <input type="text" class="form-control gp-search" name="keyword" placeholder="Cari " value="{{request('keyword')}}" autocomplete="off">
@@ -33,12 +36,9 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
                 <th width="40px">No</th>
-                <th class="col-md-2">Judul</th>
-                <th>Periode</th>
-                <th> Seksi / Subbag</th>
-                <th>Pejabat</th>
-                <th>Verifikasi</th>
-                <th  class="col-md-1">Verifikasi</th>
+                <th>Judul</th>
+                <th class="col-md-2">Periode</th>
+                <th  class="col-md-2">Ubah</th>
             </thead>
             <tbody>   	
                 @foreach($data as $key=>$row)
@@ -78,53 +78,10 @@
                         {{$blnindo}} {{$row->years}}
     
                     </td>
-                    <td>{{$row->sub->name}}</td>
-                    <td>{{$row->user->name}}</td>
-                    <td>
-                        @php
-                            $periv = $injectQuery->getPeriv2($row->id);
-                            $use = auth()->user()->role;
-                        @endphp
-                        @if ($periv != null)
-                            @if ($periv->verifikasi_kabid=='R' && $periv->validasi_perencana=='N')
-                                <p style="color: red">Terdapat Revisi Dari KaBid</p>
-                            @elseif ($periv->verifikasi_kabid=='Y' && $periv->validasi_perencana=='N')
-                                <p style="color: green">Diverifikasi oleh KaBid</p>
-                            @elseif ($periv->verifikasi_kabid=='Y' && $periv->validasi_perencana=='R')
-                                <p style="color: red">Terdapat Revisi Dari Perencana</p>   
-                            @elseif ($periv->verifikasi_kabid=='Y' && $periv->validasi_perencana=='Y')
-                                <p style="color: green">Divalidasi oleh Perencana</p> 
-                            @elseif ($periv->validasi_sekdis=='R' && $periv->validasi_perencana=='Y')
-                                <p style="color: red">Terdapat Revisi Dari SekDis</p>
-                            @elseif ($periv->validasi_perencana=='Y' && $periv->validasi_sekdis=='Y')
-                                <p style="color: green">Divalidasi oleh SekDis</p>
-                            @endif
-                        @else
-                            <p style="color: grey">Belum Diverifikasi</p>
-                        @endif
-                    </td>
-                    <td> 
-                       @if ($periv != null)
-                            @if ($use==2 && $periv->verifikasi_kabid !='Y')
-                                <a href="/verisubbid/validasi/{{$periv->id}}" class="btn btn-warning">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </a>
-                            @elseif ($use==1 && $periv->verifikasi_kabid =='Y' && $periv->validasi_perencana !='Y')
-                                <a href="/verisubbid/validasi/{{$periv->id}}" class="btn btn-warning">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </a>
-                            @elseif ($use==5 && $periv->validasi_perencana =='Y' && $periv->verifikasi_sekdis !='Y')
-                                <a href="/verisubbid/validasi/{{$periv->id}}" class="btn btn-warning">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </a>
-                            @elseif ($use==5 && $periv->verifikasi_sekdis =='Y' && $periv->validasi_perencana =='Y')
-                                <i class="glyphicon glyphicon-ok"></i>
-                            @endif
-                       @elseif($use == 2)
-                        <a href="/verisubbid/verifikasi/{{$row->id}}" class="btn btn-warning">
+                    <td>                       
+                        <a href="/realkadis/edit/{{$row->id}}" class="btn btn-warning">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
-                       @endif
                     </td>
                 </tr>
               

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('breadcrumb')
-    <li>Setup</li>
-    <li>Hak Akses</li>
+    <li><i class="fa fa fa-500px">Renstra</i></li>
+    <li>Target Kadis</li>
 @endsection
 @section('content')
 
@@ -12,7 +12,7 @@
                 <div class="form-group col-sm-12">
                     <div class="row">
                         <div class="form-group col-xs-12 col-sm-3" style="float: left">
-                           <a href="{{Route('akses.create')}}"  class="btn btn-primary">Tambah Data</a>   
+                           <a href="{{Route('targetkadis.create')}}"  class="btn btn-primary">Tambah Data</a>   
                         </div>
                         <div class="form-group col-xs-12 col-sm-5" style="float: right">
                             <div class="input-group">
@@ -35,35 +35,22 @@
         <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
                 <th width="40px">No</th>
-                <th class="col-md-3">Nama</th>
-                <th>Jabatan</th>
-                <th class="col-md-2">Aksi</th>
+                <th>Judul</th>
+                <th class="col-md-2">Tahun</th>
+                <th  class="col-md-2">Aksi</th>
             </thead>
             <tbody>   	
                 @foreach($data as $key=>$row)
                 <tr>
-                    <td style="text-align: center">{{$data->firstItem() + $key}}</td>
-                    <td>{{$row->name}} <br>
-                    Nip. {{$row->nip}}</td>
+                    <td>{{$data->firstItem() + $key}}</td>
+                    <td>{{$row->filename}} - Kepala Dinas LH</td>
+                    <td>{{$row->yearfrom}} s/d {{$row->yearto}}</td>
                     <td>
-                        @if ($row->role == 1)
-                            Perencana
-                        @elseif($row->role == 2)
-                            Kabid {{$row->bidang->name}}
-                        @elseif($row->role == 3)
-                            Kasie/Subbag {{$row->subbid->name}}
-                        @elseif($row->role == 5)
-                            SekDis
-                        @else
-                            Kepala Dinas LH
-                        @endif
-                    </td>
-                    <td>
-                        <a href="/akses/edit/{{$row->id}}" class="btn btn-warning">
+                        <a href="/targetkadis/edit/{{$row->id}}" class="btn btn-warning">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                         <a href="#" class="btn btn-danger delete"
-                            r-name="{{$row->names}}" 
+                            r-name="{{$row->filename}}" 
                             r-id="{{$row->id}}">
                             <i class="glyphicon glyphicon-trash"></i></a>
                     </td>
@@ -75,7 +62,6 @@
     </div>
 {{$data->appends(Request::all())->links()}}
 @endsection
-
 @section('footer')
 <script>
     $().ready( function () {
@@ -93,7 +79,7 @@
             }).then((result) => {
                 console.log(result);
                 if (result.value) {
-                    window.location = "/akses/delete/"+id;
+                    window.location = "/targetkadis/delete/"+id;
                 }
             });
         });

@@ -33,8 +33,9 @@
                                 <select name="jenis" id="jenis" class="col-xs-10 col-sm-10" onchange="myFunction()">
                                     <option value="1">Laporan Realisasi Bidang</option>
                                     <option value="2">Laporan Realisasi Sub Bidang</option>
-                                    <option value="3">Laporan Realisasi SKPD</option>
-                                    <option value="4">Laporan Pengumpulan Data</option>
+                                    <option value="3">Laporan Realisasi Kadis</option>
+                                    <option value="4">Laporan Realisasi SKPD</option>
+                                    <option value="5">Laporan Pengumpulan Data</option>
                                 </select>
                             </div>
                         </div>
@@ -154,6 +155,10 @@
                 $("#skpd").hide();
                 $("#bidang").hide();
             }else if(v=="3"){
+                $("#sub").hide();
+                $("#skpd").hide();
+                $("#bidang").hide();
+            }else if(v=="4"){
                 $("#sub").hide();
                 $("#skpd").show();
                 $("#bidang").hide();

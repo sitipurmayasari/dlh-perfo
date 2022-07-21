@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
+		<link rel="icon" href="{{asset('images/1.png')}}">
 		<title class="noPrint"> @yield('title') LaPakLH</title>
 		<link rel="shortcut icon" href="{{asset('favicon.ico')}}">
 		<meta name="description" content="overview &amp; stats" />

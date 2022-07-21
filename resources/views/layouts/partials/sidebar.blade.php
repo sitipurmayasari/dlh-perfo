@@ -67,7 +67,7 @@
             <li class="{{ (request()->segment(2) == 'realkadis' ) ? 'active' : '' }} ">
                 <a href="/realkadis">
                     <i class="menu-icon fa fa-caret-right"></i>
-                    Realisasi kadis
+                    Realisasi Kadis
                 </a>
                 <b class="arrow"></b>
             </li>   

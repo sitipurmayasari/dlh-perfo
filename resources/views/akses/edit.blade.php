@@ -50,58 +50,86 @@
                         for="form-field-1"> Role Akses
                         </label>
                         <div class="col-sm-9">
-                           @if ($data->role=="2")
-                           <input type="radio" name="role" value="1"  id="bidang">
-                            <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="2" id="bidang" checked>
-                            <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="3" id="subbid">
-                            <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="4" id="kadis">
-                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                            @if ($data->role=="2")
+                                <input type="radio" name="role" value="1"  id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="2" id="bidang" checked>
+                                <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="3" id="subbid">
+                                <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis">
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
                                
-                           @elseif($data->role=="3")
-                           <input type="radio" name="role" value="1"  id="bidang">
-                            <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="2" id="bidang" >
-                            <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="3" id="subbid" checked>
-                            <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="4" id="kadis">
-                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                            @elseif($data->role=="3")
+                                <input type="radio" name="role" value="1"  id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="2" id="bidang" >
+                                <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="3" id="subbid" checked>
+                                <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis">
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
 
                             @elseif($data->role=="4")
-                           <input type="radio" name="role" value="1"  id="bidang">
-                            <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="2" id="bidang" >
-                            <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="3" id="subbid">
-                            <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="4" id="kadis" checked>
-                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                                <input type="radio" name="role" value="1"  id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="2" id="bidang" >
+                                <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="3" id="subbid">
+                                <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis">
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis" checked>
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
 
-                           @else
-                            <input type="radio" name="role" value="1" checked id="bidang" >
-                            <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="2" id="bidang">
-                            <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="3" id="subbid">
-                            <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
-                            &nbsp;&nbsp;
-                            <input type="radio" name="role" value="4" id="kadis">
-                            <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
-                           @endif
+                            @elseif($data->role=="5")
+                                <input type="radio" name="role" value="1"  id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="2" id="bidang" >
+                                <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="3" id="subbid">
+                                <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis" checked>
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis" >
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+
+                            @else
+                                <input type="radio" name="role" value="1" checked id="bidang" >
+                                <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="2" id="bidang">
+                                <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="3" id="subbid">
+                                <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis">
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
+                                <input type="radio" name="role" value="4" id="kadis">
+                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group"  id="tampilbidang">

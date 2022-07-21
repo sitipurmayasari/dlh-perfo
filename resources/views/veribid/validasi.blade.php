@@ -16,7 +16,7 @@
 </style>
 <div class="row">
     <form class="form-horizontal validate-form" role="form" 
-    method="post" action="/veribid/update/{{$valid->id}}">
+    method="post" action="/veribid/update/{{$data->id}}">
     {{ csrf_field() }}
     <div class="col-sm-12">
         <div class="widget-box">
@@ -34,19 +34,14 @@
                         <tr>
                             <td>Bidang</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->bidang->name}} </td>
-                        </tr>
-                        <tr>
-                            <td> Seksi / Subbag</td>
-                            <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->name}} </td>
+                            <td> &nbsp; {{$real->bidang->name}} </td>
                         </tr>
                         <tr>
                             <td>Periode</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> 
                                 @php
-                                    $bln = $data->month;
+                                    $bln = $real->month;
                                         if ($bln==1) { 
                                             $blnindo = "Januari";
                                         } else  if ($bln==2){
@@ -73,31 +68,20 @@
                                             $blnindo = "Desember";
                                         }
                                 @endphp
-                               &nbsp; {{$blnindo}} {{$data->years}}
+                               &nbsp; {{$blnindo}} {{$real->years}}
                             </td>
                         </tr>
                         <tr>
                             <td>Target</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->target->filename}} ({{$data->target->yearfrom}} s/d {{$data->target->yearto}}) </td>
+                            <td> &nbsp; {{$real->target->filename}} ({{$real->target->yearfrom}} s/d {{$real->target->yearto}}) </td>
                         </tr>
                         <tr>
                             <td>Dokumen Pendukung</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> &nbsp; 
-                                @if ($data->files != null)
-                                    <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
-                                @else
-                                    {{ '-' }}
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Catatan Kabid</td>
-                            <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; 
-                                @if ($valid->catatan_kabid != null)
-                                    {{$valid->catatan_kabid}}
+                                @if ($real->files != null)
+                                    <label><a href="{{$real->getFile()}}" target="_blank" >{{$real->files}}</a></label>
                                 @else
                                     {{ '-' }}
                                 @endif
@@ -111,10 +95,10 @@
                                  <th style="text-align: center" >No</th>
                                  <th style="text-align: center">Kinerja Utama</th>
                                  <th style="text-align: center">Indikator</th>
-                                 <th style="text-align: center" >Target Tahun {{$data->years}}</th>
+                                 <th style="text-align: center" >Target Tahun {{$real->years}}</th>
                                  <th style="text-align: center">Realisasi</th>
                                  <th style="text-align: center">Capaian (%) </th>
-                                 <th style="text-align: center" >Capaian Tahun {{$data->years}}</th>
+                                 <th style="text-align: center" >Capaian Tahun {{$real->years}}</th>
                                  <th style="text-align: center">Keterangan</th>
                              </tr>
                         </thead>
@@ -149,7 +133,7 @@
         </div>
         <div class="widget-box">
             <div class="widget-header">
-                <h4 class="widget-title">Verifikasi Capaian Oleh Kabid</h4>
+                <h4 class="widget-title">Verifikasi Capaian Oleh Perencana</h4>
                 <div class="widget-toolbar">
                     <a href="#" data-action="collapse">
                         <i class="ace-icon fa fa-chevron-down"></i>
@@ -165,14 +149,14 @@
                             for="form-field-1"> Verifikasi
                             </label>
                             <div class="col-sm-9">
-                                @if ($valid->validasi_perencana=='Y')
+                                @if ($data->validasi_perencana=='Y')
                                     <input type="radio" required value="N" 
                                     name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
                                     <input type="radio" required value="Y" checked
                                     name="validasi_perencana"/> &nbsp; Terverifikasi &nbsp;
                                     <input type="radio" required value="R"
                                     name="validasi_perencana"/> &nbsp; Perlu di perbaiki &nbsp; 
-                                @elseif ($valid->validasi_perencana=='R')
+                                @elseif ($data->validasi_perencana=='R')
                                     <input type="radio" required value="N" 
                                     name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
                                     <input type="radio" required value="Y" 
@@ -194,10 +178,10 @@
                             for="form-field-1"> Catatan
                             </label>
                             <div class="col-sm-9">
-                                <input type="hidden" name="realisasi_id" value="{{$data->id}}">
+                                <input type="hidden" name="realisasibid_id" value="{{$realisasibid_id->id}}">
                                 <input type="hidden" name="perencana_id" value="{{auth()->user()->id}}">
                                 <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="perencana_dates"/>
-                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$valid->catatan_perencana}}"
+                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$data->catatan_perencana}}"
                                 name="catatan_perencana" required/>
                             </div>
                     </div>

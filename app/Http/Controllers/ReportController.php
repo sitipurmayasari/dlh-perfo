@@ -11,9 +11,12 @@ use App\Realisasibid;
 use App\Realisasibid_detail;
 use App\Realisasiskpd;
 use App\Realisasiskpd_detail;
+use App\Realisasikadis;
+use App\Realisasikadis_detail;
 use App\Subbidang;
 use App\Bidang;
 use App\Skpd;
+use App\User;
 use PDF;
 
 class ReportController extends Controller
@@ -61,20 +64,33 @@ class ReportController extends Controller
             $kasie = User::where('role','2')->where('bidang_id',$request->sub)
                         ->OrderBy('id','desc')->first();
             return view('report.lapsub',compact('data','request','bid','detail','kadis','kasie'));   
+
         }elseif($request->jenis=="3"){
-            dd($request->all());
-            // $data = Realisasi::where('subbidang_id',$request->sub)
-            //             ->where('years',$request->years)
-            //             ->when($request->bulan, function ($query) use ($request) {
-            //                 $query->where('month',$request->bulan);
-            //             })
-            //             ->first();
-            // $detail = Realisasi_detail::orderby('indicator_id','asc')
-            //             ->where('realisasi_id',$data->id)
-            //             ->get();
-            // $bid = Subbidang::where('id', $request->sub)->first();
-            // return view('report.lapskpd',compact('data','request','bid','detail'));   
+            $data = Realisasikadis::where('years',$request->years)
+                                    ->when($request->bulan, function ($query) use ($request) {
+                                        $query->where('month',$request->bulan);
+                                    })
+                                    ->first();
+            $detail = Realisasikadis_detail::orderby('indicator_id','asc')
+                                        ->where('realisasikadis_id',$data->id)
+                                        ->get();
+            $kadis = User::where('role','4')
+                        ->OrderBy('id','desc')->first();
+            return view('report.lapkadis',compact('data','request','detail','kadis'));  
+
         }elseif($request->jenis=="4"){
+            $data = RealisasiSKPD::where('skpd_id',$request->skpd)
+                                    ->where('years',$request->years)
+                                    ->when($request->bulan, function ($query) use ($request) {
+                                        $query->where('month',$request->bulan);
+                                    })
+                                    ->first();
+            $detail = RealisasiSKPD_detail::orderby('kinerja_skpd_id','asc')
+                                        ->where('realisasiskpd_id',$data->id)
+                                        ->get();
+            return view('report.lapskpd',compact('data','request','detail'));  
+
+        }elseif($request->jenis=="5"){
             $bidang = Realisasibid::where('years',$request->years)
                                     ->where('month',$request->bulan)
                                     ->get();

@@ -60,19 +60,16 @@ class VerisubbidController extends Controller
 
     public function edit($id)
     {
-        $kinerja = Kinerja::all();
-        $data = Realisasi::where('id',$id)->first();
+        $data = Verisubbid::where('id',$id)->first();
+        $real = Realisasi::where('id',$data->realisasi_id)->first();
         $detail = Realisasi_detail::where('realisasi_id',$id)->get();
-        $valid = Verisubbid::where('realisasi_id',$id)->first();
 
         if (auth()->user()->role == 1) {
-            return view('verisubbid.validasi',compact('data','detail','valid'));
+            return view('verisubbid.validasi',compact('data','detail','real'));
         } elseif (auth()->user()->role == 2) {
-            return view('verisubbid.validasibid',compact('data','detail','valid')); 
-        } elseif (auth()->user()->role == 3) {
-            return view('verisubbid.validasikadis',compact('data','detail','valid'));    
+            return view('verisubbid.validasibid',compact('data','detail','real')); 
         } else {
-            return view('verisubbid.validasisekdis',compact('data','detail','valid'));
+            return view('verisubbid.validasisekdis',compact('data','detail','real'));
         }
     }
 

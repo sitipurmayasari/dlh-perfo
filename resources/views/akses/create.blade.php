@@ -48,17 +48,20 @@
                             for="form-field-1"> Role Akses
                             </label>
                             <div class="col-sm-9">
-                                <input type="radio" name="role" value="1" checked id="bidang">
+                                <input type="radio" name="role" value="1" checked id="perencana">
                                 <label class="control-label no-padding-right" for="form-field-1"> Perencana</label> 
                                 &nbsp;&nbsp;
-                                <input type="radio" name="role" value="2" checked id="bidang">
+                                <input type="radio" name="role" value="2" id="bidang">
                                 <label class="control-label no-padding-right" for="form-field-1"> Kabid</label> 
                                  &nbsp;&nbsp;
                                 <input type="radio" name="role" value="3" id="subbid">
                                 <label class="control-label no-padding-right" for="form-field-1">Kasie / Kasubag</label>
                                 &nbsp;&nbsp;
+                                <input type="radio" name="role" value="5" id="sekdis">
+                                <label class="control-label no-padding-right" for="form-field-1">SekDis</label>
+                                &nbsp;&nbsp;
                                 <input type="radio" name="role" value="4" id="kadis">
-                                <label class="control-label no-padding-right" for="form-field-1">Kadis</label>
+                                <label class="control-label no-padding-right" for="form-field-1">KaDis</label>
                             </div>
                         </div>
                         <div class="form-group"  id="tampilbidang">
@@ -66,7 +69,7 @@
                             for="form-field-1"> Bidang
                             </label>
                             <div class="col-sm-9">
-                                <select name="bidang_id" class="col-xs-10 col-sm-10 select2" required>
+                                <select name="bidang_id" class="col-xs-10 col-sm-10 select2">
                                     <option value="">Pilih Bidang</option>
                                     @foreach ($bidang as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
@@ -125,17 +128,26 @@
 @endsection
 @section('footer')
 <script>
-    // $(document).ready(function(){
-    //     $("#tampilsubbid").hide();
+    $(document).ready(function(){
+        $("#tampilsubbid").hide();
+        $("#tampilbidang").hide();
 
-    //     $("#bidang").click(function(){
-    //         $("#tampilsubbid").hide();
-    //         $("#tampilbidang").show();
-    //     });
-    //     $("#subbid").click(function(){
-    //         $("#tampilbidang").hide();
-    //         $("#tampilsubbid").show();
-    //     });
-    // });
+        $("#bidang").click(function(){
+            $("#tampilsubbid").hide();
+            $("#tampilbidang").show();
+        });
+        $("#subbid").click(function(){
+            $("#tampilbidang").hide();
+            $("#tampilsubbid").show();
+        });
+        $("#sekdis").click(function(){
+            $("#tampilbidang").hide();
+            $("#tampilsubbid").hide();
+        });
+        $("#kadis").click(function(){
+            $("#tampilbidang").hide();
+            $("#tampilsubbid").hide();
+        });
+    });
 </script>
 @endsection

@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
 
      //Route untuk SKPD
     Route::get('/skpd','SKPDController@index')->name('skpd');
+    Route::get('/skpd/create','SKPDController@create')->name('skpd.create');
     Route::post('/skpd/store','SKPDController@store')->name('skpd.store');
     Route::get('/skpd/edit/{id}','SKPDController@edit')->name('skpd.edit');
     Route::post('/skpd/update/{id}','SKPDController@update')->name('skpd.update');
@@ -96,8 +97,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('targetkadis/store','TargetkadisController@store')->name('targetkadis.store');
     Route::get('targetkadis/edit/{id}','TargetkadisController@edit')->name('targetkadis.edit');
     Route::post('targetkadis/update/{id}','TargetkadisController@update')->name('targetkadis.update');
-    Route::get('targetkadis/editmeta/{id}','TargetkadisController@editmeta')->name('targetkadis.editmeta');
-    Route::post('targetkadis/updatemeta/{id}','TargetkadisController@updatemeta')->name('targetkadis.updatemeta');
     Route::get('targetkadis/delete/{id}','TargetkadisController@delete')->name('targetkadis.delete');
 
    //Route untuk Realisasi Sub Bidang
@@ -118,7 +117,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('verisubbid/store','VerisubbidController@store')->name('verisubbid.store');
     Route::get('/verisubbid/validasi/{id}','VerisubbidController@edit')->name('verisubbid.validasi');
     Route::post('verisubbid/update/{id}','VerisubbidController@update')->name('verisubbid.update');
-
 
      //Route untuk Realisasi Bidang
      Route::get('/realbid','RealbidController@index')->name('realbid');
@@ -151,6 +149,17 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('realskpd/updatemeta/{id}','RealSKPDController@updatemeta')->name('realskpd.updatemeta');
     Route::get('realskpd/getrenstra','RealSKPDController@getrenstra')->name('realskpd.getrenstra');
 
+    //Route untuk Realisasi Kadis
+    Route::get('/realkadis','RealkadisController@index')->name('realkadis');
+    Route::get('/realkadis/create','RealkadisController@create')->name('realkadis.create');
+    Route::post('realkadis/generate','RealkadisController@generate')->name('realkadis.generate');
+    Route::get('/realkadis/entrydata/{id}','RealkadisController@entrydata')->name('realkadis.entrydata');
+    Route::post('realkadis/store','RealkadisController@store')->name('realkadis.store');
+    Route::get('realkadis/edit/{id}','RealkadisController@edit')->name('realkadis.edit');
+    Route::post('realkadis/update/{id}','RealkadisController@update')->name('realkadis.update');
+    Route::get('realkadis/editmeta/{id}','RealkadisController@editmeta')->name('realkadis.editmeta');
+    Route::post('realkadis/updatemeta/{id}','RealkadisController@updatemeta')->name('realkadis.updatemeta');
+    
     //Route untuk Laporan
     Route::get('/report','ReportController@index')->name('report');
     Route::post('/report/cetak','ReportController@cetak')->name('report.cetak');

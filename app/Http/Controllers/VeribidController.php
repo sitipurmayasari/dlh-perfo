@@ -20,20 +20,7 @@ class VeribidController extends Controller
     {
         $role = auth()->user()->role;
         $bidang = auth()->user()->bidang_id;
-        if ($role==2) {
-            $data = Realisasibid::orderBy('id','desc')
-                        ->Selectraw('zo_realisasibid.*')
-                        ->leftjoin('zo_bidang','zo_bidang.id','zo_realisasibid.bidang_id')
-                        ->leftjoin('users','users.id','zo_realisasibid.users_id')
-                        ->where('zo_bidang.bidang_id',$bidang)
-                        ->when($request->keyword, function ($query) use ($request) {
-                            $query->where('filename','LIKE','%'.$request->keyword.'%')
-                                ->orWhere('zo_bidang.name', 'LIKE','%'.$request->keyword.'%')
-                                ->orWhere('users.name', 'LIKE','%'.$request->keyword.'%');
-                        })
-                        ->paginate('10');
-        } else {
-            $data = Realisasibid::orderBy('id','desc')
+        $data = Realisasibid::orderBy('id','desc')
                         ->Selectraw('zo_realisasibid.*')
                         ->leftjoin('zo_bidang','zo_bidang.id','zo_realisasibid.bidang_id')
                         ->leftjoin('users','users.id','zo_realisasibid.users_id')
@@ -42,9 +29,7 @@ class VeribidController extends Controller
                                 ->orWhere('zo_bidang.name', 'LIKE','%'.$request->keyword.'%')
                                 ->orWhere('users.name', 'LIKE','%'.$request->keyword.'%');
                         })
-                        ->paginate('10');
-        }
-        
+                        ->paginate('10'); 
 
         return view('veribid.index',compact('data'));
     }
@@ -54,25 +39,20 @@ class VeribidController extends Controller
     {
         $kinerja = Kinerja::all();
         $data = Realisasibid::where('id',$id)->first();
-        $detail = Realisasi_detail::where('realisasi_id',$id)->get();
+        $detail = Realisasibid_detail::where('realisasibid_id',$id)->get();
         return view('veribid.verifikasi',compact('data','detail'));
     }
 
     public function edit($id)
     {
-        $kinerja = Kinerja::all();
-        $data = Realisasibid::where('id',$id)->first();
-        $detail = Realisasi_detail::where('realisasi_id',$id)->get();
-        $valid = Veribid::where('realisasi_id',$id)->first();
+        $data = Veribid::where('id',$id)->first();
+        $real = Realisasibid::where('id',$data->realisasibid_id)->first();
+        $detail = Realisasibid_detail::where('realisasibid_id',$data->realisasibid_id)->get();
 
         if (auth()->user()->role == 1) {
-            return view('veribid.validasi',compact('data','detail','valid'));
-        } elseif (auth()->user()->role == 2) {
-            return view('veribid.validasibid',compact('data','detail','valid')); 
-        } elseif (auth()->user()->role == 3) {
-            return view('veribid.validasikadis',compact('data','detail','valid'));    
+            return view('veribid.validasi',compact('data','detail','real'));
         } else {
-            return view('veribid.validasisekdis',compact('data','detail','valid'));
+            return view('veribid.validasisekdis',compact('data','detail','real'));
         }
     }
 

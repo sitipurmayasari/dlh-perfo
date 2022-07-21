@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Veribid extends Model
 {
-    protected $table = "zo_verisubbid";
+    protected $table = "zo_veribid";
     protected $fillable = ["realisasibid_id","perencana_dates","validasi_perencana","catatan_perencana","perencana_id",
                             "sekdis_dates","validasi_sekdis","catatan_sekdis","sekdis_id"
                             ];

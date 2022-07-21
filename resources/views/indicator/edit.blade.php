@@ -40,6 +40,8 @@
                                             ( 
                                                 @if ($item->owned == 1)
                                                     {{$item->bidang->name}}
+                                                @elseif ($item->owned == 3)
+                                                    Kepala Dinas LH
                                                 @else
                                                     {{$item->subbid->name}}
                                                 @endif
@@ -50,6 +52,8 @@
                                             ( 
                                                 @if ($item->owned == 1)
                                                     {{$item->bidang->name}}
+                                                @elseif ($item->owned == 3)
+                                                    Kepala Dinas LH
                                                 @else
                                                     {{$item->subbid->name}}
                                                 @endif

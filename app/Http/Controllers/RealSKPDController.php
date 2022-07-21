@@ -69,9 +69,9 @@ class RealSKPDController extends Controller
     {
         // dd($request->all());
         DB::beginTransaction();
-            for ($i = 0; $i < count($request->input('indicator_id')); $i++){
+            for ($i = 0; $i < count($request->input('kinerja_skpd_id')); $i++){
                 $data = [
-                    'kinerja_skpd_id'  => $request->indicator_id[$i],
+                    'kinerja_skpd_id'  => $request->kinerja_skpd_id[$i],
                     'realisasiskpd_id' => $request->realisasiskpd_id[$i],
                     'target'        => $request->target[$i],
                     'real'          => $request->real[$i],

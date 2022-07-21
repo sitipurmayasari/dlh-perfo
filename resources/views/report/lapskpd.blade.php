@@ -1,19 +1,31 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{asset('assets/css/print.css')}}" rel="stylesheet">
-    <title>Document</title>
-</head> --}}
-
-<?php
-header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Daftar-Arsip-Aktif-Tahunan.xls");
-?>
+@php
+ $bln = $data->month;
+ if ($bln==1) { 
+     $blnindo = "Januari";
+ } else  if ($bln==2){
+     $blnindo = "Februari";
+ } else  if ($bln==3){
+     $blnindo = "Maret";
+ } else  if ($bln==4){
+     $blnindo = "April";
+ } else  if ($bln==5){
+     $blnindo = "Mei";
+ } else  if ($bln==6){
+     $blnindo = "Juni";
+ } else  if ($bln==7){
+     $blnindo = "Juli";
+ } else  if ($bln==8){
+     $blnindo = "Agustus";
+ } else  if ($bln==9){
+     $blnindo = "September";
+ } else  if ($bln==10){
+     $blnindo = "Oktober";
+ } else  if ($bln==11){
+     $blnindo = "November";
+ } else {
+     $blnindo = "Desember";
+ }
+@endphp
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +33,11 @@ header("Content-Disposition: attachment; filename=Daftar-Arsip-Aktif-Tahunan.xls
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daftar Arsip Aktif Tahun {{$request->tahun}}</title>
- 
+    <title>Laporan Realisasi  Periode {{$blnindo}} {{$data->years}}</title>
+    <?php
+        // header("Content-type: application/vnd-ms-excel");
+        // header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
+    ?>
     <style>
         @page {
                 size: landscape;
@@ -42,6 +57,7 @@ header("Content-Disposition: attachment; filename=Daftar-Arsip-Aktif-Tahunan.xls
         th{
             text-align: center;
             vertical-align: middle;
+            font-weight: bold;
         }
         td{
             vertical-align: top;
@@ -53,113 +69,55 @@ header("Content-Disposition: attachment; filename=Daftar-Arsip-Aktif-Tahunan.xls
 </head>
 <body>
     <div class="col-sm-12 isi" style="text-align: center">
-        <div style="align=center font-size: 18px">
-            <b>DAFTAR ARSIP AKTIF TAHUN {{$request->tahun}}</b>
-        </div>
+        <div style="align:center; font-size: 18px; text-transform: uppercase;"><b>
+                LAPORAN PENGUKURAN KINERJA BULAN {{$blnindo}}<br>
+                KEPALA DINAS<br>
+                DINAS LINGKUNGAN HIDUP PROVINSI KALSEL
+        </b></div>
         <br>
-        <div style="text-align: left">
-            <table class="atas">
-                <tr class="atas">
-                    <td class="atas">Pencipta Arsip</td>
-                    <td class="atas">:</td>
-                    <td class="atas"> Balai Besar POM di Banjarmasin</td>
-                </tr>
-                <tr class="atas">
-                    <td class="atas">Unit Kerja / Unit Pengolah</td>
-                    <td class="atas">:</td>
-                    <td class="atas"> {{$div->nama}}</td>
-                </tr>
-                <tr class="atas">
-                    <td class="atas">Nama Pemimpin unit kerja / unit pengolah</td>
-                    <td class="atas">:</td>
-                    <td class="atas"></td>
-                </tr>
-                <tr class="atas">
-                    <td class="atas">Jabatan Pimpinan Unit Kerja / Unit Pengolah</td>
-                    <td class="atas">:</td>
-                    <td class="atas"></td>
-                </tr>
-                <tr class="atas">
-                    <td class="atas">Alamat Unit Kerja/ Unit Pengolah</td>
-                    <td class="atas">:</td>
-                    <td class="atas"> Jl. Brigjend. H. Hasan Basri No. 40 - Banjarmasin</td>
-                </tr>    
-            </table>
-        </div>
-     </div>
-     <br><br>
-     <div class="table-responsive isi">
-        <table  style="font-size: 11px;" >
-            <thead style="font-size: 12px;">
+    </div>
+    <div>
+        <table>
+            <thead>
                 <tr>
-                    <th colspan="4">Daftar Berkas</th>
-                    <th colspan="11">Daftar ISi Berkas</th>
+                    <th rowspan="2">No</th>
+                    <th rowspan="2">Kinerja Utama</th>
+                    <th rowspan="2">Indikator</th>
+                    <th colspan="3">Target & Capaian {{$data->years}}</th>
+                    <th rowspan="2">Keterangan</th>
                 </tr>
                 <tr>
-                    <th width="10px" rowspan="2">No Berkas</th>
-                    <th rowspan="2">Kode Klasifikasi</th>
-                    <th rowspan="2">Uraian Berkas</th>
-                    <th rowspan="2">Tahun</th>
-                    <th rowspan="2">Nomor Item</th>
-                    <th rowspan="2">Uraian Isi Informasi</th>
-                    <th rowspan="2">Jumlah</th>
-                    <th rowspan="2">Tanggal</th>
-                    <th rowspan="2">Tingkat Perkembangan</th>
-                    <th rowspan="2">Lokasi</th>
-                    <th colspan="4">Jenis Arsip</th>
-                    <th rowspan="2">keterangan</th>
+                    <th>Target</th>
+                    <th>Realisasi</th>
+                    <th>Capaian (%)</th>
                 </tr>
-                <tr>
-                    <th>Biasa</th>
-                    <th>Terbatas</th>
-                    <th>Rahasia</th>
-                    <th>Sangat Rahasia</th>
-                </tr>
-               
             </thead>
             <tbody>
-                @php $no=1;  @endphp
-                @foreach($data as $key=>$row)
-                    <tr>
-                        <td></td>
-                        <td>{{$row->klas->alias}}</td>
-                        <td>{{$row->klas->names}}</td>
-                        <td>{{$request->tahun}}</td>
-                        <td style="text-align: center">{{$no}}</td>
-                        <td>{{$row->uraian}}</td>
-                        <td style="text-align: center">{{$row->jumlah}}</td>
-                        <td>{{tgl_indo($row->date)}}</td>
-                        <td>{{$row->tingkat}}</td>
-                        <td>{{$row->lokasi}}</td>
-                        <td style="text-align: center">
-                            @if ($row->klas->securitiesklas == 'B')
-                                v
-                            @endif
-                        </td>
-                        <td style="text-align: center">
-                            @if ($row->klas->securitiesklas == 'T')
-                                v
-                            @endif
-                        </td>
-                        <td style="text-align: center">
-                            @if ($row->klas->securitiesklas == 'R')
-                                v
-                            @endif
-                        </td>
-                        <td style="text-align: center">
-                            @if ($row->klas->securitiesklas == 'S')
-                                v
-                            @endif
-                        </td>
-                        <td></td>
-                    </tr>
-                    @php
-                        $no++;
-                    @endphp
+                @php
+                    $no = 1;
+                @endphp
+                @foreach ($detail as $item)
+                <tr>
+                    <td style="text-align: center">
+                        {{$no}}
+                    </td>
+                    <td>
+                        {{$item->indi->names}}
+                    </td>
+                    <td>{{$item->indi->indicator}}</td>
+                    <td style="text-align: center">{{$item->target}}</td>
+                    <td style="text-align: center">{{$item->real}}</td>
+                    <td style="text-align: center">{{$item->capaian}}</td>
+                    <td>{{$item->keterangan}}</td>
+                </tr>
+                @php
+                    $no++;
+                @endphp
                 @endforeach
             </tbody>
         </table>
     </div>
+    <br><br>
         
 </body>
 </html>

@@ -3,9 +3,14 @@
 namespace App;
 use Illuminate\Support\Facades\DB;
 use App\User;
-use App\Targetbid;
+use App\Targetbid_detail;
+use App\Targetsubbid_detail;
+use App\Targetkadis_detail;
+use App\Target_skpd;
+use App\Veribid;
 use App\Verisubbid;
 use App\Realisasibid;
+
 
 class InjectQuery
 {
@@ -26,6 +31,14 @@ class InjectQuery
         return $isi;
     }
 
+    public function getRenstra3($id, $year,$indi){
+        $isi = Targetkadis_detail::where('years',$year)
+                                ->where('targetkadis_id',$id)
+                                ->where('indicator_id',$indi)
+                                ->first();
+        return $isi;
+    }
+
     public function getTargetSkpd($id, $year){
         $isi = Target_skpd::where('kinerja_skpd_id',$id)
                             ->where('years',$year)
@@ -36,6 +49,12 @@ class InjectQuery
 
 
     public function getPeriv($id){
+        $data = Veribid::where('realisasibid_id',$id)
+                        ->first();
+        return $data;
+    }
+
+    public function getPeriv2($id){
         $data = Verisubbid::where('realisasi_id',$id)
                         ->first();
         return $data;

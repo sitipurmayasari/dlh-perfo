@@ -1,18 +1,18 @@
 @extends('layouts.app')
+@inject('injectQuery', 'App\InjectQuery')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realsubbid">Realisasi Capaian  Seksi / Subbag</a></li>
-    <li>Ubah Data </li>
+    <li><a href="/realkadis">Realisasi Capaian  Bidang</a></li>
+    <li>Tambah Baru</li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="/realsubbid/update/{{$data->id}}">
+method="post" action="{{route('realkadis.store')}}" enctype="multipart/form-data"   >
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
-   <div class="panel panel-info">
     @php
         $bln = $data->month;
             if ($bln==1) { 
@@ -41,7 +41,9 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                  $blnindo = "Desember";
             }
     @endphp
-    <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi {{$data->sub->name}} Periode {{$blnindo}} {{$data->years}} </h3></div>
+    
+   <div class="panel panel-info">
+       <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi Periode {{$blnindo}} {{$data->years}}</h3></div>
        <div class="panel-body">
            <table  id="simple-table" class="table  table-bordered table-hover">
                <thead>
@@ -54,31 +56,35 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                         <th style="text-align: center" class="col-md-1">Capaian Tahun{{$data->years}}</th>
                         <th style="text-align: center" > capaian tahun {{$data->years}} terhadap target akhir renstra</th>
                         <th style="text-align: center" class="col-md-4">Analisis Capaian Kinerja</th>
+                    </tr>
                </thead>
                <tbody>
                    @php
                        $no = 1;
                    @endphp
-                    @foreach ($detail as $key=>$row)
+                    @foreach ($indi as $key=>$row)
                         <tr>
                             <td style="text-align: center">{{$no}}</td>
                             <td>
-                                <input type="hidden" name="id[]" value="{{$row->id}}">
+                                <input type="hidden" name="realisasikadis_id[]" value="{{$data->id}}">
                                 <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
                                 {{$row->indi->names}}
                             </td>
                             <td>
+                                @php
+                                    $isi = $injectQuery->getRenstra3($data->targetkadis_id,$yearend->yearto,$row->indicator_id);
+                                @endphp
                                 <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
-                                value="{{$row->target_akhir}}">
+                                    value="{{$isi->percentages}}">
                             </td>
                             <td>
-                                <input type="number" readonly name="target[]" class="col-sm-10" value="{{$row->target}}"
-                                    id="target-{{$no}}">
+                                <input type="number" readonly name="target[]" value="{{$row->percentages}}"
+                                    id="target-{{$no}}" class="form-control">
                             </td>
-                            <td><input type="number" name="real[]" value="{{$row->real}}" step="0.01" class="col-sm-10" id="real-{{$no}}" onkeyup="hitung({{$no}})"></td>
-                            <td><input type="number" name="capaian[]" value="{{$row->capaian}}" step="0.01" class="col-sm-10" id="hasil-{{$no}}"></td>
-                            <td><input type="number" name="capaian_akhir[]" value="{{$row->capaian_akhir}}" step="0.01" class="col-sm-10" id="hasiltahun-{{$no}}"></td>
-                            <td><textarea name="keterangan[]" id="" rows="5" class="form-control" required>{{$row->keterangan}}</textarea></td>
+                            <td><input type="number" name="real[]" value="0" step="0.01" class="form-control" id="real-{{$no}}" ></td>
+                            <td><input type="number" name="capaian[]" value="0" step="0.01" class="form-control" id="hasil-{{$no}}" onkeyup="hitung({{$no}})"></td>
+                            <td><input type="number" name="capaian_akhir[]" value="0" step="0.01" class="form-control" id="hasiltahun-{{$no}}"></td>
+                            <td><textarea name="keterangan[]" id="" rows="5" class="form-control" required></textarea></td>
                         </tr>
                         @php
                             $no++;
@@ -100,20 +106,20 @@ method="post" action="/realsubbid/update/{{$data->id}}">
 </form>
 
 @endsection
-
 @section('footer')
-<script>
-    function hitung(i) {
-        var a = $("#target-"+i).val();
-        var b =  $("#real-"+i).val();
-        var d = (b / a) * 100;
+    <script>
+        function hitung(i) {
+            // var a = $("#target-"+i).val();
+            // var b =  $("#real-"+i).val();
+            // var d = (b / a) * 100;
 
-        var hasil = parseFloat(d).toFixed(2);
-        $("#hasil-"+i).val(hasil);
+            var hasil = parseFloat(d).toFixed(2);
+            var x = $("#akhir-"+i).val();
+            var y = $("#hasil-"+i).val();
+            var z = (y / x );
 
-        // var e = (b / d) * 100;
-        var hasiltahun = parseFloat(d).toFixed(2);
-        $("#hasiltahun-"+i).val(hasiltahun);
-    }
-</script>
+            var hasiltahun = parseFloat(z).toFixed(2);
+            $("#hasiltahun-"+i).val(hasiltahun);
+        }
+    </script>
 @endsection

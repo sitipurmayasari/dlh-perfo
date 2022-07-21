@@ -16,7 +16,7 @@
 </style>
 <div class="row">
     <form class="form-horizontal validate-form" role="form" 
-    method="post" action="/verisubbid/update/{{$valid->id}}">
+    method="post" action="/verisubbid/update/{{$data->id}}">
     {{ csrf_field() }}
     <div class="col-sm-12">
         <div class="widget-box">
@@ -34,19 +34,19 @@
                         <tr>
                             <td>Bidang</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->bidang->name}} </td>
+                            <td> &nbsp; {{$real->sub->bidang->name}} </td>
                         </tr>
                         <tr>
                             <td> Seksi / Subbag</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->name}} </td>
+                            <td> &nbsp; {{$real->sub->name}} </td>
                         </tr>
                         <tr>
                             <td>Periode</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> 
                                 @php
-                                    $bln = $data->month;
+                                    $bln = $real->month;
                                         if ($bln==1) { 
                                             $blnindo = "Januari";
                                         } else  if ($bln==2){
@@ -73,20 +73,20 @@
                                             $blnindo = "Desember";
                                         }
                                 @endphp
-                               &nbsp; {{$blnindo}} {{$data->years}}
+                               &nbsp; {{$blnindo}} {{$real->years}}
                             </td>
                         </tr>
                         <tr>
                             <td>Target</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->target->filename}} ({{$data->target->yearfrom}} s/d {{$data->target->yearto}}) </td>
+                            <td> &nbsp; {{$real->target->filename}} ({{$real->target->yearfrom}} s/d {{$real->target->yearto}}) </td>
                         </tr>
                         <tr>
                             <td>Dokumen Pendukung</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> &nbsp; 
-                                @if ($data->files != null)
-                                    <label><a href="{{$data->getFile()}}" target="_blank" >{{$data->files}}</a></label>
+                                @if ($real->files != null)
+                                    <label><a href="{{$real->getFile()}}" target="_blank" >{{$real->files}}</a></label>
                                 @else
                                     {{ '-' }}
                                 @endif
@@ -96,8 +96,8 @@
                             <td>Catatan Kabid</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> &nbsp; 
-                                @if ($valid->catatan_kabid != null)
-                                    {{$valid->catatan_kabid}}
+                                @if ($data->catatan_kabid != null)
+                                    {{$data->catatan_kabid}}
                                 @else
                                     {{ '-' }}
                                 @endif
@@ -107,8 +107,8 @@
                             <td>Catatan Perencana</td>
                             <td>&nbsp; : &nbsp;</td>
                             <td> &nbsp; 
-                                @if ($valid->catatan_sekdis != null)
-                                    {{$valid->catatan_sekdis}}
+                                @if ($data->catatan_perencana != null)
+                                    {{$data->catatan_perencana}}
                                 @else
                                     {{ '-' }}
                                 @endif
@@ -176,14 +176,14 @@
                             for="form-field-1"> Verifikasi
                             </label>
                             <div class="col-sm-9">
-                                @if ($valid->validasi_sekdis=='Y')
+                                @if ($data->validasi_sekdis=='Y')
                                     <input type="radio" required value="N" 
                                     name="validasi_sekdis"/> &nbsp; Belum di Verifikasi &nbsp;
                                     <input type="radio" required value="Y" checked
                                     name="validasi_sekdis"/> &nbsp; Terverifikasi &nbsp;
                                     <input type="radio" required value="R"
                                     name="validasi_sekdis"/> &nbsp; Perlu di perbaiki &nbsp; 
-                                @elseif ($valid->validasi_sekdis=='R')
+                                @elseif ($data->validasi_sekdis=='R')
                                     <input type="radio" required value="N" 
                                     name="validasi_sekdis"/> &nbsp; Belum di Verifikasi &nbsp;
                                     <input type="radio" required value="Y" 
@@ -205,10 +205,10 @@
                             for="form-field-1"> Catatan
                             </label>
                             <div class="col-sm-9">
-                                <input type="hidden" name="realisasi_id" value="{{$data->id}}">
+                                <input type="hidden" name="realisasi_id" value="{{$data->realisasi_id}}">
                                 <input type="hidden" name="sekdis_id" value="{{auth()->user()->id}}">
                                 <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="sekdis_dates"/>
-                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$valid->catatan_sekdis}}"
+                                <input type="text" class="col-xs-10 col-sm-10 required "  value="{{$data->catatan_sekdis}}"
                                 name="catatan_sekdis" required/>
                             </div>
                     </div>

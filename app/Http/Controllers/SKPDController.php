@@ -20,6 +20,11 @@ class SKPDController extends Controller
         return view('skpd.index',compact('data'));
     }
 
+    public function create()
+    {
+        return view('skpd.create');
+    }
+
     public function store(Request $request)
     {
         Skpd::create($request->all());

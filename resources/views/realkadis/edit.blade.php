@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section('breadcrumb')
     <li>Realisasi</li>
-    <li><a href="/realsubbid">Realisasi Capaian  Seksi / Subbag</a></li>
+    <li><a href="/realkadis">Realisasi Capaian  Bidang</a></li>
     <li>Ubah Data </li>
 @endsection
 @section('content')
 @include('layouts.validasi')
 
 <form class="form-horizontal validate-form" role="form" 
-method="post" action="/realsubbid/update/{{$data->id}}">
+method="post" action="/realkadis/update/{{$data->id}}">
 {{ csrf_field() }}
 <div class="row">
 <div class="col-md-12">
@@ -41,7 +41,7 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                  $blnindo = "Desember";
             }
     @endphp
-    <div class="panel-heading"><h3 class="panel-title">Tambah Realisasi {{$data->sub->name}} Periode {{$blnindo}} {{$data->years}} </h3></div>
+       <div class="panel-heading"><h3 class="panel-title">Ubah Realisasi  Periode {{$blnindo}} {{$data->years}} </h3></div>
        <div class="panel-body">
            <table  id="simple-table" class="table  table-bordered table-hover">
                <thead>
@@ -54,6 +54,7 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                         <th style="text-align: center" class="col-md-1">Capaian Tahun{{$data->years}}</th>
                         <th style="text-align: center" > capaian tahun {{$data->years}} terhadap target akhir renstra</th>
                         <th style="text-align: center" class="col-md-4">Analisis Capaian Kinerja</th>
+                    </tr>
                </thead>
                <tbody>
                    @php
@@ -65,7 +66,7 @@ method="post" action="/realsubbid/update/{{$data->id}}">
                             <td>
                                 <input type="hidden" name="id[]" value="{{$row->id}}">
                                 <input type="hidden" name="indicator_id[]" value="{{$row->indicator_id}}">
-                                {{$row->indi->names}}
+                                {{$row->indi->names}} 
                             </td>
                             <td>
                                 <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"

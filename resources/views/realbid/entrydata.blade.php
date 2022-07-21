@@ -72,10 +72,10 @@ method="post" action="{{route('realbid.store')}}" enctype="multipart/form-data" 
                             </td>
                             <td>
                                 @php
-                                    $isi = $injectQuery->getRenstra($row->id,$yearend->yearto,$row->indicator_id);
+                                    $isi = $injectQuery->getRenstra($data->targetbid_id,$yearend->yearto,$row->indicator_id);
                                 @endphp
                                 <input type="number" name="target_akhir[]"  readonly  class="form-control" id="akhir-{{$no}}"
-                                    value="{{$row->percentages}}">
+                                    value="{{$isi->percentages}}">
                             </td>
                             <td>
                                 <input type="number" readonly name="target[]" value="{{$row->percentages}}"

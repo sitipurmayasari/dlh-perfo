@@ -41,8 +41,8 @@
                         for="form-field-1"> Target 2021
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2021}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2021}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2021" required />
                         </div>
                     </div>
@@ -51,8 +51,8 @@
                         for="form-field-1"> Target 2022
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2022}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2022}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2022" required />
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                         for="form-field-1"> Target 2023
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2023}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2023}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2023" required />
                         </div>
                     </div>
@@ -71,8 +71,8 @@
                         for="form-field-1"> Target 2024
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2024}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2024}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2024" required />
                         </div>
                     </div>
@@ -81,8 +81,8 @@
                         for="form-field-1"> Target 2025
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2025}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2025}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2025" required />
                         </div>
                     </div>
@@ -91,8 +91,8 @@
                         for="form-field-1"> Target 2026
                         </label>
                         <div class="col-sm-8">
-                            <input type="number" value="{{$data->2026}}"
-                                    class="col-xs-10 col-sm-10 required " 
+                            <input type="number" value="{{$data->t2026}}"
+                                    class="col-xs-3 col-sm-3 required " 
                                     name="t2026" required />
                         </div>
                     </div>

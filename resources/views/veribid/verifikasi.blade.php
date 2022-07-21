@@ -34,12 +34,7 @@
                         <tr>
                             <td>Bidang</td>
                             <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->bidang->name}} </td>
-                        </tr>
-                        <tr>
-                            <td> Seksi / Subbag</td>
-                            <td>&nbsp; : &nbsp;</td>
-                            <td> &nbsp; {{$data->sub->name}} </td>
+                            <td> &nbsp; {{$data->bidang->name}} </td>
                         </tr>
                         <tr>
                             <td>Periode</td>
@@ -96,8 +91,8 @@
                                  <th style="text-align: center">Indikator</th>
                                  <th style="text-align: center" >Target Tahun {{$data->years}}</th>
                                  <th style="text-align: center">Realisasi</th>
-                                 <th style="text-align: center">Hasil (%) </th>
-                                 <th style="text-align: center" >Hasil Tahunan (%)</th>
+                                 <th style="text-align: center">Capaian (%) </th>
+                                 <th style="text-align: center" >Capaian Tahunan (%)</th>
                                  <th style="text-align: center">Keterangan</th>
                              </tr>
                         </thead>
@@ -149,11 +144,11 @@
                             </label>
                             <div class="col-sm-9">
                                 <input type="radio" required value="N" checked
-                                    name="verifikasi_kabid"/> &nbsp; Belum di Verifikasi &nbsp;
+                                    name="validasi_perencana"/> &nbsp; Belum di Verifikasi &nbsp;
                                 <input type="radio" required value="Y" 
-                                    name="verifikasi_kabid"/> &nbsp; Terverifikasi &nbsp;
+                                    name="validasi_perencana"/> &nbsp; Terverifikasi &nbsp;
                                 <input type="radio" required value="R"
-                                    name="verifikasi_kabid"/> &nbsp; Perlu di perbaiki &nbsp;    
+                                    name="validasi_perencana"/> &nbsp; Perlu di perbaiki &nbsp;    
                             </div>
                     </div>
                     <div class="form-group">
@@ -161,11 +156,11 @@
                             for="form-field-1"> Catatan
                             </label>
                             <div class="col-sm-9">
-                                <input type="hidden" name="realisasi_id" value="{{$data->id}}">
-                                <input type="hidden" name="kabid_id" value="{{auth()->user()->id}}">
-                                <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="kabid_dates"/>
+                                <input type="hidden" name="realisasibid_id" value="{{$data->id}}">
+                                <input type="hidden" name="perencana_id" value="{{auth()->user()->id}}">
+                                <input type="hidden" id="dates" value="{{date('Y-m-d')}}" name="perencana_dates"/>
                                 <input type="text" class="col-xs-10 col-sm-10 required "  
-                                name="catatan_kabid" required/>
+                                name="catatan_perencana" required/>
                             </div>
                     </div>
                     

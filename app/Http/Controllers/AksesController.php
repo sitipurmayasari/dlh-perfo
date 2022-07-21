@@ -40,11 +40,17 @@ class AksesController extends Controller
         $this->validate($request,[
             'nip' => 'required|unique:users',
             'email' => 'required|unique:users',
-            'bidang_id' => 'required',
             'role' => 'required'
         ]);
         
+        if ($request->role == "5") {
+            $bidang = "1";
+        }else{
+            $bidang = $request->bidang_id;
+        }
+        
         $request->merge([
+            'bidang_id' => $bidang,
             'password' =>  bcrypt("lingkungan"),
             'remember_token' => Str::random(60)
         ]);

@@ -34,7 +34,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2021" required />
                     </div>
                 </div>
@@ -44,7 +44,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2022" required />
                     </div>
                 </div>
@@ -54,7 +54,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2023" required />
                     </div>
                 </div>
@@ -64,7 +64,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2024" required />
                     </div>
                 </div>
@@ -74,7 +74,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2025" required />
                     </div>
                 </div>
@@ -84,7 +84,7 @@ method="post" action="{{route('skpd.store')}}" enctype="multipart/form-data"   >
                     </label>
                     <div class="col-sm-8">
                         <input type="number" value="0" min ="0" step="0.001"
-                                class="col-xs-10 col-sm-10 required " 
+                                class="col-xs-3 col-sm-3 required " 
                                 name="t2026" required />
                     </div>
                 </div>
