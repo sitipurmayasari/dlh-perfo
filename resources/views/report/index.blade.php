@@ -36,6 +36,8 @@
                                     <option value="3">Laporan Realisasi Kadis</option>
                                     <option value="4">Laporan Realisasi SKPD</option>
                                     <option value="5">Laporan Pengumpulan Data</option>
+                                    <option value="6">Laporan Index Kinerja Utama</option>
+                                    <option value="7">Laporan Hasil Crosscutting</option>
                                 </select>
                             </div>
                         </div>
@@ -76,6 +78,20 @@
                                     @foreach ($skpd as $item)
                                         <option value="{{$item->id}}">{{$item->name}}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="ika">
+                            <label class="col-sm-3 control-label no-padding-right" 
+                            for="form-field-1"> Indeks Kinerja
+                            </label>
+                            <div class="col-sm-8">
+                                <select name="iku" class="col-xs-10 col-sm-10">
+                                    <option value="">Pilih Indeks</option>
+                                    <option value="Indeks Kualitas Air">Indeks Kualitas Air</option>
+                                    <option value="Indeks Kualitas Udara">Indeks Kualitas Udara</option>
+                                    <option value="Indeks Kualitas Lahan">Indeks Kualitas Lahan</option>
+                                    <option value="Indeks Kualitas Air Laut">Indeks Kualitas Air Laut</option>
                                 </select>
                             </div>
                         </div>
@@ -143,6 +159,7 @@
     $(document).ready(function(){
         $("#sub").hide();
         $("#skpd").hide();
+        $("#ika").hide();
              
         $("#jenis").on("change", function(){
             var v = $(this).val();
@@ -150,22 +167,32 @@
                 $("#sub").hide();
                 $("#skpd").hide();
                 $("#bidang").show();
+                $("#ika").hide();
             }else if(v=="2"){
                 $("#sub").show();
                 $("#skpd").hide();
                 $("#bidang").hide();
+                $("#ika").hide();
             }else if(v=="3"){
                 $("#sub").hide();
                 $("#skpd").hide();
                 $("#bidang").hide();
+                $("#ika").hide();
             }else if(v=="4"){
                 $("#sub").hide();
                 $("#skpd").show();
                 $("#bidang").hide();
+                $("#ika").hide();
+            }else if(v=="6"){
+                $("#sub").hide();
+                $("#skpd").hide();
+                $("#bidang").hide();
+                $("#ika").show();
             }else{
                 $("#sub").hide();
                 $("#skpd").hide();
                 $("#bidang").hide();
+                $("#ika").hide();
                
             } 
         });

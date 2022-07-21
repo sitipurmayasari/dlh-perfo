@@ -35,8 +35,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan Realisasi  Periode {{$blnindo}} {{$data->years}}</title>
     <?php
-        // header("Content-type: application/vnd-ms-excel");
-        // header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
     ?>
     <style>
         @page {

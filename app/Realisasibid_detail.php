@@ -10,7 +10,7 @@ class Realisasibid_detail extends Model
     protected $table = "zo_realisasibid_detail";
     protected $fillable = ["realisasibid_id","target","real","capaian","keterangan","indicator_id","target_akhir","capaian_akhir"
                             ];
-    public function real()
+    public function realisasi()
     {
         return $this->belongsTo(Realisasibid::class,'realisasibid_id','id');
     }

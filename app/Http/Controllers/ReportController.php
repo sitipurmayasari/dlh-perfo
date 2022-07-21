@@ -9,8 +9,8 @@ use App\Realisasi;
 use App\Realisasi_detail;
 use App\Realisasibid;
 use App\Realisasibid_detail;
-use App\Realisasiskpd;
-use App\Realisasiskpd_detail;
+use App\RealisasiSKPD;
+use App\RealisasiSKPD_detail;
 use App\Realisasikadis;
 use App\Realisasikadis_detail;
 use App\Subbidang;
@@ -107,6 +107,40 @@ class ReportController extends Controller
 
             $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             return $pdf->stream();   
+        }elseif($request->jenis=="6"){
+            $bidang = Realisasibid_detail::SelectRaw('zo_realisasibid_detail.*')
+                                        ->leftJoin('zo_realisasibid','zo_realisasibid.id','zo_realisasibid_detail.realisasibid_id')
+                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasibid_detail.indicator_id')
+                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                        ->where('zo_kinerja.iku',$request->iku)
+                                        ->where('zo_realisasibid.years',$request->years)
+                                        ->where('zo_realisasibid.month',$request->bulan)
+                                        ->get();
+            $subid = Realisasi_detail::SelectRaw('zo_realisasi_detail.*')
+                                        ->leftJoin('zo_realisasi','zo_realisasi.id','zo_realisasi_detail.realisasi_id')
+                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasi_detail.indicator_id')
+                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                        ->where('zo_kinerja.iku',$request->iku)
+                                        ->where('zo_realisasi.years',$request->years)
+                                        ->where('zo_realisasi.month',$request->bulan)
+                                        ->get();
+
+            return view('report.lapika',compact('bidang','request','subid'));  
+            // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
+            // return $pdf->stream();   
+        }elseif($request->jenis=="7"){
+            $bidang = RealisasiSKPD::SelectRaw('zo_realisasibid_detail.*')
+                                        ->leftJoin('zo_realisasibid','zo_realisasibid.id','zo_realisasibid_detail.realisasibid_id')
+                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasibid_detail.indicator_id')
+                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                        ->where('zo_kinerja.iku',$request->iku)
+                                        ->where('zo_realisasibid.years',$request->years)
+                                        ->where('zo_realisasibid.month',$request->bulan)
+                                        ->get();
+
+            return view('report.lapika',compact('bidang','request','subid'));  
+            // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
+            // return $pdf->stream();   
         } else {
             dd($request->all());
         }            
