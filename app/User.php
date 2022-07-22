@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Subbidang::class,'subbidang_id','id');
     }
+
+    public function isBidSub()
+    {
+        if($this->role==2 || $this->role==3 || $this->role==5){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
