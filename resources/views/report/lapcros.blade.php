@@ -68,57 +68,41 @@
 <body>
     <div class="col-sm-12 isi" style="text-align: center">
         <div style="align:center; font-size: 16px; text-transform: uppercase;"><b>
-               Laporan Indeks Kualitas Air <br>
-               DINAS LINGKUNGAN HIDUP PROVINSI KALSEL <br>
+               Laporan Crosscutting SKPD <br>
+               PROVINSI KALSEL <br>
                Periode {{$blnindo}} {{$request->years}}
         </b></div>
         <br>
     </div>
     <div>
+        <h3>Peningkatan IKAL</h3>
         <table style="width: 100%">
            <thead>
                 <tr>
-                    <th style="width: 5%">No</th>
-                    <th>Nama Bidang / Sub / SKPD</th>
+                    <th>Nama SKPD</th>
                     <th>Kinerja</th>
                     <th>Indikator</th>
-                    <th>Target Tahun {{$request->years}}</th>
+                    <th>Target</th>
+                    <th>Realisasi</th>
                     <th>Capaian</th>
-                    <th>Analisis Capaian Kinerja</th>
+                    <th>Bobot</th>
+                    <th>Target Kontribusi IKA</th>
+                    <th>KOntribusi IKA</th>
                 </tr>
            </thead>
            <tbody>
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($bidang as $bid)
-                    <tr>
-                        <td style="text-align: center">{{$no}}</td>
-                        <td>Bidang {{$bid->realisasi->bidang->name}}</td>
-                        <td>{{$bid->indi->kinerja->names}}</td>
-                        <td>{{$bid->indi->names}}</td>
-                        <td style="text-align: center">{{$bid->target}}</td>
-                        <td style="text-align: center">{{$bid->capaian}}</td>
-                        <td>{{$bid->keterangan}}</td>
-                    </tr>
-                    @php
-                        $no++;
-                    @endphp
-                @endforeach
-                @foreach ($subid as $subs)
-                    <tr>
-                        <td style="text-align: center">{{$no}}</td>
-                        <td>Bidang {{$subs->realisasi->sub->name}}</td>
-                        <td>{{$subs->indi->kinerja->names}}</td>
-                        <td>{{$subs->indi->names}}</td>
-                        <td style="text-align: center">{{$subs->target}}</td>
-                        <td style="text-align: center">{{$subs->capaian}}</td>
-                        <td>{{$subs->keterangan}}</td>
-                    </tr>
-                    @php
-                        $no++;
-                    @endphp
-                @endforeach
+            @foreach ($ikal as $item)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            @endforeach
            </tbody>
         </table>
         

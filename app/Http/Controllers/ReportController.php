@@ -129,16 +129,17 @@ class ReportController extends Controller
             // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             // return $pdf->stream();   
         }elseif($request->jenis=="7"){
-            $bidang = RealisasiSKPD::SelectRaw('zo_realisasibid_detail.*')
-                                        ->leftJoin('zo_realisasibid','zo_realisasibid.id','zo_realisasibid_detail.realisasibid_id')
-                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasibid_detail.indicator_id')
-                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                                        ->where('zo_kinerja.iku',$request->iku)
-                                        ->where('zo_realisasibid.years',$request->years)
-                                        ->where('zo_realisasibid.month',$request->bulan)
+            // dd($request->all());
+            $ikal = RealisasiSKPD_detail::SelectRaw('zo_realisasiskpd_detail.*')
+                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.zo_realisasiskpd_id')
+                                        ->leftjoin('zo_kinerja_skpd', 'zo_kinerja_skpd.id','zo_realisasiskpd_detail.kinerja_skpd_id')
+                                        ->where('iku','Indeks Kualitas Air Laut')
+                                        ->where('zo_realisasiskpd.years',$request->years)
+                                        ->where('zo_realisasiskpd.month',$request->bulan)
+                                        ->OrderBy('skpd_id', 'asc')
                                         ->get();
 
-            return view('report.lapika',compact('bidang','request','subid'));  
+            return view('report.lapcros',compact('skpd','request'));  
             // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             // return $pdf->stream();   
         } else {
