@@ -10,9 +10,9 @@ class RealisasiSKPD_detail extends Model
     protected $table = "zo_realisasiskpd_detail";
     protected $fillable = ["realisasiskpd_id","target","real","capaian","keterangan","kinerja_skpd_id"
                             ];
-    public function real()
+    public function realisasi()
     {
-        return $this->belongsTo(Realisasibid::class,'realisasiskpd_id','id');
+        return $this->belongsTo(RealisasiSKPD::class,'realisasiskpd_id','id');
     }
     public function indi()
     {

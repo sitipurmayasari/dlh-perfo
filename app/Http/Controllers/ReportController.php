@@ -38,9 +38,11 @@ class ReportController extends Controller
                                     $query->where('month',$request->bulan);
                                 })
                                 ->first();
-            $detail = Realisasibid_detail::orderby('indicator_id','asc')
+            if ($data != null) {
+                $detail = Realisasibid_detail::orderby('indicator_id','asc')
                                 ->where('realisasibid_id',$data->id)
                                 ->get();
+            }
             $bid = Bidang::where('id', $request->bidang)->first();
             $kadis = User::where('role','4')
                         ->OrderBy('id','desc')->first();
@@ -88,7 +90,8 @@ class ReportController extends Controller
             $detail = RealisasiSKPD_detail::orderby('kinerja_skpd_id','asc')
                                         ->where('realisasiskpd_id',$data->id)
                                         ->get();
-            return view('report.lapskpd',compact('data','request','detail'));  
+            $skpd = SKPD::where('id',$request->skpd)->first();
+            return view('report.lapskpd',compact('data','request','detail','skpd'));  
 
         }elseif($request->jenis=="5"){
             $bidang = Realisasibid::where('years',$request->years)
@@ -108,38 +111,47 @@ class ReportController extends Controller
             $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             return $pdf->stream();   
         }elseif($request->jenis=="6"){
-            $bidang = Realisasibid_detail::SelectRaw('zo_realisasibid_detail.*')
-                                        ->leftJoin('zo_realisasibid','zo_realisasibid.id','zo_realisasibid_detail.realisasibid_id')
-                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasibid_detail.indicator_id')
-                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                                        ->where('zo_kinerja.iku',$request->iku)
-                                        ->where('zo_realisasibid.years',$request->years)
-                                        ->where('zo_realisasibid.month',$request->bulan)
-                                        ->get();
-            $subid = Realisasi_detail::SelectRaw('zo_realisasi_detail.*')
-                                        ->leftJoin('zo_realisasi','zo_realisasi.id','zo_realisasi_detail.realisasi_id')
-                                        ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasi_detail.indicator_id')
-                                        ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
-                                        ->where('zo_kinerja.iku',$request->iku)
-                                        ->where('zo_realisasi.years',$request->years)
-                                        ->where('zo_realisasi.month',$request->bulan)
-                                        ->get();
+            $bidang = Bidang::all();
 
-            return view('report.lapika',compact('bidang','request','subid'));  
+            return view('report.lapika',compact('bidang','request'));  
             // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             // return $pdf->stream();   
         }elseif($request->jenis=="7"){
             // dd($request->all());
             $ikal = RealisasiSKPD_detail::SelectRaw('zo_realisasiskpd_detail.*')
-                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.zo_realisasiskpd_id')
+                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.realisasiskpd_id')
                                         ->leftjoin('zo_kinerja_skpd', 'zo_kinerja_skpd.id','zo_realisasiskpd_detail.kinerja_skpd_id')
                                         ->where('iku','Indeks Kualitas Air Laut')
                                         ->where('zo_realisasiskpd.years',$request->years)
                                         ->where('zo_realisasiskpd.month',$request->bulan)
-                                        ->OrderBy('skpd_id', 'asc')
+                                        ->OrderBy('zo_realisasiskpd.skpd_id', 'asc')
+                                        ->get();
+            $ika = RealisasiSKPD_detail::SelectRaw('zo_realisasiskpd_detail.*')
+                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.realisasiskpd_id')
+                                        ->leftjoin('zo_kinerja_skpd', 'zo_kinerja_skpd.id','zo_realisasiskpd_detail.kinerja_skpd_id')
+                                        ->where('iku','Indeks Kualitas Air')
+                                        ->where('zo_realisasiskpd.years',$request->years)
+                                        ->where('zo_realisasiskpd.month',$request->bulan)
+                                        ->OrderBy('zo_realisasiskpd.skpd_id', 'asc')
+                                        ->get();
+            $iku = RealisasiSKPD_detail::SelectRaw('zo_realisasiskpd_detail.*')
+                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.realisasiskpd_id')
+                                        ->leftjoin('zo_kinerja_skpd', 'zo_kinerja_skpd.id','zo_realisasiskpd_detail.kinerja_skpd_id')
+                                        ->where('iku','Indeks Kualitas Udara')
+                                        ->where('zo_realisasiskpd.years',$request->years)
+                                        ->where('zo_realisasiskpd.month',$request->bulan)
+                                        ->OrderBy('zo_realisasiskpd.skpd_id', 'asc')
+                                        ->get();
+            $ikl = RealisasiSKPD_detail::SelectRaw('zo_realisasiskpd_detail.*')
+                                        ->leftJoin('zo_realisasiskpd','zo_realisasiskpd.id','zo_realisasiskpd_detail.realisasiskpd_id')
+                                        ->leftjoin('zo_kinerja_skpd', 'zo_kinerja_skpd.id','zo_realisasiskpd_detail.kinerja_skpd_id')
+                                        ->where('iku','Indeks Kualitas Lahan')
+                                        ->where('zo_realisasiskpd.years',$request->years)
+                                        ->where('zo_realisasiskpd.month',$request->bulan)
+                                        ->OrderBy('zo_realisasiskpd.skpd_id', 'asc')
                                         ->get();
 
-            return view('report.lapcros',compact('skpd','request'));  
+            return view('report.lapcros',compact('ika','iku','ikl','ikal','request'));  
             // $pdf = PDF::loadview('report.laptotal',compact('request','bidang','subbidang','nobid','nosub'));  
             // return $pdf->stream();   
         } else {

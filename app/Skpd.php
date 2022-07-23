@@ -10,7 +10,7 @@ class Skpd extends Model
     use SoftDeletes;
     
     protected $table = "zo_skpd";
-    protected $fillable = ["name" ];
+    protected $fillable = ["name","t2021","t2022","t2023","t2024","t2025","t2026" ];
     protected $dates = ['deleted_at'];
 
 }

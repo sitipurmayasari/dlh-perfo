@@ -1,3 +1,5 @@
+@inject('injectQuery', 'App\InjectQuery')
+
 @php
  $bln = $request->bulan;
  if ($bln==1) { 
@@ -35,8 +37,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan Pengumpulan Data Capaian Periode {{$blnindo}} {{$request->years}}</title>
     <?php
-        header("Content-type: application/vnd-ms-excel");
-        header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
+        // header("Content-type: application/vnd-ms-excel");
+        // header("Content-Disposition: attachment; filename=Laporan-Realisasi-$request->iku-Periode-$blnindo-$request->years.xls");
     ?>
     <style>
         @page {
@@ -59,10 +61,20 @@
             vertical-align: middle;
             font-weight: bold;
             color : white;
-            background-color: #25D366;
+            background-color : gray;
         }
         td{
             vertical-align: top;
+        }
+
+        .bid{
+            background-color : #f3e5bf;
+            color: black;
+        }
+
+        .sub{
+            background-color : #deefd4;
+            color: black;
         }
     
        
@@ -72,59 +84,73 @@
 <body>
     <div class="col-sm-12 isi" style="text-align: center">
         <div style="align:center; font-size: 16px; text-transform: uppercase;"><b>
-               Laporan Indeks Kualitas Air <br>
+               LAPORAN {{strtoupper($request->iku)}} <br>
                DINAS LINGKUNGAN HIDUP PROVINSI KALSEL <br>
                Periode {{$blnindo}} {{$request->years}}
         </b></div>
         <br>
     </div>
     <div>
-        <table style="width: 100%">
-           <thead>
-                <tr>
-                    <th style="width: 5%">No</th>
-                    <th>Nama Bidang / Sub / SKPD</th>
-                    <th>Kinerja</th>
-                    <th>Indikator</th>
-                    <th>Target Tahun {{$request->years}}</th>
-                    <th>Capaian</th>
-                    <th>Analisis Capaian Kinerja</th>
-                </tr>
-           </thead>
-           <tbody>
-                @php
-                    $no = 1;
-                @endphp
-                @foreach ($bidang as $bid)
+        @foreach ($bidang as $item)
+            <table>
+               <thead>
                     <tr>
-                        <td style="text-align: center">{{$no}}</td>
-                        <td>Bidang {{$bid->realisasi->bidang->name}}</td>
-                        <td>{{$bid->indi->kinerja->names}}</td>
-                        <td>{{$bid->indi->names}}</td>
-                        <td style="text-align: center">{{$bid->target}}</td>
-                        <td style="text-align: center">{{$bid->capaian}}</td>
-                        <td>{{$bid->keterangan}}</td>
+                        <th colspan="7">
+                            {{$item->name}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="width: 5%">No</th>
+                        <th>Nama Bidang / Sub</th>
+                        <th>Kinerja</th>
+                        <th>Indikator</th>
+                        <th>Target Tahun {{$request->years}}</th>
+                        <th>Capaian</th>
+                        <th>Analisis Capaian Kinerja</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @php
+                        $no = 1;
+                        $bidang = $injectQuery->getbidangika($item->id, $request->iku, $request->years, $request->bulan);
+                        $subid = $injectQuery->getsubika($item->id, $request->iku, $request->years, $request->bulan);
+                    @endphp
+                    {{-- bidang --}}
+                    @foreach ($bidang as $bid)
+                        <tr>
+                            <td style="text-align: center" class="bid">{{$no}}</td>
+                            <td class="bid">Bidang {{$bid->realisasi->bidang->name}}</td>
+                            <td class="bid">{{$bid->indi->kinerja->names}}</td>
+                            <td class="bid">{{$bid->indi->names}}</td>
+                            <td class="bid" style="text-align: center">{{$bid->target}}</td>
+                            <td class="bid" style="text-align: center">{{$bid->capaian}}</td>
+                            <td class="bid">{{$bid->keterangan}}</td>
+                        </tr>
+                        @php
+                            $no++;
+                        @endphp
+                    @endforeach
+                        {{-- sub bidang --}}
+                    @foreach ($subid as $subs)
+                    <tr>
+                        <td class="sub" style="text-align: center">{{$no}}</td>
+                        <td class="sub">Bidang {{$subs->realisasi->sub->name}}</td>
+                        <td class="sub">{{$subs->indi->kinerja->names}}</td>
+                        <td class="sub">{{$subs->indi->names}}</td>
+                        <td class="sub" style="text-align: center">{{$subs->target}}</td>
+                        <td class="sub" style="text-align: center">{{$subs->capaian}}</td>
+                        <td class="sub">{{$subs->keterangan}}</td>
                     </tr>
                     @php
                         $no++;
                     @endphp
                 @endforeach
-                @foreach ($subid as $subs)
-                    <tr>
-                        <td style="text-align: center">{{$no}}</td>
-                        <td>Bidang {{$subs->realisasi->sub->name}}</td>
-                        <td>{{$subs->indi->kinerja->names}}</td>
-                        <td>{{$subs->indi->names}}</td>
-                        <td style="text-align: center">{{$subs->target}}</td>
-                        <td style="text-align: center">{{$subs->capaian}}</td>
-                        <td>{{$subs->keterangan}}</td>
-                    </tr>
-                    @php
-                        $no++;
-                    @endphp
-                @endforeach
-           </tbody>
-        </table>
+
+               </tbody>
+            </table>
+            <br>
+        @endforeach
+    </div>
         
 </body>
 </html>

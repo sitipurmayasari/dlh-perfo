@@ -60,6 +60,34 @@ class InjectQuery
         return $data;
     }
 
+    public function getbidangika($bidang, $iku, $tahun, $bulan){
+        $data =  Realisasibid_detail::SelectRaw('zo_realisasibid_detail.*')
+                                    ->leftJoin('zo_realisasibid','zo_realisasibid.id','zo_realisasibid_detail.realisasibid_id')
+                                    ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasibid_detail.indicator_id')
+                                    ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                    ->where('zo_realisasibid.bidang_id',$bidang)
+                                    ->where('zo_kinerja.iku',$iku)
+                                    ->where('zo_realisasibid.years',$tahun)
+                                    ->where('zo_realisasibid.month',$bulan)
+                                    ->get();
+        return $data;
+    }
+
+    public function getsubika($bidang, $iku, $tahun, $bulan){
+        $data =  Realisasi_detail::SelectRaw('zo_realisasi_detail.*')
+                                ->leftJoin('zo_realisasi','zo_realisasi.id','zo_realisasi_detail.realisasi_id')
+                                ->LeftJoin('zo_indicator','zo_indicator.id','zo_realisasi_detail.indicator_id')
+                                ->leftjoin('zo_kinerja','zo_kinerja.id','zo_indicator.kinerja_id')
+                                ->leftjoin('zo_subbidang','zo_subbidang.id','zo_realisasi.subbidang_id')
+                                ->where('zo_subbidang.bidang_id',$bidang)
+                                ->where('zo_kinerja.iku',$iku)
+                                ->where('zo_realisasi.years',$tahun)
+                                ->where('zo_realisasi.month',$bulan)
+                                ->OrderBy('zo_realisasi.subbidang_id','asc')
+                                ->get();
+        return $data;
+    }
+
     public function chartRealisasibid($month,$bidang_id)
     {
        $data = Realisasibid::leftJoin('zo_realisasibid_detail as det', function($join) {

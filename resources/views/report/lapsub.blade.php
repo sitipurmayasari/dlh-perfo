@@ -1,5 +1,5 @@
 @php
- $bln = $data->month;
+ $bln = $request->month;
  if ($bln==1) { 
      $blnindo = "JANUARI";
  } else  if ($bln==2){
@@ -33,10 +33,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Realisasi Seksi {{$bid->name}} Periode {{$blnindo}} {{$data->years}}</title>
+    <title>Laporan Realisasi Seksi {{$bid->name}} Periode {{$blnindo}} {{$request->years}}</title>
     <?php
         header("Content-type: application/vnd-ms-excel");
-        header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
+        header("Content-Disposition: attachment; filename=Laporan-Realisasi-Seksi-$bid->name-Periode-$blnindo-$request->years.xls");
     ?>
     <style>
         @page {
@@ -70,8 +70,8 @@
 <body>
     <div class="col-sm-12 isi" style="text-align: center">
         <div style="align:center; font-size: 18px; text-transform: uppercase;"><b>
-                LAPORAN PENGUKURAN KINERJA SAMPAI DENGAN BULAN {{$blnindo}} TAHUN {{$data->years}}<br>
-                KEPALA SEKSI {{$bid->name}}<br>
+                LAPORAN PENGUKURAN KINERJA SAMPAI DENGAN BULAN {{strtoupper($blnindo)}} TAHUN {{$request->years}}<br>
+                KEPALA SEKSI {{strtoupper($bid->name)}}<br>
                 DINAS LINGKUNGAN HIDUP PROVINSI KALSEL
         </b></div>
         <br>
@@ -144,7 +144,7 @@
                 <td class="atas"></td>
                 <td class="atas"></td>
                 <td class="atas"></td>
-                <td class="atas" style="text-transform: uppercase;">KEPALA SEKSI {{$bid->name}}</td>
+                <td class="atas" style="text-transform: uppercase;">KEPALA SEKSI {{strtoupper($bid->name)}}</td>
             </tr>
             <tr class="atas">
                 <td class="atas"></td>
@@ -172,7 +172,7 @@
                 <td class="atas"></td>
                 <td class="atas">
                     @if ($kadis != null)
-                        {{$kadis->name}}
+                        {{strtoupper($kadis->name)}}
                     @else
                         Nama
                     @endif
@@ -185,7 +185,7 @@
                 <td class="atas"></td>
                 <td class="atas">
                     @if ($kasie != null)
-                        {{$kasie->name}}
+                        {{strtoupper($kasie->name)}}
                     @else
                         Nama
                     @endif

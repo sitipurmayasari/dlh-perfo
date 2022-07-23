@@ -1,5 +1,5 @@
 @php
- $bln = $data->month;
+ $bln = $request->month;
  if ($bln==1) { 
      $blnindo = "Januari";
  } else  if ($bln==2){
@@ -33,10 +33,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laporan Realisasi  Periode {{$blnindo}} {{$data->years}}</title>
+    <title>Laporan Realisasi  Periode {{$blnindo}} {{$request->years}}</title>
     <?php
         header("Content-type: application/vnd-ms-excel");
-        header("Content-Disposition: attachment; filename=Laporan-Realisasi-Bidang-$bid->name-Periode-$blnindo-$data->years.xls");
+        header("Content-Disposition: attachment; filename=Laporan-Realisasi-$skpd->name-Periode-$blnindo-$request->years.xls");
     ?>
     <style>
         @page {

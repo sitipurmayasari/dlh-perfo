@@ -79,7 +79,7 @@
                             <select name="bidang_id" class="col-xs-10 col-sm-10 select2">
                                 <option value="">Pilih Bidang</option>
                                 @foreach ($bidang as $item)
-                                    @if ($item->id == $data->bidang)
+                                    @if ($item->id = $data->bidang_id)
                                         <option value="{{$item->id}}" selected>{{$item->name}}</option>
                                     @else
                                         <option value="{{$item->id}}">{{$item->name}}</option>
