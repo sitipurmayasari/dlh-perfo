@@ -27,7 +27,9 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <span class="user-info">
                             <small>{{auth()->user()->name}}</small>
-                            {{auth()->user()->subbid->name}}
+                            {{auth()->user()->subbidang_id!=null ? auth()->user()->subbid->name : ''}}
+                            {{auth()->user()->bidang_id!=null ? auth()->user()->bidang->name : ''}}
+
                         </span>
 
                         <i class="ace-icon fa fa-caret-down"></i>

@@ -21,7 +21,8 @@ class PortalController extends Controller
         $bln = Carbon::now()->month;
         $thn = Carbon::now()->year;
           
-
+        $realsub = null;
+        $sub = null;
         if (auth()->user()->subbidang_id != null) {
             $sub =auth()->user()->subbidang_id; 
            $realsub = Realisasi::where('subbidang_id',$sub)
